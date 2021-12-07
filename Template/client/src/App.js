@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import LandingPage from './components/views/Landing/LandingPage';
-import LoginPage from './components/views/Login/LoginPage';
+import Login from './components/views/Login/Login';
 import RegisterPage from "./components/views/Register/RegisterPage";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       <hr />
       <Routes>
           <Route exact path="/" element={<LandingPage/>}/>
-          <Route exact path="/api/user/login" element={<LoginPage/>}/>
+          <Route exact path="/api/user/login" element={<Login/>}/>
           <Route exact path="/api/user/register" element={<RegisterPage/>}/>
         </Routes>
       </div>

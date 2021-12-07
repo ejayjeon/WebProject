@@ -21,7 +21,7 @@ const userSchema = mongoose.Schema({
         maxlength: 14
     },
     role: {
-        type: Number,
+        type: String,
         default: 0
     },
     image: String,
