@@ -41,7 +41,7 @@ app.get('/api/hello', (req, res) => {
     // Front로 다시 보낼 것 
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/user/login', (req, res) => {
     // 요청된 이메일을 DB에 있는지 찾는다
 User.findOne({ email: req.body.email }, (err, User) => {
     if(!User) {
