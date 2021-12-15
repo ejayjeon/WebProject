@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import axios from 'axios'; // Ajax 요청
+//import axios from 'axios'; // Ajax 요청
 
 export default function Main(props) {
     //const [shose,shose변경]= useState(data);

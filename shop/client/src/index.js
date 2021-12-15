@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 
 // 콜백함수에는? 내가 원하는 state의 초기값
 // Redux는 데이터 수정 방법을 미리 지정한다. state 데이터 관리 기능
 let 초기값 = [{id: 0, name: '멋진신발', quan: 2}, {id: 1, name: '예쁜신발', quan: 5}] 
+let 카트광고 = true;
+
 function reducer(state = 초기값, 액션){
   if(액션.type === '수량증가'){
     // 이 데이터가 증가했으면 좋겠어 : 수량증가라는 데이터 수량증가방법
@@ -28,7 +30,15 @@ function reducer(state = 초기값, 액션){
    // default parameter 문법(ES6) 
 }
 
-let store = createStore(reducer);
+function 카트reducer(state = 카트광고, 액션) {
+  if(액션.type === '광고닫기') {
+    return !카트광고
+  }else {
+    return state
+  }
+}
+
+let store = createStore(combineReducers({reducer, 카트reducer}))
 // 만들어준 reducer를 store에 넣으면 끝
 
 
