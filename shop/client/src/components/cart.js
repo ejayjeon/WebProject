@@ -1,8 +1,13 @@
 import React from 'react'
 import {Table} from 'react-bootstrap'
-import {connect} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 
-function Cart(props) {
+export default function Cart() {
+
+const state = useSelector(state => state.reducer)
+const dispatch = useDispatch();
+
+
     return (
         <div>
             
@@ -17,15 +22,15 @@ function Cart(props) {
   </thead>
           <tbody>
             {
-              props.state.map((a, i) => {
+              state.map((a, i) => {
 
               return (
                 <tr key={i}>
                   <td>{a.id}</td>
                   <td>{a.name}</td>
                   <td>{a.quan}</td>
-                  <td><button onClick ={() => { props.dispatch({ type: '수량증가'}) }} className='btn btn-success'> + </button></td>
-                  <td><button onClick ={() => { props.dispatch({ type: '수량감소'}) }} className='btn btn-danger'> - </button></td>
+                  <td><button onClick ={() => { dispatch({ type: '수량증가', payload: a.id}) }} className='btn btn-success'> + </button></td>
+                  <td><button onClick ={() => { dispatch({ type: '수량감소', payload: a.id}) }} className='btn btn-danger'> - </button></td>
                   {/* 데이터 수정요청은 props.dispatch  */}
               </tr>
               )
@@ -33,10 +38,10 @@ function Cart(props) {
         }
           </tbody>
         </Table>
-        { props.광고닫기 === true
+        { state.광고닫기 === true
         ? (<div className='my-alert mb-3'>
         <p> 신규상품 20% 세일 중 </p>
-        <button onClick={() => { props.dispatch({type: '광고닫기'})}} className='btn btn-secondary mt-2'> X </button>
+        <button onClick={() => { dispatch({type: '광고닫기'})}} className='btn btn-secondary mt-2'> X </button>
         </div>)
         : null
         }
@@ -45,12 +50,14 @@ function Cart(props) {
     )
 }
 
-function state를props화(state) {
-        return{
-            state : state.reducer,
-            // state 안에 모든 것을 state라고 부른다
-            광고닫기 : state.카트reducer
-        }
-}
 
-export default connect(state를props화)(Cart)
+// 옛날 방식
+// function state를props화(state) {
+//         return{
+//             state : state.reducer,
+//             // state 안에 모든 것을 state라고 부른다
+//             광고닫기 : state.카트reducer
+//         }
+// }
+
+// export default connect(state를props화)(Cart)

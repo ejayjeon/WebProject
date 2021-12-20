@@ -2,7 +2,7 @@
 import React, {useState, useContext} from 'react'
 import data from './components/data'
 import './App.css';
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useParams } from 'react-router-dom'
 // Route : 매칭이 되기만 하면 전부 보여줌
 // Switch : 하나가 켜지면 하나가 꺼짐
 import Main from './components/main'
@@ -22,7 +22,7 @@ export default function App() {
   let [loding, setLoading] = useState(false);
   let [재고, 재고변경] = useState([10, 11, 12]);
   // 중요한 데이터는 App.js 에 보관 -> 많아지면 Redux 이용하여 별도로 보관
-  
+  let { id } = useParams();
 
   return (
   <div className='App'>

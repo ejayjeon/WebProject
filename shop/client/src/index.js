@@ -13,15 +13,27 @@ let 초기값 = [{id: 0, name: '멋진신발', quan: 2}, {id: 1, name: '예쁜�
 let 카트광고 = true;
 
 function reducer(state = 초기값, 액션){
-  if(액션.type === '수량증가'){
+// if (dispatch로 수신한 payload의 id가 state 안에 있으면) { state 카피본[그 데이터가 몇 번째에 있는지].수량++;}
+  if (액션.type === '항목추가') {
+    let 몇번째 = state.findIndex((a) => {return a.id === 액션.payload.id});
+    if(몇번째 >= 0) {
+      let copy = [...state];
+      copy[몇번째].quan++;
+      return copy;
+    } else {
+      let copy = [...state];
+      copy.push(액션.payload);
+      return copy;
+    }
+  } else if(액션.type === '수량증가'){
     // 이 데이터가 증가했으면 좋겠어 : 수량증가라는 데이터 수량증가방법
     let copy = [...state];
-    copy[0].quan++; // copy라는 deap copy 본에서 ++ 
+    copy[액션.payload].quan++; // copy라는 deap copy 본에서 ++ 
     return copy 
     // 수량을 찾아서 수량에 1 더해서, 그 더한 copy 본을 뱉어냄
   } else if(액션.type === '수량감소') {
     let copy2 = [...state];
-    copy2[0].quan--;
+    copy2[액션.payload].quan--;
     return copy2;
   } else {
     return state

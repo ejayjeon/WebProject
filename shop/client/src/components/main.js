@@ -1,8 +1,10 @@
 import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 //import axios from 'axios'; // Ajax 요청
 
 export default function Main(props) {
     //const [shose,shose변경]= useState(data);
+    let history = useHistory();
 
     function Jumbotron () {
         return(
@@ -16,7 +18,7 @@ export default function Main(props) {
       }
     function Card(props, shoes){
     return (
-        <div className='col-md-4'>
+        <div className='col-md-4' onClick={() => {  history.push('/detail/' + props.shoes.id)}} >
             <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} alt="" width="100%"/>
             <h3>{ props.shoes.title}</h3>
             {/* Array에서 무언가를 뽑아줄 때는 . 찍고 그 child를 뽑는다 

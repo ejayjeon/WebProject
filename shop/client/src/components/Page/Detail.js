@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import './Detail.scss'
 import {Nav} from 'react-bootstrap';
 import {CSSTransition} from 'react-transition-group'
+import {useSelector, useDispatch} from 'react-redux'
 
 // 컴포넌트 안에서 작은 컴포넌트를 만든다고 생각하면 된다
 // let 박스 = styled.div`
@@ -34,12 +35,21 @@ let [스위치, 스위치변경] = useState(false);
 
 
 
+  const state = useSelector(state => state.reducer)
+  const dispatch = useDispatch();
+  // state : reduX에 있는 모든 state
+  // return으로 받을 State는 내가 설정하면됨
+  // state.카트reducer
+  console.log(state);
+
 
   let history = useHistory();
   let { id } = useParams();
   let 찾은상품 = props.shoes.find(function(상품) { 
-    return 상품.id === id
+    return 상품.id == id
   });
+
+
   const [alert, setAlert] = useState(true);
   useEffect(() => {
     let Time = setTimeout(() => {
@@ -78,25 +88,30 @@ let [스위치, 스위치변경] = useState(false);
 
       <div className="row">
         <div className="col-md-6">
-          <img src={'https://codingapple1.github.io/shop/shoes' + id + '.jpg'} width="100%" alt="" />
+          <img src={'https://codingapple1.github.io/shop/shoes' + props.shoes[id] + '.jpg'} width="100%" alt="" />
         </div>
         <div className="col-md-6 mt-4">
           
-          <h3 className="pt-5">{찾은상품?.title}</h3>
+          <h3 className="pt-5">{찾은상품.title}</h3>
           {/* [:id 자리에 있던 숫자] 를 넣으면 상세 페이지가 달라질 것 */}
-          <p className="red">{찾은상품?.content}</p>
-          <p>{찾은상품?.price}</p>
-          <재고 재고={props. 재고}/>
+          <p className="red">{찾은상품.content}</p>
+          <p>{props.shoes[id].price}</p>
+          <재고 재고={props.재고}/>
           <button onClick={()=>{ props.재고변경([9, 10, 11]
-          )
-            
-            
-          
-            
-            }} className='btn btn-secondary'>재고확인</button>
-          <button onClick={()=>{ history.push('/buying') }} className="btn btn-danger">주문하기</button> 
+          )}} className='btn btn-secondary m-1'>재고확인</button>
+
+
+          <button onClick={()=>{
+
+            dispatch({ type: '항목추가', payload: {id: 찾은상품.id, name: 찾은상품.title, quan: 1}})
+            history.push('/cart')
+
+          }} className='btn btn-success m-1'>+</button>
+
+
+          <button onClick={()=>{ history.push('/buying') }} className="btn btn-danger m-1">주문하기</button> 
           {/* push 특정 경로로 이동하기 */}
-          <button onClick={()=>{history.goBack()}} className="btn btn-danger">뒤로가기</button> 
+          <button onClick={()=>{history.goBack()}} className="btn btn-danger m-1">뒤로가기</button> 
         </div>
       </div>
 
@@ -142,3 +157,13 @@ function TabContent(props){
 
 }
 
+// 옛날 방식
+// function state를props화(state) {
+//   return{
+//       state : state.reducer,
+//       // state 안에 모든 것을 state라고 부른다
+//       광고닫기 : state.카트reducer
+//   }
+// }
+
+// export default connect(state를props화)(Detail)
