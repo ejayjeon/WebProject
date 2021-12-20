@@ -27,7 +27,15 @@
         </div>
     </nav>
 
-  <h4 class="container mt-4"><strong>글 작성페이지</strong></h4>
+  <h4 class="container mt-4"><strong>서버에서 가져온 할일 리스트</strong></h4>
+  
+ <% for(var i = 0; i < array.length; i++) { &>
+    <h4> 할일 제목 : <%= 결과[i].제목 %> </h4>
+    <p> 할일 마감날짜 : ??? </p>
+ <% } %>
+ 
+  //  EJS 이용 : html을 조금 더 쉽게 쓸 수 있도록 도와주는 전처리 엔진
+  // EJS는 html 안에다가 서버 데이터를 집어넣을 수 있다. 
 
   <div class="container mt-3">
     <form action="/add" method="POST">
