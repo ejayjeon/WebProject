@@ -1,0 +1,18 @@
+.divStyle {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 50px;
+    width: 100%
+}
+
+.imgStyle {
+    display: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    margin: 30px;
+    top: 40%;
+}
