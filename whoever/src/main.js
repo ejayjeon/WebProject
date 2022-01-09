@@ -9,6 +9,12 @@ import axios from 'axios';
 import cors from 'cors';
 
 const app = createApp(App);
+// 에러핸들러
+app.config.errorHandler = (err, vm, info) => {
+	console.error(err.message);
+	console.log(vm.message);
+	console.log(info.message);
+};
 app.config.globalProperties.axios = axios;
 app.use(Quasar, quasarUserOptions)
 	.use(store)

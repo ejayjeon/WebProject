@@ -11,6 +11,12 @@ export default createStore({
 	state() {
 		return {
 			login: [{ loginEmail: '' }, { loginPwd: '' }],
+			googleLoginUser: localStorage.getItem('googleUser'),
+			googleLoginToken: localStorage.getItem('googleToken'),
+
+			facebookLoginUser: localStorage.getItem('facebookUser'),
+			facebookLoginToken: localStorage.getItem('facebookToken'),
+
 			user: [
 				{ email: '' },
 				{ pwd: '' },
@@ -145,16 +151,6 @@ export default createStore({
 							'logintime',
 							state.localStorageLoginTime
 						);
-
-						firebase.auth().onAuthStateChanged((user) => {
-							// 사용자의 인증상태에 변화가 생기면 이 안의 코드가 실행 (로그인/로그아웃/새로고침)
-							// isNewUser == false
-							if (user) {
-								console.log(user.uid);
-								console.log(user.displayName);
-								console.log(user.email);
-							}
-						});
 						router.push('/main');
 					}
 				})
@@ -162,7 +158,50 @@ export default createStore({
 					alert(err);
 				});
 		},
-
+		// 구글 로그인
+		setGoogleLogin(state) {
+			const provider = new firebase.auth.GoogleAuthProvider();
+			firebase.auth().languageCode = 'ko';
+			provider.addScope('profile');
+			provider.addScope('email');
+			firebase
+				.auth()
+				.signInWithPopup(provider)
+				.then(function (result) {
+					var token = result.credential.accessToken;
+					var user = result.user;
+					state.googleLogin = user;
+					state.googleLoginToken = token;
+					console.log(state.googleLogin);
+					localStorage.setItem('googleUser', state.googleLogin);
+					localStorage.setItem('googleToken', state.googleLoginToken);
+					alert('로그인 성공');
+				});
+			firebase.auth().onAuthStateChanged((user) => {
+				state.googleLoginUser = user;
+			});
+		},
+		setGoogleLogOut(state) {
+			firebase.auth().signOut();
+			localStorage.removeItem('googleUser');
+			state.googleLogin = null;
+			localStorage.removeItem('googleToken');
+			state.googleLoginToken = null;
+		},
+		setFacebookLogin(state) {
+			const fbProvider = new firebase.auth.FacebookAuthProvider();
+			fbProvider.addScope('profile');
+			fbProvider.addScope('email');
+			firebase
+				.auth()
+				.signInWithPopup(fbProvider)
+				.then((result) => {
+					var token = result.credential.accessToken;
+					state.facebookLoginToken = token;
+					var user = result.user;
+					state.facebookLoginUser = user;
+				});
+		},
 		// Creation.vue -> store.js / setter
 		setCreation(state, payload) {
 			let creationData = [...payload];

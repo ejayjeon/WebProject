@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="bg-grey-9 text-white">
-    <q-header elevated class="bg-grey-9">
+    <q-header reveal class="bg-grey-9">
         <q-btn
           flat
           dense
@@ -17,14 +17,34 @@
     >
         
         <q-item-label header>WHOEVER</q-item-label>
-        <q-avatar size="70px" class="avatar">
-        <img src="https://cdn.quasar.dev/img/avatar3.jpg">
+        <q-spinner-cube v-if="loading" color="pink-3" />
+        <!-- 만약에 googleLogin 유저가 있다면 -->
+        <div v-else-if="$store.state.googleLogin">
+        <q-avatar size="70px" class="avatar" style="cursor: pointer">
+        <img :src="$store.state.googleLogin.photoURL">
+        <q-menu
+                auto-close
+                transition-show="scale"
+                transition-hide="scale"
+                fit anchor="bottom right" self="top left">
+                <q-icon name="arrow_drop_down" size="20px" />
+                <q-list style="min-width: 100px" >
+                <q-item clickable>
+                   <div @click="$store.commit('setGoogleLogOut')">로그아웃</div>
+                </q-item>
+                </q-list>
+                </q-menu>
         </q-avatar>
         <q-space class="q-py-sm q-px-md"/>
-        <div class="info"><strong> @ {{ $store.state.localStorageName }} </strong><small> ({{$store.state.localStorageEmail}})</small></div>
+        <div class="info"><strong> @ {{ $store.state.googleLogin.displayName }} </strong><small> ({{$store.state.googleLogin.email}})</small></div>
+        </div>
+      <!-- 만약에 googleLogin유저가 없다면  -->
+        <div class="q-py-sm q-px-md" v-else>
+          <q-btn @click="$store.commit('setGoogleLogin')" icon-right="login" label="Google로 로그인" style="width: 270px" color="red" dark/>
+          <q-btn @click="$store.commit('setFacebookLogin')" icon-right="login" label="facebook으로 로그인" style="width: 270px" color="indigo"/>
+        </div>
         <q-space class="q-py-sm q-px-md"/>
         <q-space class="q-py-sm q-px-md"/>
-
         <!-- Nav 내용 -->
         <q-list dark v-for="(m, i) in menu" :key="i">
         <!-- <q-item clickable target="_blank" rel="noopener" :href="m.path"> -->
@@ -60,6 +80,14 @@
         <!-- </q-item> -->
       </q-list>
     </q-drawer>
+
+    <q-footer reveal class="bg-grey-9">
+        <q-toolbar>
+          <q-toolbar-title>&copy; {{ new Date().getFullYear() + ' WHOEVER' }}
+            <q-btn flat icon="edit" @click="openDialog"></q-btn>
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-footer>
 
     <q-page-container>
       <!-- 카로셀 -->
@@ -163,8 +191,11 @@
 
 <script>
 import { ref } from 'vue'
+import { useQuasar } from 'quasar'
 import Book from '@/components/Book.vue'
 import cors from 'cors'
+import firebase from 'firebase/app';
+import '@/main'
 export default {
   name: 'Block',
   components: {
@@ -172,12 +203,38 @@ export default {
   },
   setup () {
     const navBar = ref(false)
-    const offset = ref([ 18, 18 ])
+    const offset = ref([ 15, 15 ])
     const dragBtn = ref(false)
-  
+    const dialog = ref(false)
+    const $q = useQuasar()
+    const loading = ref(false)
 
     function toggle () {
       navBar.value = !navBar.value
+    }
+    function openDialog() {
+      $q.dialog({
+        title: 'Footer',
+        message: 'Footer 수정(Minimum 3 characters)',
+          prompt: {
+            model: '',
+            isValid: val => val.length > 2, // << here is the magic
+            type: 'text' // optional
+          },
+          cancel: true,
+          persistent: true
+           }).onOk(async(data) => {
+          try{
+            await firebase.database().ref().child('site').update({
+              title: data
+            })
+          }catch(e){
+            console.log(e)
+          }finally{
+            $q.dialog = false
+          }
+      })
+      
     }
     // function routePage(i) {
     //     switch(i) {
@@ -197,6 +254,9 @@ export default {
       search : ref(''),
       dragBtn,
       offset,
+      dialog,
+      loading,
+      openDialog,
       menu: ref([
           {menu: '메인페이지', icon: 'home', path: '/main'},
           {menu: '카테고리', icon: 'category', path: 'main/category', children: [
@@ -253,7 +313,8 @@ export default {
     },
     floatingBtn() {
 
-    }
+    },
+    
   },
 }
 </script>
