@@ -17,9 +17,9 @@
       <q-list dark>
       <q-item-label header>WHOEVER</q-item-label>
       <!-- 만약에 googleLogin 유저가 있다면 -->
-      <div v-if="$store.state.googleUser">
+      <div v-if="$store.state.googleUser.token">
       <q-avatar size="70px" class="avatar" style="cursor: pointer">
-      <img :src="$store.state.googleUser.photoURL">
+      <img :src="$store.state.googleUser.image">
       <q-menu
       auto-close
       transition-show="scale"
@@ -45,7 +45,6 @@
       transition-show="scale"
       transition-hide="scale"
       fit anchor="bottom right" self="top left">
-      <q-icon name="arrow_drop_down" size="20px" />
       <q-list style="min-width: 100px" >
       <q-item clickable>
       <div @click="$store.commit('setLogOut')">로그아웃</div>
@@ -62,7 +61,7 @@
       <q-space class="q-py-sm q-px-md"/>
       <q-btn @click="$store.commit('setFacebookLogin')" icon-right="login" label="facebook으로 로그인" style="width: 270px" color="indigo"/>
       <q-space class="q-py-sm q-px-md"/>
-      <q-btn @click="this.$router.push('/signup')" icon-right="login" label="이메일로 로그인" style="width: 270px" color="yellow" text-color="brown"/>
+      <q-btn @click="$store.commit('setEmailLogin')" icon-right="login" label="이메일로 로그인" style="width: 270px" color="pink-3" />
       </div>
       <q-space class="q-py-sm q-px-md"/>
       <q-list padding v-for="(m, i) in menu" :key="i">
@@ -131,6 +130,7 @@
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel class="bg-grey-9" name="실시간인기작">
           <Book/>
+
         </q-tab-panel>
         <q-tab-panel class="bg-grey-9" name="후에버인기작">
           <Book/>
@@ -218,7 +218,7 @@ export default {
         }
     },
      floatingBtn() {},
-   }
+   },
 }
 </script>
 <style lang="sass">
@@ -232,4 +232,15 @@ export default {
     display: grid
     place-items: center
     padding: 20rem
+.avatar 
+  display: absolute
+  left: 36%
+.info 
+    text-align: center
+.searchForm
+  display: grid
+  place-items: center
+  padding: 3rem
+  height: 40vh
+
 </style>

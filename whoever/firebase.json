@@ -19,5 +19,29 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9000
+    },
+    "functions": {
+      "port": 9001
+    },
+    "firestore": {
+      "port": 9002
+    },
+    "hosting": {
+      "port": 9003
+    },
+    "storage": {
+      "port": 9004
+    },
+    "ui": {
+      "enabled": true,
+      "port": 9005
+    }
   }
 }

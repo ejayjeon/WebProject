@@ -1,27 +1,26 @@
-// 1. Initialize Firebase
-import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore/lite';
-import { getDatabase } from "firebase/database";
-import { getAuth } from "firebase/auth";
+import { createApp } from 'vue';
+import App from '../App';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/firebase-storage';
+import 'firebase/auth';
 const firebaseConfig = {
-    apiKey: "AIzaSyC7Hbatri5rRRbPV7cthYasAAZLFLBWREU",
-    authDomain: "whoever-ej.firebaseapp.com",
-    databaseURL: "https://whoever-ej-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "whoever-ej",
-    storageBucket: "whoever-ej.appspot.com",
-    messagingSenderId: "1002393022136",
-    appId: "1:1002393022136:web:63e6d714eddf7d4b4cce4d"
-  };
+  apiKey: "AIzaSyC7Hbatri5rRRbPV7cthYasAAZLFLBWREU",
+  authDomain: "whoever-ej.firebaseapp.com",
+  databaseURL: "https://whoever-ej-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "whoever-ej",
+  storageBucket: "whoever-ej.appspot.com",
+  messagingSenderId: "1002393022136",
+  appId: "1:1002393022136:web:63e6d714eddf7d4b4cce4d"
+};
+firebase.initializeApp(firebaseConfig);
 
-  const firebaseApp = initializeApp(firebaseConfig);
-export const database = getDatabase();
-export const db = getFirestore();
-export const auth = getAuth();
-// export const storage = storage();
-// export const storageRef = storage.ref()
-
-
-
+export const db = firebase.firestore();
+export const storage = firebase.storage();
+export const storageRef = storage.ref();
+export const auth = firebase.auth();
+const app = createApp(App);
+app.config.globalProperties.firebase = firebase;
 
 
 

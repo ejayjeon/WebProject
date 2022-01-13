@@ -84,7 +84,7 @@
         active-color="grey-8">
 
        <q-page-container class="col-6">
-<q-chip outline color="pink-3" text-color="white" icon="image">
+<q-chip dark outline color="pink-3" text-color="white" icon="image">
 표지 커버 이미지 등록
 </q-chip>
         <div class="q-pa-md">
@@ -187,12 +187,12 @@ true-value="공개"
 <!-- 3-2) 리뷰 남기기 여부 -->
 <q-space class="q-ma-md q-gutter-md"/>
 <q-chip outline color="pink-3" text-color="white" icon="reviews">
-리뷰창 공개 / 비공개
+리뷰 & 별점 공개 / 비공개
 </q-chip>
 <q-space class="q-ma-md q-gutter-md"/>
 <q-toggle
-v-model="reviewTF"
-:label="reviewTF"
+v-model="feedBackTF"
+:label="feedBackTF"
 icon="reviews open"
 color="pink-3"
 size= "lg"
@@ -280,45 +280,23 @@ true-value="오픈"
 </template>
 <script>
 import { ref } from 'vue'
-import 'firebase/firestore';
-import { db } from '../../plugins/firebase'
-
-
+import { storageRef } from '@/plugins/firebase'
 export default {
     name: 'Creation',
-    components: {
-    },
-    data(){ return {
-    }},
   setup () {
-  const onSubmitCreation = () => {
-      db.collection('creation').add({
-        title : this.title,
-        nickName : this.nickname,
-        contentInfo : this.contentInfo,
-        coverImage : this.coverImage,
-        serialDate : this.serialdate,
-        genre : this.genre,
-        privateTF : this.privateTF,
-        reviewTF : this.reviewTF,
-        partyTF : this.partyTF,
-        termCheck : this.termCheck
-      }).then((e) => {
-        console.log(e)
-      })
-    }
     return {
     step: ref(1),
     title: ref(''),
     contentInfo: ref(''),
     nickName: ref(null),
+    image: ref(''),
     coverImage: ref(null),
     titleRef: ref(null),
     contentRef: ref(null),
     serialDate: ref([]),
     genre: ref([]),
     privateTF: ref(true),
-    reviewTF: ref(true),
+    feedBackTF: ref(true),
     partyTF: ref(true),
     termCheck: ref(true),
     options: [
@@ -331,41 +309,49 @@ export default {
         {label: '일', value: 'sun'}
       ],
       genreOptions : [
-        {label: '판타지' , value: 'fantasy'},
-        {label: 'SF' , value: 'SF'},
-        {label: '로맨스' , value: '로맨스'},
-        {label: '스릴러/호러' , value: 'thriller/horrer'},
-        {label: '역사/무협' , value: 'historicalFiction'},
-        {label: '성인19+' , value: 'adultOnly'},
-        {label: '기타' , value: 'etc'},
+        {label: '판타지' , value: 'fantasy', code: 'FA'},
+        {label: 'SF' , value: 'SF', code: 'SF'},
+        {label: '로맨스' , value: 'romance', code: 'RO'},
+        {label: '스릴러/호러' , value: 'thriller/horrer', code: 'TH'},
+        {label: '역사/무협' , value: 'historicalFiction', code: 'HI'},
+        {label: '성인19+' , value: 'adultOnly', code: 'AD'},
+        {label: '기타' , value: 'etc', code: 'ET'},
       ],
-      onSubmitCreation,
     }
   },
   methods: {
     isValid(){
         var regExp = /^[a-zA-Zㄱ-힣][a-zA-Zㄱ-힣 ]*$/;
-      this.nicknameRef.value.includes(regExp) == true
+      this.nickName.value.includes(regExp) == true
     },
     upload(e){
-        let file = e.target.files[0]        
+        let file = e.target.files[0]
+        var num = Math.round(Math.random()*10000000)
+        this.image = file;
+        console.log(this.image.name)
+        storageRef.child("image/" + num + this.image.name).put(this.image)        
         let url = URL.createObjectURL(file);
         this.coverImage = url;
         console.log('이미지 ' + this.coverImage)
     },
+     onSubmitCreation(){
+       let creation = [
+        this.title,
+        this.nickName,
+        this.contentInfo,
+        this.coverImage,
+        this.serialDate,
+        this.genre,
+        this.privateTF,
+        this.feedBackTF,
+        this.partyTF,
+        this.termCheck
+      ]
+    this.$store.commit('setCreation', creation)
+    }
+    
+    },
    
-  //   tagchange(e){
-  //   console.log(e.target.value)
-  //  if(e.target.value){
-  //   if(e.keyCode != 8 || e.keyCode != 46) {
-  //   this.tags.push(e.target.value);
-  //   }
-  //  } else {
-  //    this.tags.pop()
-  //  }
-  //   console.log(this.tags)
-  // },
-  },
 }
 </script>
 <style scope>

@@ -48,13 +48,15 @@
             </q-item>
       </q-list>
         </q-scroll-area>
-        <q-img class="absolute-top" src="@/assets/pink5.jpeg" style="height: 200px">
+        <q-img class="absolute-top" src="@/assets/pink5.jpeg" style="height: 180px">
           <div class="absolute-bottom bg-transparent">
-            <q-avatar size="70px" class="q-mb-sm">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+             <div v-if="$store.state.googleUser.token">
+            <q-avatar size="70px" class="q-mb-sm avatar">
+               <img :src="$store.state.googleUser.image">
             </q-avatar>
-            <div class="text-weight-bold">아이디</div>
+            <div class="text-weight-bold">{{$store.state.googleUser.displayName}}님 </div>
             <div>@닉네임</div>
+          </div>
           </div>
         </q-img>
       </q-drawer>
@@ -78,9 +80,9 @@ export default {
           ]},
         {
           name: '내 소설 관리', path: 'mynovel', icon: 'menu_book', children: [
+            {name: '작품 관리', path: 'updatenovel'},
             {name: '소설 쓰기', path: 'postnovel'},
             {name: '회차 관리', path: 'manageturn'},
-            {name: '작품 관리', path: 'updatenovel'},
             {name: '작가 게시판', path: 'boardnovel'},
             {name: '리더스 파티', path: 'readersparty'},
             {name: '독자별 통계', path: 'readerschart'},
@@ -107,4 +109,7 @@ export default {
 .mynovel
     display: grid
     place-items: center
+.avatar 
+  display: absolute
+  left: 34%
 </style>
