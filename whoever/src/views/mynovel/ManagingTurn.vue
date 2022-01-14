@@ -1,9 +1,9 @@
 <template>
-    <q-layout class="manageturn bg-grey-9 text-white">
+    <q-layout class="managing bg-grey-9 text-white">
+    <q-page-container>
     <q-markup-table 
-    class="bg-grey-9 text-white manageturn" flat bordered
+    class="bg-grey-9 text-white managing" flat bordered
     :grid="$q.screen.xs"
-    :rows="회차"
     :filter="filter"
     hide-header
     >
@@ -15,9 +15,9 @@
                 style="width: 100px"
                 :ratio="1"
                 class="rounded-borders"
-                src="@/assets/illu8.jpeg"
+                :src="`${store.state.myContent.coverUrl.substring(5)}/${store.state.myContent.img}`"
               />
-              <div class="text-h4 q-ml-md text-white">{{$store.state.novel.title}} <small>/ {{$store.state.novel.writer}}</small> 
+              <div class="text-h4 q-ml-md text-white"> {{$store.state.myContent.title}}<small>/ {{$store.state.myContent.nickName}}</small> 
     <div class="q-gutter-y-md column">
         <q-rating v-model="stars" :max="5" size="15px" 
         icon="star_border"
@@ -47,7 +47,9 @@
           <td class="text-center">#시간여행</td>
           <td class="text-center">4.8</td>
         </tr>
-       
+        <!-- https://github.com/JemmaJeon/kkotgalpi/blob/main/typing.jpeg?raw=true -->
+       {{$store.state.myContent.coverUrl.substring(5)}}/{{$store.state.myContent.img}}
+       <!-- { "partyTF": "클로즈", "termCheck": "yes", "feedBackTF": "비공개", "genre": [ { "code": "RO", "value": "romance", "label": "로맨스" } ], "userUid": "lZ05TSD4lpe7WtaOPWOZPMbOgnn1", "contentNo": "RO264367275264367275", "coverUrl": "blob:http://localhost:8080/c6a6e414-ed4e-4c4c-bb5c-681a7d3b0911", "serialDate": [ "tue", "sat" ], "userEmail": "ejayjeon@gmail.com", "nickName": "문리버", "contentInfo": "달을 사랑한 시인의 이야기", "privateTF": "비공개", "createDate": { "seconds": 1642056130, "nanoseconds": 557000000 }, "title": "달과 시인" } -->
        
       </tbody>
     </q-markup-table>
@@ -74,109 +76,43 @@
 
 
 
-
-
+        <router-view/>
+      </q-page-container>
     </q-layout>
 </template>
 
 <script>
 import { ref } from 'vue'
-const columns = [
-  {
-    name: 'desc',
-    required: true,
-    label: 'Dessert (100g serving)',
-    align: 'left',
-    field: row => row.name,
-    format: val => `${val}`,
-    sortable: true
-  },
-  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
-  { name: 'carbs', label: 'Carbs (g)', field: 'carbs' }
-]
-
-const rows = [
-  {
-    name: 'Frozen Yogurt',
-    calories: 159,
-    fat: 6.0,
-    carbs: 24
-  },
-  {
-    name: 'Ice cream sandwich',
-    calories: 237,
-    fat: 9.0,
-    carbs: 37
-  },
-  {
-    name: 'Eclair',
-    calories: 262,
-    fat: 16.0,
-    carbs: 23
-  },
-  {
-    name: 'Cupcake',
-    calories: 305,
-    fat: 3.7,
-    carbs: 67
-  },
-  {
-    name: 'Gingerbread',
-    calories: 356,
-    fat: 16.0,
-    carbs: 49
-  },
-  {
-    name: 'Jelly bean',
-    calories: 375,
-    fat: 0.0,
-    carbs: 94
-  },
-  {
-    name: 'Lollipop',
-    calories: 392,
-    fat: 0.2,
-    carbs: 98
-  },
-  {
-    name: 'Honeycomb',
-    calories: 408,
-    fat: 3.2,
-    carbs: 87
-  },
-  {
-    name: 'Donut',
-    calories: 452,
-    fat: 25.0,
-    carbs: 51
-  },
-  {
-    name: 'KitKat',
-    calories: 518,
-    fat: 26.0,
-    carbs: 65
-  }
-]
 export default {
-    name: 'ManageTurn',
+    name: 'ManagingTurn',
     data (){return{
-         stars: 0,
-        ratingColors: ['pink-2', 'pink-3', 'pink-4', 'pink-5', 'pink-6']
+        stars: 0,
+        ratingColors: ['pink-2', 'pink-3', 'pink-4', 'pink-5', 'pink-6'],
     }},
+    
+  created(){
+        this.$store.dispatch('getMyContent')
+    },
+    computed: {
+          
+    },
+    // methods: {
+    //   ...mapMutations({
+    //     title: 'myContent.title',
+    //     nickName: 'myContent.nickName'
+    //   })
+    // },
      setup () {
     return {
       filter: ref(''),
-      columns,
-      rows
     }
   }
 }
 </script>
 
 <style lang="sass" scope>
-.manageturn
-    width: 90vw
+.managing
+    width: 80vw
 small
     font-size: 15px
 </style>

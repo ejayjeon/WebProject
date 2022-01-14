@@ -1,11 +1,13 @@
 <template>
-    <q-layout class="updatenovel bg-grey-9 text-white">
+    <q-layout class="managingnovel bg-grey-9 text-white">
+    
     </q-layout>
 </template>
 
 <script>
 export default {
-    name: 'UpdateNovel'
+    name: 'ManagingNovel',
+    
 }
 </script>
 

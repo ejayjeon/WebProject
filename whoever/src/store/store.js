@@ -53,6 +53,7 @@ export default createStore({
 			title: null,
 			nickName: null,
 			contentInfo: null,
+			img: null,
 			coverUrl: null,
 			serialDate: null,
 			genre: {label: null, value: null, code: null},
@@ -66,6 +67,8 @@ export default createStore({
 			likes: 0,
 			clickLikes: false,
 			stars: 0,
+	// MyContent
+			myContent: null,
 
     }
   },
@@ -151,18 +154,24 @@ setEmailLogin(state,payload){
       }).catch((err) => {console.error("에러 " + err)})},
 
 // 로그아웃
-setSignOut(){
+setGoogleSignOut(state){
 	firebase.auth().signOut();
-		localStorage.removeItem('googleUser');
-		state.localStorageGoogleUser = null;
-		localStorage.removeItem('googleToken');
-		state.localStorageGoogleToken = null;
-		localStorage.removeItem('uid');
-		state.localStorageUid = null;
-		localStorage.removeItem('email');
-		state.localStorageEmail = null;
-		localStorage.removeItem('displayName');
-		state.localStorageName = null;
+		localStorage.removeItem('googleUserEmail');
+		state.googleUser.email = null;
+		localStorage.removeItem('googleUserImage');
+		state.googleUser.image = null;
+		localStorage.removeItem('googleUserName');
+		state.googleUser.displayName = null;
+		localStorage.removeItem('googleUserUid');
+		state.googleUser.uid = null;
+		localStorage.removeItem('googleUserToken');
+		state.googleUser.token = null;
+	},
+
+	setMyContent(state, payload){
+		console.log(payload)
+		state.myContent = payload
+		
 	},
 
 	// 소설 등록
@@ -172,13 +181,14 @@ setSignOut(){
 		state.content.title = contentList[0],
 		state.content.nickName = contentList[1],
 		state.content.contentInfo = contentList[2],
-		state.content.coverUrl = contentList[3],
-		state.content.serialDate = contentList[4],
-		state.content.genre = contentList[5],
-		state.content.privateTF = contentList[6],
-		state.content.feedBackTF = contentList[7],
-		state.content.partyTF = contentList[8],
-		state.content.termCheck = contentList[9]
+		state.content.img = contentList[3],
+		state.content.coverUrl = contentList[4],
+		state.content.serialDate = contentList[5],
+		state.content.genre = contentList[6],
+		state.content.privateTF = contentList[7],
+		state.content.feedBackTF = contentList[8],
+		state.content.partyTF = contentList[9],
+		state.content.termCheck = contentList[10]
 		let uid = localStorage.getItem('googleUserUid')
 		var num = Math.round(Math.random()*1000000000)
 		let contentNo = `${state.content.genre[0].code}${num}`
@@ -188,6 +198,7 @@ setSignOut(){
 			title : state.content.title,
 			nickName : 	state.content.nickName,
 			contentInfo : state.content.contentInfo,
+			img : state.content.img,
 			coverUrl : state.content.coverUrl,
 			serialDate : state.content.serialDate,
 			genre : state.content.genre,
@@ -202,10 +213,37 @@ setSignOut(){
 			alert('작품 생성이 완료되었습니다');
 			router.push('/mypage/mynovel/updatenovel');
 		}).catch((err) => console.log(err));
-	}
+	},
 },
 
 //   비동기 액션
-  actions: {},
+  actions: {
+
+	getMyContent(context){
+		let options = {source: 'cache'}
+		// db.collection('content').where('genre', '==', 'romance').get(options).then((snapshot) => {
+		// 	if(snapshot.exists){
+		// 		snapshot.forEach((doc) => {
+		// 			console.log(doc.id, '=>', doc.data());
+		// 			context.commit('setContent', doc.data())
+		// 		})
+		// 	} else {
+		// 		console.log('no data / undefined data')
+		// 	}
+		// }).catch((err) => {
+		// 	console.error('에러 ' + err)
+		// });
+		let uid = localStorage.getItem('googleUserUid')
+		// Array 자료형에서 찾을때 : array-contains
+		db.collection('content').where('userUid', '==', uid
+		).get().then((결과) => {
+			결과.forEach((doc)=>{
+
+				context.commit('setMyContent', doc.data())
+			})
+		})
+	}
+
+  },
   modules: {},
 });

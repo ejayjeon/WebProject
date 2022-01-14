@@ -80,9 +80,9 @@ export default {
           ]},
         {
           name: '내 소설 관리', path: 'mynovel', icon: 'menu_book', children: [
-            {name: '작품 관리', path: 'updatenovel'},
-            {name: '소설 쓰기', path: 'postnovel'},
-            {name: '회차 관리', path: 'manageturn'},
+            {name: '작품 관리', path: 'managingnovel'},
+            // {name: '소설 쓰기', path: 'postnovel'},
+            {name: '회차 관리', path: 'managingturn'},
             {name: '작가 게시판', path: 'boardnovel'},
             {name: '리더스 파티', path: 'readersparty'},
             {name: '독자별 통계', path: 'readerschart'},

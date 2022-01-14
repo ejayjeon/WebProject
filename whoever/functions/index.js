@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 var admin = require("firebase-admin");
-var serviceAccount = require("path/to/serviceAccountKey.json");
+var serviceAccount = require("./key.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://whoever-ej-default-rtdb.asia-southeast1.firebasedatabase.app"

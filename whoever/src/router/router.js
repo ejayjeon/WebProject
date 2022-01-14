@@ -64,6 +64,12 @@ const routes = [
   {
     path: '/mypage',
     component: () => import("../views/mypage/MyPage"),
+    beforeEnter: (to, from, next) => {
+      console.log(to);
+      console.log(from);
+      if(!localStorage.getItem('googleUserToken')) return next('/block');
+      return next();
+    },
     children: [
       {
         path: 'myprofile',
@@ -86,28 +92,31 @@ const routes = [
       {
         path: 'mynovel',
         component: () => import("../views/mynovel/MyNovel"),
+        beforeRouteLeave (to, from, next) {
+          console.log(to, from)
+          if(!this.$store.state.myContent) return next($this.router.push('/creation'))
+          else return next($this.router.push('/managingnovel'))
+        }
+      },
+      {
+        path: '/mynovel/creation',
+        component: () => import("../views/mynovel/Creation"),
+      },
+      {
+        path: '/mynovel/managingturn',
+        component: () => import("../views/mynovel/ManagingTurn"),
+      },
+      {
+        path: '/mynovel/managingnovel',
+        component: () => import("../views/mynovel/ManagingNovel"),
         children: [
           {
-            path: 'creation',
-            component: () => import("../views/mynovel/Creation"),
+            path: 'noveldetail:id(\\d+)',
+            component: () => import("../views/mynovel/NovelDetail"),
           },
           {
             path: 'postnovel',
             component: () => import("../views/mynovel/PostNovel"),
-          },
-          {
-            path: 'manageturn',
-            component: () => import("../views/mynovel/ManageTurn"),
-          },
-          {
-            path: 'updatenovel',
-            component: () => import("../views/mynovel/UpdateNovel"),
-            children: [
-              {
-                path: 'noveldetail:id(\\d+)',
-                component: () => import("../views/mynovel/NovelDetail"),
-              }
-            ],
           },
           {
             path: 'boardnovel',
@@ -140,6 +149,10 @@ const routes = [
   {
     path: '/contact',
     component: () => import("../views/contact/Contact"),
+  }, 
+  {
+    path: '/block',
+    component: () => import("../views/landing/Block"),
   }, 
   {
     // 아무글자나 입력하면 여기로

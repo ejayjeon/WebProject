@@ -289,7 +289,7 @@ export default {
     title: ref(''),
     contentInfo: ref(''),
     nickName: ref(null),
-    image: ref(''),
+    img: ref(''),
     coverImage: ref(null),
     titleRef: ref(null),
     contentRef: ref(null),
@@ -327,9 +327,9 @@ export default {
     upload(e){
         let file = e.target.files[0]
         var num = Math.round(Math.random()*10000000)
-        this.image = file;
-        console.log(this.image.name)
-        storageRef.child("image/" + num + this.image.name).put(this.image)        
+        this.img = file.name
+        console.log(this.img)
+        storageRef.child("image/" + num + this.img).put(this.img)        
         let url = URL.createObjectURL(file);
         this.coverImage = url;
         console.log('이미지 ' + this.coverImage)
@@ -339,6 +339,7 @@ export default {
         this.title,
         this.nickName,
         this.contentInfo,
+        this.img,
         this.coverImage,
         this.serialDate,
         this.genre,

@@ -28,7 +28,7 @@
       <q-icon name="arrow_drop_down" size="20px" />
       <q-list style="min-width: 100px" >
       <q-item clickable>
-      <div @click="$store.commit('setGoogleLogOut')">로그아웃</div>
+      <div @click="$store.commit('setGoogleSignOut')">로그아웃</div>
       </q-item>
       </q-list>
       </q-menu>
