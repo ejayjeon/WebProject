@@ -31,6 +31,7 @@
           class="bg-grey-9 text-white">
           <q-tab-panel :name="m.name">
           <router-view/>
+          <q-btn dark outline @click="$store.dispatch('seeMore', $route.path)" class="seeMoreBtn">더보기</q-btn>
           </q-tab-panel>
         </q-tab-panels>
          </div>
@@ -75,4 +76,7 @@ export default {
     place-items: center
 .categoryForm
     display: grid
+.seeMoreBtn
+    display: grid
+    place-items: center
 </style>

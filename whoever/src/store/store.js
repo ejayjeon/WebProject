@@ -171,7 +171,10 @@ setGoogleSignOut(state){
 	setMyContent(state, payload){
 		console.log(payload)
 		state.myContent = payload
-		
+	},
+
+	getSeeMore(state, payload){
+		console.log('payload ' + payload)
 	},
 
 	// 소설 등록
@@ -211,7 +214,7 @@ setGoogleSignOut(state){
 		}).then((result) => {
 			console.log(result)
 			alert('작품 생성이 완료되었습니다');
-			router.push('/mypage/mynovel/updatenovel');
+			// router.push('/mypage/mynovel/managingnovel');
 		}).catch((err) => console.log(err));
 	},
 },
@@ -238,8 +241,18 @@ setGoogleSignOut(state){
 		db.collection('content').where('userUid', '==', uid
 		).get().then((결과) => {
 			결과.forEach((doc)=>{
-
 				context.commit('setMyContent', doc.data())
+			})
+		})
+	},
+	seeMore(context, payload){
+		let myPath = payload.substring(10)
+		db.collection('content').where('genre', 'array-contains', myPath).get().then((결과) => {
+			console.log(결과)
+			결과.forEach((doc) => {
+				console.log(doc.data())
+				context.commit('getSeeMore', doc.data())
+
 			})
 		})
 	}

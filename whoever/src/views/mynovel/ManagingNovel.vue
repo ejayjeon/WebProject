@@ -1,6 +1,6 @@
 <template>
     <q-layout class="managingnovel bg-grey-9 text-white">
-    
+
     </q-layout>
 </template>
 

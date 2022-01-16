@@ -86,10 +86,6 @@ const routes = [
         ]
       }, 
       {
-        path: 'mysubscribe',
-        component: () => import("../views/mypage/MySubscribe"),
-      }, 
-      {
         path: 'mynovel',
         component: () => import("../views/mynovel/MyNovel"),
         beforeRouteLeave (to, from, next) {
@@ -99,15 +95,15 @@ const routes = [
         }
       },
       {
-        path: '/mynovel/creation',
+        path: '/mypage/mynovel/creation',
         component: () => import("../views/mynovel/Creation"),
       },
       {
-        path: '/mynovel/managingturn',
+        path: '/mypage/mynovel/managingturn',
         component: () => import("../views/mynovel/ManagingTurn"),
       },
       {
-        path: '/mynovel/managingnovel',
+        path: '/mypage/mynovel/managingnovel',
         component: () => import("../views/mynovel/ManagingNovel"),
         children: [
           {
@@ -131,7 +127,11 @@ const routes = [
             component: () => import("../views/mynovel/ReadersChart"),
           },
         ]
-      }, 
+      },
+      {
+        path: 'mysubscribe',
+        component: () => import("../views/mypage/MySubscribe"),
+      },  
       {
         path: 'setting',
         component: () => import("../views/mypage/Setting"),

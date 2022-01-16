@@ -191,12 +191,14 @@ export default {
               {menu: '성인19+', path: 'adultonly'},
               {menu: '기타', path: 'etc'},
           ]},
-          {menu: '나의 서재', icon: 'account_circle', path: 'mypage', children: [
-              {menu: '나의 프로필', path: 'myprofile'},
-              {menu: '나의 구독함', path: 'mysubscribe'},
-              {menu: '나의 소설', path: 'mynovel'},
-              {menu: '설정', path: 'setting'},
-          ]},
+          {menu: '나의 서재', icon: 'account_circle', path: 'mypage', 
+          // children: [
+          //     {menu: '나의 프로필', path: 'myprofile'},
+          //     {menu: '나의 구독함', path: 'mysubscribe'},
+          //     {menu: '나의 소설', path: 'mynovel'},
+          //     {menu: '설정', path: 'setting'},
+          // ]
+          },
           {menu: 'WHOEVER', icon: 'edit', path: '/whoever'},
           {menu: '고객센터', icon: 'help', path: '/contact'}]),
           moveBtn(e){
