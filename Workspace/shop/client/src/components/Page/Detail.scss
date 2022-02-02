@@ -1,0 +1,68 @@
+// SASS 문법
+// 1. 뱐수에 데이터를 저장해서 쓸 수 있다.
+
+$red : #ff0000; // 띄어쓰기(x)
+
+// 2. @import 파일경로
+
+body {
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+// 3. nesting 
+
+div.container h4 {
+    color: blue; 
+}
+// --> scss로 바꾸면
+// 안에 포함되어있다.
+// 이 요소들은 모두 div.container 안에 있는 UI들이구나
+div.container {
+    h4 {
+        color: blue;
+    }
+}
+
+.my-alert {
+    background: #eee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: auto;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.my-alert2 {
+    @extend .my-alert;
+    // my-alert의 모든 속성을 이곳에 복사 붙여넣기
+    // 여기서는 별도로 바꿀 요소만 바꾸면 됨
+}
+
+@mixin 함수() {
+    background: #eee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100px;
+    margin: auto;
+}
+
+.my-alert3 {
+    @include 함수()
+    // 함수를 이곳에 인클루드 해오는 것
+}
+
+.wow-enter {
+    opacity: 0;
+}
+
+.wow-enter-active {
+    opacity: 1;
+    transition: all 500ms;
+}
