@@ -22,7 +22,6 @@
     Team Coop: ERDCloud, Figma, Notion
     Design tool : Bootstrap 5.1
 
-<br>
 ## ERD
 ![HOBBYIST ERD](https://user-images.githubusercontent.com/78662802/152633677-f854b469-4658-4921-b401-3499d684f4de.png)
 
@@ -31,6 +30,7 @@
 - 회원 가입, 로그인, 로그아웃, 이메일 인증, 회원 정보 수정, 스크랩 게시글 관리 -->
 
 <br>
+
 ## 결과물
 ### [메인페이지]
 ![메인페이지](https://user-images.githubusercontent.com/78662802/152633720-36eedcfb-e91a-43db-9fb9-910569f95347.png)
