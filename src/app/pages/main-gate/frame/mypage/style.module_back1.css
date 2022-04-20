@@ -1,0 +1,1128 @@
+.mypage-bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.character{
+    width:23%;   
+    left: -2%;
+    /* margin-top: 14vmin; */
+    margin-left: -1vmin;    
+    /* top:50%;
+    transform: translateY(-50%); */
+    background-attachment: scroll;
+    display: flex; align-items: center; /*센터 정렬 */
+}
+.characterName {
+    color: #fff;
+    text-align: center;    
+    margin-top: 140%;
+    margin-left: -85%;  
+}
+.container{
+    display: flex;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    right:0;
+    width: 80%;
+    height:90%;
+    background-color: rgba(235,235,235,0.5);
+}
+.container::before{
+    content: '';
+    display: block;
+    width: 98%;
+    height: 97%;
+    position: absolute;
+    top:1.5%;
+    left:50%;
+    z-index: -5;
+    transform: translateX(-50%);
+    background-color: rgb(233, 233, 233);
+}
+
+.mypageBox1{
+    position: absolute;
+    left: 0;
+    width:40%;
+    height:100%;
+}
+.mypageBox2{
+    position: absolute;
+    right:0;
+    width:60%;
+    height: 100%;
+}
+.character-img{
+    width: 100%;
+}
+.big-bg > p {
+    display: inline-block;
+    margin-left: 40%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color:#64c9dc;
+    border: 3px solid #64c9dc;
+}
+.right{
+    right: 0;
+    width:100%;
+    /* background-color: skyblue; */
+    font-size: 0.8vw;
+}
+.line{
+    border-bottom:0.5px solid #64c9dc;
+    margin: 1.5vh;
+}
+.line2{
+    border-bottom: 0.5px solid #64c9dc;
+    margin-top: 1.3vh;
+}
+
+/* left */
+.address>table{
+    width:90%;
+    margin: 0 1vw;
+    height: 5vw;
+    margin-top:1vw; 
+    font-size: 0.7vw;    
+}
+.address tr{
+    margin-bottom: 15vh;
+}
+.address tr:last-child>td{
+    font-size: 0.5vw;
+    text-overflow: ellipsis;
+}
+.address th{
+    color:#64c9dc;
+    font-weight: 500;
+    text-align: left;
+    padding:0 0.vw;
+    width: 20%;
+    margin: 0;
+}
+.address td{
+    width: 80%;  
+}
+.wallet-width{
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.boxs{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    /* height:80vw; */
+    width: 90%;
+    margin: 0 auto;
+    margin-top: -40px;
+}
+.box1{
+    color:white;
+}
+.boxs>.box1:nth-child(1){
+    margin-top: 2vh;
+}
+.boxs>.box1:nth-child(2){
+    margin-bottom: 0.5vh;
+}
+.title{
+    display: block;
+    color: #505050;
+    padding-bottom: 1vh;
+    text-align: left;
+}
+.info-title{
+    font-size: 0.7vw;
+    padding:0.1vw 0;
+}
+.info-title-r{
+   font-size: 0.7vw;
+   margin-top: -1vh;
+}
+/* .sw-link{
+    border:none;
+    width:15%;
+    margin-left:0.3vw;
+    color:white;
+    background-color: #64c9dc;
+    border-radius:5px;
+    height: 2vh;
+    cursor: pointer;
+    font-size: 0.5vw;
+} */
+.exchange-xt{
+    color:white;
+    position: absolute;
+    top:2.5vh;
+    left:50%;
+    transform: translateX(-50%);
+    height:11%;
+    width: 90%;
+    margin: 0 auto;
+}
+.text-box,.num-box{
+    text-align: center;
+    display: inline-block;
+    background-color: #64c9dc;
+    font-size: 0.7vw;
+    height: 3vh;
+    line-height: 3vh;
+    border: none;
+    color: #fff;
+}
+.text-box{
+    width:30%;
+    margin-right: 1px;
+    margin-bottom: 2px;
+}
+.num-box{
+    width: 68%;
+}
+
+
+
+/* right */
+.help-btn{
+    position: absolute;
+    top:10%;
+    left:30%;
+    display: inline-block;
+    width: 1vw;
+    height: 1.5vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.bg-down .help-btn{
+    top:5%;
+    left:26%;
+    cursor: pointer;
+}
+.input-left{
+    left:0;
+}
+
+.input-content > span{
+    display: inline-block;
+    text-align: center;
+    background-color: #64c9dc;
+    font-size: 0.7vw;
+    height: 3vh;
+    line-height: 3vh;
+    width:20%;
+    margin-right: 1px;
+    margin-bottom: 2px;
+    color: #fff;
+}
+.input-box{
+    font-size: 0.55vw;
+    height: 3vh;
+    line-height: 3vh;
+    width: 50%;
+    border: none;
+
+}
+
+
+/*  rugo 변환하기 */
+.bg-down {
+    position: absolute;
+    top:45%;
+    width: 100%;
+    height: 50%;
+}
+.box-bottom {
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    width: 95%;
+    color:white;
+    height:60%;
+    margin: 0 auto;
+}
+
+.box-bottom > p {
+    margin-top: 1vh;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #64c9dc;
+}
+
+.ex-rugo-content{
+    position: relative;
+    width: 100%;
+}
+.content-left, .content-right{
+    position: absolute;
+    width: 50%;
+}
+.content-left{
+    left:0;
+}
+.content-right{
+    right: 1%;
+}
+.change-icon{
+    position: absolute;
+    transform: translateY(10%);
+    width: 1vw;
+    left: 33%;
+    display: inline-block;
+    width: 1.5vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.exRugo,.exErugoCoin{
+    display: inline-block;
+    text-align: center;
+    background-color: #64c9dc;
+    font-size: 0.6vw;
+    line-height: 3vh;
+    width:30%;
+    color: white;
+}
+
+.exRugoInput, .exErugoInput {
+    display: inline-block;
+    background-color: #fff;
+    text-align: center;
+    font-size: 0.55vw;
+    height: 3vh;
+    line-height: 3vh;
+    width:35%;
+    border: none;
+    color:black
+}
+.exErugoInput{
+    width: 50%;
+}
+.content-right{
+    left: 40%;
+}
+.input-num-box{
+    width: 30%;
+    border: 1px dotted #64c9dc;
+}
+.input-text-box{
+    width: 35%;
+    border: none;
+
+}
+.exchange, .swExchange{
+    /* position: absolute; */
+    width: 5vw;
+    height:3vh;
+    background-color: #64c9dc;
+    border: none;
+    border-radius: 0.1vw;
+    color: white;
+    font-size: 0.7vw;
+   
+}
+/* .exchange{
+    right: 0;
+} */
+.swExchange{
+    right:5%;
+}
+.swExchange2{
+    width: 60px;        
+    height: 30px;
+    right: 9%; 
+    position: absolute;
+    background-color: #64c9dc;
+    border: none;
+    border-radius: 0.1vw;
+    color: white;
+    font-size: 0.7vw;
+}
+
+.rugo-change-info {
+    position: absolute;
+    text-align: center;
+    color: #64c9dc;
+    font-weight: bold;
+    bottom:0;
+    top: 75%;    
+}
+.swChange {
+    color:rgb(70,70,70);
+    font-size: 12px;
+}
+.logout-btn{
+    position: absolute;
+    background-color: #64c9dc;
+    top: 83%;
+    width: 15vw;
+    height:4vh;
+    bottom:0.3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.7vw;
+    border: none;
+    text-align: center;
+    line-height: 1.2vh;
+}
+.change-icon > img {
+    width: 35px;
+}
+
+
+/* 1920 x 1080 */
+@media all and (max-width:1920px) {
+    .change-icon > img {
+        width: 30px;
+    }
+    .address>table{
+        width:90%;
+        height: 8min;
+        margin-top:2vh; 
+        font-size: 0.8vw;
+       
+    }
+    .address {
+        width: 90%;
+        height: 80vx;
+        font-size: 0.7vw;
+        overflow-x:scroll;
+    }
+    .address{
+        -ms-overflow-style:none; /* IE and Edge */
+        scrollbar-width:none; /* Firefox */
+    }
+    
+    .address::-webkit-scrollbar {
+        display:none; /* Chrome , Safari , Opera */
+    }
+    .boxs{
+        margin-top: -4vmin;
+    }
+  
+    .text-box, .num-box{
+        height: 2.5vmin;
+        line-height: 2.5vmin;
+    }
+    .rugo-change-info {   
+        margin-top: 1.3vmin;    
+        font-size: 0.8vw;  
+    }
+    .info-title-l-1{
+        font-size: 0.7vw;
+        margin-top:4vmin;
+        margin-bottom: 0.6vmin;   
+    }
+    .info-title2{
+        margin-top:0.5vmin;
+        font-size: 1.2vmin;        
+    }
+    .logout-btn{
+       margin-top: 0.6vmin;     
+       height: 35px; 
+    } 
+}
+
+
+/* 1280 x 720*/
+@media all and (max-width:1280px) {
+    .boxs{
+        top: 45%;
+    }
+    .box-bottom{
+        left: 55%;
+    }
+    .info-title{
+        padding:0.15vh 0;
+    }
+    .info-title-l-1{
+        font-size: 0.7vw;
+        margin-top: 2.3vmin;
+        margin-bottom: 0.6vmin;   
+    }
+    .address {
+        width: 90%;
+        height: 80vx;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+    }
+    ::-webkit-scrollbar {
+        height: 4px;
+        background-color: rgba(200, 200, 200, 0.8);
+        border-radius: 10px;
+    }
+    .input-content>span, .input-box{
+        height: 2.5vh;
+        line-height: 2.5vh;
+    }
+    .rugo-change-info{
+        margin-top: 0;
+    }
+    .logout-btn{
+        top:80%;
+        margin-top: 0;
+    }
+    .infoSWC {
+        font-size: small;
+    }
+    .swExchange{
+        top: 1.7vmin;
+        right:0;
+        height: 2.5vh;
+        /* margin: 1% auto; */
+    }
+    .swExchange2{
+        width: 50px;        
+        height: 2vh;
+        line-height: 2vh;
+        right: 10%; 
+        top:0.7vh;
+        position: absolute;
+        background-color: #64c9dc;
+        border: none;
+        border-radius: 0.1vw;
+        color: white;
+        font-size: 0.7vw;
+    }
+    .change-icon > img {
+        width: 20px;
+    }
+    .rugo-change-info {
+        font-size: 10px;
+    }
+    .swChange {
+       margin-top: 10px;
+        font-size: 0.5vmin;
+        
+    }
+    .characterName {
+        font-size: 2.5vmin;
+    }
+
+    .text-box, .num-box {
+        height: 2vmin;
+        line-height: 2vmin;
+    }
+    .input-content{
+        height: 2.4vmin;
+    }
+
+}
+
+
+/* 1280 x 720*/
+@media all and (max-width:1024px) {
+    .boxs{
+        top: 48%;
+    }
+    .boxs>.box1:nth-child(1){
+        height: 5vh;
+    }
+    .boxs>.box1:nth-child(3){
+        height: 4.8vh;
+    }
+    .box-bottom{
+        left:50%;
+    }
+    .info-title{
+        padding:0.15vh 0;
+    }
+    .info-title-l-1{
+        font-size: 0.7vw;
+        margin-top: 2.3vmin;
+        margin-bottom: 0.6vmin;   
+    }
+    .address {
+        width: 90%;
+        height: 80vx;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+    }
+    ::-webkit-scrollbar {
+        height: 4px;
+        background-color: rgba(200, 200, 200, 0.8);
+        border-radius: 10px;
+    }
+    .input-content>span{
+        height: 2.5vh;
+        line-height: 2.5vh;
+    }
+    .input-box{
+        height: 2.5vh;
+    }
+    .infoSWC {
+        font-size: small;
+    }
+    .swExchange{
+        top: 1.7vmin;
+        right:5%;
+        height: 20px;
+        line-height: 20px;
+        margin: 1% auto;
+    }
+    .swExchange2{
+        width: 50px;        
+        right: 6%;
+        top:1vh;
+        font-size: 0.7vw;
+    }
+    .change-icon > img {
+        width: 20px;
+    }
+    .rugo-change-info {
+        left:0;
+        font-size:0.5vw;
+    }
+    .swChange {
+       margin-top: 10px;
+        font-size: 0.5vmin;
+        
+    }
+    .characterName {
+        font-size: 2.5vmin;
+    }
+
+    .text-box, .num-box {
+        height: 2vmin;
+        line-height: 2vmin;
+    }
+    .input-content{
+        height: 2vmin;
+    }
+    .logout-btn{
+        margin-top:1vh;
+        width: 50%;
+        height: 10%;
+    }
+
+}
+
+
+/* 920 x 420(Galaxy S20 Ultra) */
+@media all and (max-width:930px){
+    .container{       
+        height: 50%;
+        margin-top: -50px;
+        background-color: rgba(235,235,235,1);
+    }
+    .container::before {
+        display: none;
+    }
+    .character{
+        width:23%;   
+        left: -2%;
+        margin-top: 10vw;
+        margin-left: -1vmin;    
+        transform: translateY(-50%);
+        display: flex; align-items: center; /*센터 정렬 */
+    }
+    .characterName {
+        color: #fff;
+        text-align: center;    
+        font-size: 4.5vh;
+        margin-top: 140%;
+        margin-left: -85%;  
+    }
+    .address {  /* 회원 정보 */
+     
+    }
+    .address>table{ /* 회원정보 실제 내용 */
+        height: 10vw;
+        margin-top:2vmin;
+        padding-top:0vh; 
+        font-size: 1vw;
+    }
+    .address tr:last-child>td{
+        font-size: 1vw;
+    }
+
+    .boxs{  /* sw 정보, ew정보 컨테이너 */
+        top: 120%; /* 처음시작위치 */        
+        z-index: -1;  
+        width: 100%;      
+        height: 200px;           
+        border-bottom: 1px solid #64c9dc;   
+        background-color: rgba(235,235,235,1);       
+    }
+    
+    .info-title-l-1{ /*SW 정보 텍스트 */  
+        width: 100%;  
+        font-size: 0.7vw;               
+        margin-top: 3vh;        
+        margin-bottom: 0.6vh;   
+    }
+    .mypageBox1{ /* SW 정보 */   
+        top: -1vw;     
+        z-index: -1;
+        width: 100%;
+        height: 100%;        
+        background-color: rgba(235,235,235,1);
+    }
+    .info-title{ /* EW정보, sw에서 가져오기 */  
+        width: 100%;  
+        font-size: 0.7vw;               
+        margin-top: 8vh;        
+        margin-bottom: 0.6vh;               
+    }
+    .box-bottom{
+        left:50%;
+    }
+    .boxs>.box1:nth-child(1){
+        width: 90%;
+        margin-top: -2vh;
+        margin-left: 1vw;
+        height:11.7vh;
+    }
+    .boxs>.box1:nth-child(2){
+        width: 90%;
+        margin-left: 1vw;
+    }
+    .boxs>.box1:nth-child(3){
+        width: 90%;
+        height:12vh;
+        margin-top: -2vh;
+        margin-left: 1vw;
+    }
+    .boxs>.box1:nth-child(4){
+        width: 90%;
+        margin-left: 1vw;
+    }
+    
+
+    .mypageBox2{  /* 거래소에서 가져오기, sw에서 가져오기 컨테이너 */     
+        top: 306px;
+        z-index: -2;
+        width: 100%;
+        height: 160%;         
+        background-color: rgba(235,235,235,1);
+    }
+    .mypageBox1::before, .mypageBox2::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top:0;
+        z-index: -5;
+        background-color: rgba(235,235,235,1);
+    }
+    .line{
+        margin: 1vh;
+    }
+    .line2 { border: none }
+    .line3{
+        border: 3px solid #64c9dc;
+    }
+    .pageBox2{ /* (거래소에서,sw)에서 가져오기 내용 컨테이너*/
+        top:-1px;
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        margin-top: 0px;
+    }
+
+    .info-title-r{ /*거래소에서 가져오기*/
+        margin-top: 2PX;
+        font-size: 0.7vw;       
+        margin-bottom: 2vmin;        
+     }
+
+    .info-title2{ 
+        margin-top:4vmin;
+        font-size: 1.2vmin;        
+    }
+
+    .text-box,.num-box{
+        height: 30px;        
+        line-height: 30px;
+    }
+
+    .input-content{ /* Lbank SW EWC 컨테이너 */
+        width: 95%;
+        height: 100%;
+       padding-bottom: 10px;
+
+    }
+    .input-box, .exErugoInput{       
+        border: 1px solid #ebebeb;
+    }
+
+    .input-box span {       
+      
+    }
+    
+    .input-box input {       
+        
+     }
+
+    .input-content span {
+        line-height: 25px;
+        height: 25px;
+        text-align: center;
+        
+    }
+    .input-content input{
+        height: 25px;
+        margin-top: -10PX;
+        text-align: center;
+        
+    }
+
+
+    .swChange{
+        transform: translateY(-70%);
+    }
+
+
+
+
+      
+
+    /* 최하단 */
+
+    .bg-down{
+        top: 175px;       
+        z-index: -3;        
+        width: 100%;
+        height: 180px;       
+        background-color: rgba(235,235,235);
+        border-top: 1px solid #64c9dc;
+    }
+    .box-bottom{
+        position: absolute;
+        width: 90%;
+    }
+    .input-text-box, .input-num-box {
+        text-align: center;
+        position: flex;
+    }
+    .input-text-box {
+        width: 15%;
+        height: 25px;
+        line-height: 25px;
+    }
+    .input-num-box{
+        width: 23%;
+        height: 25px;
+    }
+   .rugo-change-info{
+       left: 10px;
+   }
+   .change-icon {
+       left: 37.5%;
+   }
+   .swExchange {
+    height:6vh;
+    width: 60px;
+    line-height: 6vh;
+    margin: 0 1vh;
+    font-size: 0.7vh;
+    }
+
+    .swExchange2{  
+        top:2px;
+        right: 1%;
+        height: 6vh; 
+        line-height: 6vh; 
+        width: 60px;
+    }
+
+
+    .smallExchangeButton{
+        /* transform: translateY(20%); */
+    }
+    .logout-btn{ /*로그아웃 버튼 */
+        width: 50%;
+        height: 35px;
+        transform: translateY(200%);
+        left: 25%;
+        margin-bottom: 1vh;
+        margin-top: 220px;
+
+    } 
+
+    .content-left, .content-right{
+        position: absolute;
+        width: 96%;
+    }
+    .content-left{
+        left:0;
+    }
+    .content-right{
+        left:44%;
+    }
+
+    .rugo-change-info { /*루고 변환 구분 */
+        position: absolute;
+        text-align: center;
+        color: #64c9dc;
+        font-weight: bold;
+        top: 65%;    
+        left:50%;
+        width: 100%;
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* 750 x 360(Galaxy S8) */
+@media all and (max-width:750px){
+    .container{       
+        height: 50%;
+        margin-top: -50px;
+        background-color: rgba(235,235,235,1);
+    }
+    .container::before {
+        display: none;
+    }
+    .character{
+        width:23%;   
+        left: -2%;
+        margin-top: 10vw;
+        margin-left: -1vmin;    
+        transform: translateY(-50%);
+        display: flex; align-items: center; /*센터 정렬 */
+    }
+    .characterName {
+        color: #fff;
+        text-align: center;    
+        font-size: 4.5vh;
+        margin-top: 140%;
+        margin-left: -85%;  
+    }
+    .address {  /* 회원 정보 */
+       
+    }
+    .address>table{ /* 회원정보 실제 내용 */
+        height: 10vw;
+        margin-top:2min;
+        padding-top:4vh; 
+        font-size: 1vw;
+    }
+    .address tr:last-child>td{
+        font-size: 1vw;
+    }
+
+    .boxs{  /* sw 정보, ew정보 컨테이너 */
+        top: 120%; /* 처음시작위치 */        
+        z-index: -1;  
+        width: 100%;      
+        height: 220px;           
+        border-bottom: 1px solid #64c9dc;   
+        background-color: rgba(235,235,235,1);       
+    }
+    .boxs>.box1:nth-child(1){
+        height:13.5vh;
+    }
+    .boxs>.box1:nth-child(3){
+        height:14vh;
+    }
+    .info-title-l-1{ /*SW 정보 텍스트 */  
+        width: 100%;  
+        font-size: 0.7vw;               
+        margin-top: 6vh;        
+        margin-bottom: 0.6vh;   
+    }
+    .mypageBox1{ /* SW 정보 */   
+        top: -1vw;     
+        z-index: -1;
+        width: 100%;
+        height: 100%;        
+        background-color: rgba(235,235,235,1);
+    }
+    .info-title{ /* EW정보, sw에서 가져오기 */  
+        width: 100%;  
+        font-size: 0.7vw;                       
+        margin-bottom: 0.6vh;               
+    }
+
+    .boxs>.box1:nth-child(1){
+        width: 90%;
+        
+        margin-top: -2vh;
+        margin-left: 1vw;
+    }
+    .boxs>.box1:nth-child(2){
+        width: 90%;
+        margin-left: 1vw;
+    }
+
+    .boxs>.box1:nth-child(3){
+        width: 90%;
+        margin-top: -2vh;
+        margin-left: 1vw;
+    }
+    .boxs>.box1:nth-child(4){
+        width: 90%;
+        margin-left: 1vw;
+    }
+    
+
+    .mypageBox2{  /* 거래소에서 가져오기, sw에서 가져오기 컨테이너 */     
+        top: 306px;
+        z-index: -2;
+        width: 100%;
+        height: 200%;         
+        background-color: rgba(235,235,235,1);
+    }
+    .mypageBox1::before, .mypageBox2::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top:0;
+        z-index: -5;
+        background-color: rgba(235,235,235,1);
+    }
+
+    .line2 { border: none }
+    .line3{
+        border: 3px solid #64c9dc;
+    }
+    .pageBox2{ /* (거래소에서,sw)에서 가져오기 내용 컨테이너*/
+        top:-1px;
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        margin-top: 0px;
+    }
+
+    .info-title-r{ /*거래소에서 가져오기*/
+        margin-top: 2PX;
+        font-size: 0.7vw;       
+        margin-bottom: 2vmin;        
+     }
+
+    .info-title2{ 
+        margin-top:3vmin;
+        font-size: 1.2vmin;        
+    }
+
+    .text-box,.num-box{ /*sw, ew 개수 */
+        height: 30px;        
+        line-height: 35px;
+       
+        
+        
+    }
+
+    .input-content{ /* Lbank SW EWC 컨테이너 */
+        width: 95%;
+        height: 100%;
+        
+    }
+    .input-box, .exErugoInput{       
+        border: 1px solid #ebebeb;
+    }
+
+    .input-box span {       
+      
+    }
+    
+    .input-box input {       
+        
+    }
+
+    .input-content span {
+        
+        height: 25px;
+        text-align: center;
+        
+    }
+    .input-content input{
+        height: 25px;
+        margin-top: -10PX;
+        text-align: center;
+        
+    }
+
+
+    .swChange{
+        transform: translateY(-70%);
+    }
+      
+
+    /* 최하단 */
+
+    .bg-down{
+        top: 175px;       
+        z-index: -3;        
+        width: 100%;
+        height: 180px;       
+        background-color: rgba(235,235,235);
+        border-top: 1px solid #64c9dc;
+    }
+    .box-bottom{
+        position: absolute;
+        width: 90%;
+    }
+    .input-text-box, .input-num-box {
+        text-align: center;
+        position: flex;
+    }
+    .input-text-box {
+        width:12%;
+        height: 25px;
+        line-height: 25px;
+    }
+    .input-num-box{
+        width: 23%;
+        height: 25px;
+    }
+   .change-icon {
+       top:2px;
+       left: 35.5%;
+   }
+   .swExchange {
+    /* height: 35px;
+    width: 55px;
+    line-height: 1.5vh;
+    transform: translateY(-15%); */
+    top: auto;
+    font-size: 0.7vh;
+    }
+
+    .swExchange2{  
+        right:0;  
+        height: 7vh;
+        line-height: 7vh;
+    }
+
+
+    .smallExchangeButton{
+        /* transform: translateY(20%); */
+    }
+    .logout-btn{ /*로그아웃 버튼 */
+        width: 50%;
+        height: 35px;
+        transform: translateY(200%);
+        left: 25%;
+        margin-bottom: 1vh;
+        margin-top: 220px;
+
+    } 
+
+    .content-left, .content-right{
+        position: absolute;
+        width: 96%;
+    }
+    .content-left{
+        left:0;
+    }
+    .content-right{
+        left:44%;
+    }
+
+    .rugo-change-info { /*루고 변환 구분 */
+        text-align: center;
+        color: #64c9dc;
+        font-weight: bold;    
+    }
+
+}
