@@ -91,7 +91,7 @@ $breakpoint-desktop: 1024px;
 @mixin frame-style($animation) {
   position: absolute;
   left: calc(50vw - 7vw);
-  top: calc(40vh - 3.85vw);
+  top: calc(44vh - 3.85vw);
   animation: $animation 80s infinite linear;
   background-position: center;
   background-size: contain;
@@ -100,7 +100,7 @@ $breakpoint-desktop: 1024px;
   height: 7.7vw;
   @media all and (max-width: 520px) {
     top: calc(45vh - 3.85vw);
-    left: calc(45vw - 7vw);
+    left: calc(50vw - 7vw);
     width: 18vw;
     height: 14vw;
   }

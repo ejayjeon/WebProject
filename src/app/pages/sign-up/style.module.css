@@ -292,6 +292,9 @@
     height: 20vmin;
     border-radius: 5px;
   }
+  .column {
+    height: 100%;
+  }
 }
 
 @media all and (max-width: 500px) {

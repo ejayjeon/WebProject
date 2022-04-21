@@ -20,9 +20,9 @@ const About = ({ language }) => {
   const outSection = useRef();
   const history = useHistory();
 
-  // useEffect(() => {
-  //   console.log("componentDidMount[Function]");
-  // }, []);
+  useEffect(() => {
+    console.log("componentDidMount[Function]");
+  }, []);
   return (
     <>
       <Swiper
@@ -39,21 +39,9 @@ const About = ({ language }) => {
             <div className={Style["img1"]}></div>
             <div className={Style["about-content-text"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-01"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-02"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-03"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-01"],}}></p>            
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-02"],}}></p>             
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-03"],}}></p>
               </div>
             </div>
           </div>
@@ -63,21 +51,9 @@ const About = ({ language }) => {
             <div className={Style["img2"]}></div>
             <div className={Style["about-content-text"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-04"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-05"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-06"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-04"],}}></p>             
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-05"],}}></p>              
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-06"],}}></p>
               </div>
             </div>
           </div>
@@ -87,16 +63,8 @@ const About = ({ language }) => {
             <div className={Style["img3"]}></div>
             <div className={Style["about-content-text"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-07"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-08"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-07"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-08"],}}></p>
               </div>
             </div>
           </div>
@@ -106,16 +74,8 @@ const About = ({ language }) => {
             <div className={Style["img4"]}></div>
             <div className={Style["about-content-text"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-09"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-10"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-09"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-10"],}}></p>
               </div>
             </div>
           </div>
@@ -125,21 +85,9 @@ const About = ({ language }) => {
             <div className={Style["img5"]}></div>
             <div className={Style["about-content-text"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-11"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-12"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-13"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-11"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-12"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-13"],}}></p>
               </div>
             </div>
           </div>
@@ -149,26 +97,10 @@ const About = ({ language }) => {
             <div className={Style["img6"]}></div>
             <div className={Style["about-content-text-pull"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-14"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-15"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-16"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-17"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-14"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-15"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-16"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-17"],}}></p>
               </div>
             </div>
           </div>
@@ -178,31 +110,11 @@ const About = ({ language }) => {
             <div className={Style["img7"]}></div>
             <div className={Style["about-content-text-pull"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-18"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-19"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-20"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-21"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-22"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-18"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-19"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-20"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-21"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-22"],}}></p>
               </div>
             </div>
           </div>
@@ -212,16 +124,8 @@ const About = ({ language }) => {
             <div className={Style["img8"]}></div>
             <div className={Style["about-content-text-pull"]}>
               <div>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-23"],
-                  }}
-                ></p>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: language["about-mean-24"],
-                  }}
-                ></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-23"],}}></p>
+                <p dangerouslySetInnerHTML={{__html: language["about-mean-24"],}}></p>
               </div>
             </div>
           </div>
@@ -229,19 +133,11 @@ const About = ({ language }) => {
         <SwiperSlide className={Style["swiper-slide"]}>
           <div className={Style["about-box"]}>
             <div className={Style["img9"]}></div>
-            <div className={Style["about-content-text-pull"]}>
-              <p
-                dangerouslySetInnerHTML={{ __html: language["about-mean-25"] }}
-              ></p>
-              <p
-                dangerouslySetInnerHTML={{ __html: language["about-mean-26"] }}
-              ></p>
-              <p
-                dangerouslySetInnerHTML={{ __html: language["about-mean-27"] }}
-              ></p>
-              <p
-                dangerouslySetInnerHTML={{ __html: language["about-mean-28"] }}
-              ></p>
+            <div className={Style["about-content-text-pull"]}>      
+              <p dangerouslySetInnerHTML={{__html: language["about-mean-25"],}}></p>
+              <p dangerouslySetInnerHTML={{__html: language["about-mean-26"],}}></p>
+              <p dangerouslySetInnerHTML={{__html: language["about-mean-27"],}}></p>
+              <p dangerouslySetInnerHTML={{__html: language["about-mean-28"],}}></p>
             </div>
           </div>
         </SwiperSlide>

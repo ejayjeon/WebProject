@@ -189,6 +189,7 @@
 
 /* 세로 */
 /* @media only screen and (orientation: portrait) { */
+
 @media all and (max-width: 720px) {
   .largeHeader {
     display: none;
@@ -216,6 +217,6 @@
 }
 @media all and (max-width: 500px) {
   .page-background {
-    background-image: url(../../components/top-menu/images/lobby-mobile2.jpg);
+    background-image: url(../../components/top-menu/images/lobby-mobile.jpg);
   }
 }

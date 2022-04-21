@@ -162,9 +162,8 @@ const BuyLand = ({ language }) => {
             <Swiper
               cssMode={true}
               navigation={true}
-              pagination={true}
-              mousewheel={true}
               keyboard={true}
+              pagination={{ clickable: true }}
               slidesPerView={1}
               spaceBetween={30}
               observer={true}
@@ -250,33 +249,20 @@ const BuyLand = ({ language }) => {
         <SwiperSlide className={Style["swiper-slide"]}>
           <div className={Style["buyland-box"]}>
             <div className={Style["img7"]}></div>
-            <Swiper
-              cssMode={true}
-              pagination={true}
-              mousewheel={true}
-              keyboard={true}
-              slidesPerView={1}
-              spaceBetween={30}
-              observer={true}
-              observeParents={true}
-              className={`${Style.mySwiper} ${Style.swiperBuyland}`}
-            >
-              <SwiperSlide className={Style["swiper-slide"]}>
-                <div className={Style["buyland-swiper-text"]}>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: language["buyland-mean-27"],
-                    }}
-                  ></p>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: language["buyland-mean-28"],
-                    }}
-                  ></p>
-                  <div className={Style["grap2"]}></div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            <div className={Style["buyland-content-text"]}>
+              <div>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: language["buyland-mean-27"],
+                  }}
+                ></p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: language["buyland-mean-28"],
+                  }}
+                ></p>
+              </div>
+            </div>
           </div>
         </SwiperSlide>
       </Swiper>

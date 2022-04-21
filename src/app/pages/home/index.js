@@ -189,7 +189,6 @@ const HomePage = ({ menubar, footer }) => {
               <img
                 src="/images/main_desc_02.jpeg"
                 style={{ width: "100%", height: "100%" }}
-                alt=""
               />
             </div>
             <div

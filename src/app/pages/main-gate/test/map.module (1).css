@@ -145,9 +145,8 @@
 }
 
 .info-box {
-  width: 100%;
-  padding: 20px;
-  overflow-y: auto;
+  width: 80%;
+
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -230,183 +229,34 @@
 .popup_width {
   width: 500px;
 }
-/* 표상단 부분 */
-.gridTitle-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  font-size: 12px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  font-weight: bold;
-  height: 40px;
-  border: 1px solid #e17a18;
-  color: #e17a18;
-  padding-right: 10px;
-}
+
 .gridxTxt,
 .gridyTxt,
 .gridxTitle,
 .gridyTitle {
-  width: calc(33.333% - 50px);
+  width: calc(33.333% - 70px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .gridxTitle,
-.gridyTitle,
-.gridWidth1,
-.gridWidth2,
-.gridWidth3 {
+.gridyTitle {
   color: #e17a18;
-}
-
-.gridWidth1,
-.gridWidth2,
-.gridWidth3,
-.gridTxtWidth1,
-.gridTxtWidth2,
-.gridTxtWidth3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* 상단 표 title 너비 */
-.gridWidth1,
-.gridTxtWidth1 {
-  width: calc(33.333% - 50px);
-}
-.gridWidth2 {
-  width: 100px;
-}
-.gridWidth3 {
-  width: 50px;
-}
-
-/* 하단 표 너비 */
-.gridTxtWidth2 {
-  width: 90px;
-}
-.gridTxtWidth3 {
-  width: 60px;
-}
-
-/* checkPopup */
-.checkPop {
-  top: 0;
-}
-.checkPopup {
-  width: 35%;
-  height: 40%;
-  background: url(images/background.png) no-repeat center;
-  background-size: 100% 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-}
-.monglong {
-  width: 30%;
-  height: 100%;
-  background: url(images/character.png) no-repeat center;
-  background-size: 100%;
-}
-.checkTxt {
-  width: 60%;
-  position: relative;
-  top: 0;
-  text-align: center;
-  align-items: center;
-  gap: 5px;
-}
-.checkCenter {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  transform: translate(-50%, -45%);
-}
-.checkHead {
-  font-size: 1.5vmax;
-}
-.checkFont {
-  font-size: 0.8vw;
-}
-
-/* input */
-.checkInput,
-.checkBtn {
-  border: none;
-  padding: 5px;
-  font-size: 0.6vw;
-}
-.checkInput {
-  width: 50%;
-  margin: 1vmin;
-}
-.checkBtn {
-  background-color: #e17a18;
-  color: white;
-  border-radius: 10px;
-  width: 20%;
-}
-
-/* 입찰확인 버튼 */
-.pointer {
-  margin: 0 auto;
-  width: 80%;
-  height: 5vmax;
-  background: url(images/button.png) no-repeat center;
-  background-size: contain;
-}
-
-@media screen and (max-width: 1240px) {
-  .checkPopup {
-    width: 50%;
-    min-height: 300px;
-    max-height: 50vmin;
-  }
-  .checkFont {
-    font-size: 1.1vw;
-  }
-  .checkInput,
-  .checkBtn {
-    font-size: 0.8vw;
-  }
-  .checkBtn {
-    width: 30%;
-  }
 }
 
 @media screen and (max-width: 630px) {
   .mapMenuWrapper {
-    height: 80px;
+    height: 65px;
   }
   .mapMenu {
     width: 100%;
     gap: 3px;
     font-size: 10px;
-  }
-  .gridWidth1,
-  .gridTxtWidth1,
-  .gridWidth3,
-  .gridTxtWidth3 {
-    width: 20%;
-  }
-  .gridWidth2,
-  .gridTxtWidth2 {
-    width: 40%;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
 @media screen and (min-width: 10px) and (max-width: 450px) {
-  .gridTitle-container {
-    padding-right: 0;
-  }
-  .info-box {
-    width: 90%;
-    padding: 10px;
-  }
   .popup_width {
     width: 100vw;
   }
@@ -415,149 +265,5 @@
   .gridxTitle,
   .gridyTitle {
     display: none;
-  }
-}
-
-/* 세로 모드 */
-@media only screen and (orientation: portrait) {
-  @media screen and (max-width: 630px) {
-    .checkPopup {
-      width: 80%;
-      min-height: 300px;
-      max-height: 50vmin;
-    }
-    .mapMenuWrapper {
-      height: 5%;
-    }
-    .map-wrapper {
-      width: 100%;
-      height: calc(100% - 60px);
-    }
-    .info-box {
-      width: 70%;
-      padding: 10px;
-    }
-    .gridTitle-container {
-      padding-right: 0;
-    }
-    .mapMenu {
-      width: 100%;
-      gap: 3px;
-      font-size: 10px;
-      padding-right: 5px;
-      padding-left: 5px;
-    }
-    .gridWidth2,
-    .gridTxtWidth2 {
-      width: 30%;
-    }
-    .gridWidth1,
-    .gridTxtWidth1,
-    .gridWidth3,
-    .gridTxtWidth3 {
-      width: 30%;
-    }
-    .gridxTxt,
-    .gridyTxt,
-    .gridxTitle,
-    .gridyTitle {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 420px) {
-    .checkPopup {
-      width: 100%;
-      min-height: 300px;
-      max-height: 80vmin;
-    }
-    .monglong {
-      width: 20%;
-    }
-    .checkTxt {
-      width: 70%;
-    }
-    .checkHead {
-      font-size: 2vmax;
-    }
-    .checkFont {
-      font-size: 2.6vw;
-    }
-    .checkInput,
-    .checkBtn {
-      font-size: 0.8vw;
-    }
-    .checkBtn {
-      width: 30%;
-    }
-    .info-box {
-      width: 50%;
-      padding: 5px;
-    }
-    .pointer {
-    }
-  }
-}
-/* 가로모드 */
-@media only screen and (orientation: landscape) {
-  @media all and (max-width: 920px) {
-    .checkPop {
-      top: 12%;
-    }
-    .checkPopup {
-      width: 50%;
-      min-height: 300px;
-      max-height: 50vmin;
-    }
-    .gridTitle-container {
-      padding-right: 0;
-    }
-    .gridWidth2,
-    .gridTxtWidth2 {
-      width: 30%;
-    }
-    .gridWidth1,
-    .gridTxtWidth1,
-    .gridWidth3,
-    .gridTxtWidth3 {
-      width: 30%;
-    }
-    .info-box {
-      width: 40%;
-      padding: 10px;
-    }
-    .gridxTxt,
-    .gridyTxt,
-    .gridxTitle,
-    .gridyTitle {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 740px) {
-    .checkPopup {
-      width: 70%;
-      min-height: 240px;
-      max-height: 45vmin;
-    }
-    .mapMenuWrapper {
-      height: 60px;
-    }
-    .mapMenu {
-      gap: 3px;
-      font-size: 10px;
-    }
-    .info-box {
-      width: 50%;
-      padding: 5px;
-    }
-    .gridWidth1,
-    .gridTxtWidth1,
-    .gridWidth3,
-    .gridTxtWidth3 {
-      width: 30%;
-    }
-    .gridWidth2,
-    .gridTxtWidth2 {
-      width: 30%;
-    }
   }
 }

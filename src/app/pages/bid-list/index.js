@@ -194,7 +194,7 @@ const TableRow = ({
           }}
           onClick={() => {
             if (withDrawalHandler && typeof withDrawalHandler === "function") {
-              if (window.confirm(`${location}을 삭제하시겠습니까?`)) {
+              if (window.confirm(`${location}을 삭제하시겠습니까? `)) {
                 withDrawalHandler({
                   applicantIdx,
                   bidPrice,
@@ -218,7 +218,7 @@ const Table = ({ bidList = [], withDrawalHandler, language }) => {
       <TableRow
         registerTime={bid.registerTime}
         bidPrice={bid.bidPrice}
-        location={`Map ${bid.blockX}-${bid.blockY} ( X:${bid.gridX} Y:${bid.gridY})`}
+        location={`WorldMap ${bid.blockX}-${bid.blockY} ( X:${bid.gridX} Y:${bid.gridY})`}
         applicantIdx={bid.applicantIdx}
         withDrawalHandler={withDrawalHandler}
         tbIdx={bid.tbIdx}

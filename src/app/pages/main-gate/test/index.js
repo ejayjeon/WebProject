@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import classNames from "classnames";
+import { getMyBidList, withdrawalBid } from "../../api";
+import { lang } from "../../data/lang";
 import { useHistory } from "react-router-dom";
-import {
-  // getMyBidList,
-  highestBidList,
-  // withdrawalBid
-} from "../../api";
-const os = checkMobile();
-const isMobile = os === "ios" || os === "android";
 
 const TableHeader = ({ language }) => {
   return (
     <div
       style={{
         backgroundColor: "rgb(226, 121, 22)",
-        width: "570px",
+        width: "800px",
         height: "40px",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
       }}
     >
@@ -29,31 +24,9 @@ const TableHeader = ({ language }) => {
           alignItems: "center",
           color: "white",
           fontSize: "14px",
-          width: "30%",
+          width: "20%",
         }}
-        dangerouslySetInnerHTML={{ __html: language["highest-bid-01"] }} //Max Bid Price
-      ></div>
-      {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          fontSize: "14px",
-          width: "25%",
-        }}
-        dangerouslySetInnerHTML={{ __html: language["highest-bid-02"] }} //Number Of Applicants
-      ></div> */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          fontSize: "14px",
-          width: "25%",
-        }}
-        dangerouslySetInnerHTML={{ __html: language["highest-bid-03"] }} // Location
+        dangerouslySetInnerHTML={{ __html: language["bid-list-01"] }} //Register Time
       ></div>
       <div
         style={{
@@ -62,31 +35,53 @@ const TableHeader = ({ language }) => {
           alignItems: "center",
           color: "white",
           fontSize: "14px",
-          width: "25%",
+          width: "20%",
         }}
-        dangerouslySetInnerHTML={{ __html: language["highest-bid-04"] }} //Go to Map
+        dangerouslySetInnerHTML={{ __html: language["bid-list-02"] }} //Bid Price
+      ></div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          fontSize: "14px",
+          width: "20%",
+        }}
+        dangerouslySetInnerHTML={{ __html: language["bid-list-03"] }} //Location
+      ></div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          fontSize: "14px",
+          width: "20%",
+        }}
+        dangerouslySetInnerHTML={{ __html: language["bid-list-04"] }} //Go to Map
+      ></div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          fontSize: "14px",
+          width: "20%",
+        }}
+        dangerouslySetInnerHTML={{ __html: language["bid-list-05"] }} //Bid Withdrawal
       ></div>
     </div>
   );
 };
-function checkMobile() {
-  var varUA = navigator.userAgent.toLowerCase();
-  if (varUA.indexOf("android") > -1) {
-    return "android";
-  } else if (
-    varUA.indexOf("iphone") > -1 ||
-    varUA.indexOf("ipad") > -1 ||
-    varUA.indexOf("ipod") > -1
-  ) {
-    return "ios";
-  } else {
-    return "other";
-  }
-}
 const TableRow = ({
-  maxBidPrice,
+  bidPrice,
+  registerTime,
   location,
-  numberOfApplicants,
+  applicantIdx,
+  withDrawalHandler,
+  tbIdx,
   blockX,
   blockY,
   gridX,
@@ -99,10 +94,10 @@ const TableRow = ({
         borderRight: "1px solid rgb(226, 121, 22)",
         borderLeft: "1px solid rgb(226, 121, 22)",
         borderBottom: "1px solid rgb(226, 121, 22)",
-        width: "565px",
+        width: "795px",
         height: "50px",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
       }}
     >
@@ -111,35 +106,32 @@ const TableRow = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-
           fontSize: "12px",
-          width: "30%",
+          width: "20%",
           color: "rgb(226, 121,22)",
         }}
       >
-        {maxBidPrice}
+        {registerTime.split("T")[0]} {registerTime.split("T")[1].split(".")[0]}
       </div>
-      {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-
-          fontSize: "12px",
-          width: "25%",
-          color: "rgb(226, 121,22)",
-        }}
-      >
-        {numberOfApplicants}
-      </div> */}
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-
           fontSize: "12px",
-          width: "25%",
+          width: "20%",
+          color: "rgb(226, 121,22)",
+        }}
+      >
+        {bidPrice}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "12px",
+          width: "20%",
           color: "rgb(226, 121,22)",
         }}
       >
@@ -152,7 +144,7 @@ const TableRow = ({
           alignItems: "center",
           color: "white",
           fontSize: "12px",
-          width: "25%",
+          width: "20%",
         }}
       >
         <div
@@ -177,19 +169,59 @@ const TableRow = ({
           Go
         </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          fontSize: "14px",
+          width: "20%",
+        }}
+      >
+        <div
+          className="pointer"
+          style={{
+            border: "1px solid rgb(226, 121, 22)",
+            width: "80px",
+            height: "30px",
+            borderRadius: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "rgb(226, 121,22)",
+            fontSize: "12px",
+          }}
+          onClick={() => {
+            if (withDrawalHandler && typeof withDrawalHandler === "function") {
+              if (window.confirm(`${location}을 삭제하시겠습니까?`)) {
+                withDrawalHandler({
+                  applicantIdx,
+                  bidPrice,
+                  tbIdx,
+                });
+                alert("삭제되었습니다.");
+              }
+            }
+          }}
+        >
+          Withdrawal
+        </div>
+      </div>
     </div>
   );
 };
-
-const Table = ({ bidList = [], withDrawalHandler, table, language }) => {
+const Table = ({ bidList = [], withDrawalHandler, language }) => {
   let bidRows = [];
-
   bidList.forEach((bid, idx) => {
     bidRows.push(
       <TableRow
-        numberOfApplicants={bid.numberOfApplicants}
-        maxBidPrice={bid.maxBidPrice}
-        location={`WorldMap ${bid.blockX} - ${bid.blockY} ( X: ${bid.gridX} Y: ${bid.gridY} )`}
+        registerTime={bid.registerTime}
+        bidPrice={bid.bidPrice}
+        location={`WorldMap ${bid.blockX}-${bid.blockY} ( X:${bid.gridX} Y:${bid.gridY})`}
+        applicantIdx={bid.applicantIdx}
+        withDrawalHandler={withDrawalHandler}
+        tbIdx={bid.tbIdx}
         blockX={bid.blockX}
         blockY={bid.blockY}
         gridX={bid.gridX}
@@ -200,34 +232,30 @@ const Table = ({ bidList = [], withDrawalHandler, table, language }) => {
   return (
     <div
       style={{
-        height: "800px",
-        backgroundColor: "rgba(255, 255, 255, .85)",
+        height: "700px",
+        backgroundColor: "rgba(255, 255, 255, .86)",
         borderRadius: "10px",
         overflow: "hidden",
       }}
     >
       <TableHeader language={language} />
-      <div style={{ overflowY: "auto", height: isMobile ? "85%" : "750px" }}>
-        {bidRows}
-      </div>
+      <div style={{ overflowY: "auto", height: "660px" }}>{bidRows}</div>
     </div>
   );
 };
-const optionList = ["maxBidPrice", "applicantsCount"];
-const HighestBid = ({ menubar, footer, userUUID, language }) => {
+const BidList = ({ menubar, footer, userUUID, tbIdx, language }) => {
   const [bidList, setBidList] = useState([]);
-  const [searchCondition, setSearchCondition] = useState("maxBidPrice");
-
+  const [penalty, setPenalty] = useState(5);
   useEffect(() => {
-    highestBidList({
-      orderType: "maxBidPrice",
+    getMyBidList({
+      userUUID,
       callback: (err, res) => {
         if (err) {
           console.log(err);
         } else {
           if (res.result === "success") {
-            // console.log(res.bidList);
             setBidList(res.bidList);
+            setPenalty(res.penalty);
           }
         }
       },
@@ -241,46 +269,41 @@ const HighestBid = ({ menubar, footer, userUUID, language }) => {
       <div
         style={{
           width: "100%",
-          height: isMobile ? "80%" : "90%",
+          height: "80%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          paddingTop: "40px",
         }}
       >
-        <div style={{ width: "570px", padding: "10px 0" }}>
-          <select
-            style={{ height: "30px" }}
-            value={searchCondition}
-            onChange={(e) => {
-              console.log(e.target.value);
-              setSearchCondition(e.target.value);
-              highestBidList({
-                orderType: e.target.value,
-                callback: (err, res) => {
-                  if (err) {
-                    console.log(err);
+        <Table
+          bidList={bidList}
+          language={language}
+          withDrawalHandler={(e) => {
+            withdrawalBid({
+              applicantIdx: e.applicantIdx,
+              userUUID: userUUID,
+              tbIdx: e.tbIdx,
+              returnPoints:
+                e.bidPrice - Math.floor((e.bidPrice * penalty) / 100),
+              callback: (err, res) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  if (res.result === "success") {
+                    // window.alert(
+                    //   lang.selection["bid-list-withdrawal-complete"]
+                    // );
+                    setBidList(res.bidList);
                   } else {
-                    if (res.result === "success") {
-                      console.log(res.bidList);
-                      setBidList(res.bidList);
-                    }
+                    console.log(res);
                   }
-                },
-              });
-            }}
-          >
-            <option
-              value={"maxBidPrice"}
-              dangerouslySetInnerHTML={{ __html: language["highest-bid-05"] }}
-            ></option>
-            <option
-              value={"applicantsCount"}
-              dangerouslySetInnerHTML={{ __html: language["highest-bid-06"] }}
-            ></option>
-          </select>
-        </div>
-        <Table bidList={bidList} language={language} />
+                }
+              },
+            });
+          }}
+        />
       </div>
       {/* </div> */}
       {/*{footer}*/}
@@ -288,4 +311,4 @@ const HighestBid = ({ menubar, footer, userUUID, language }) => {
   );
 };
 
-export default HighestBid;
+export default BidList;

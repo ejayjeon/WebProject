@@ -19,16 +19,14 @@ const Auction = ({ language }) => {
 
   return (
     <>
-      <div 
-            className={Style["pointer"]}
-            onClick={
-                () => {
-                    history.push('/auction')
-                }
-            }
+      <div
+        className={Style["pointer"]}
+        onClick={() => {
+          history.push("/auction");
+        }}
       >
-                {/* 맵분양이동 */}
-            </div>
+        {/* 맵분양이동 */}
+      </div>
       <Swiper
         direction={"vertical"}
         slidesPerView={1}
@@ -39,36 +37,73 @@ const Auction = ({ language }) => {
         className={Style["mySwiper"]}
       >
         <SwiperSlide className={Style["swiper-slide"]}>
-          <h2 className={Style["auction-title"]} dangerouslySetInnerHTML={{__html: language["auction-mean-01"],}}></h2>
-            <div className={Style["auctionBox"]}>
-              <div className={Style["img1"]}></div>
-              <div className={Style["auction-content-text"]}>
-                <h3 dangerouslySetInnerHTML={{__html: language["auction-mean-02"],}}></h3>
-                  <p dangerouslySetInnerHTML={{__html: language["auction-mean-03"],}}></p>
-                  <p dangerouslySetInnerHTML={{__html: language["auction-mean-03_1"],}}></p>
-                  <p dangerouslySetInnerHTML={{__html: language["auction-mean-03_2"],}}></p>
-              </div>
+          <h2
+            className={Style["auction-title"]}
+            dangerouslySetInnerHTML={{ __html: language["auction-mean-01"] }}
+          ></h2>
+          <div className={Style["auctionBox"]}>
+            <div className={Style["img1"]}></div>
+            <div className={Style["auction-content-text"]}>
+              <h3
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-02"],
+                }}
+              ></h3>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-03"],
+                }}
+              ></p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-03_1"],
+                }}
+              ></p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-03_2"],
+                }}
+              ></p>
             </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide className={Style["swiper-slide"]}>
-          <h2 className={Style["auction-title"]} dangerouslySetInnerHTML={{__html: language["auction-mean-01"],}}></h2>
-            <div className={Style["auctionBox"]}>
-              <div className={Style["img2"]}></div>
-              <div className={Style["auction-content-text"]}>
-                <h3 dangerouslySetInnerHTML={{__html: language["auction-mean-04"],}}></h3>
-                <p dangerouslySetInnerHTML={{__html: language["auction-mean-05"],}}></p>
-              </div>
+          <h2
+            className={Style["auction-title"]}
+            dangerouslySetInnerHTML={{ __html: language["auction-mean-01"] }}
+          ></h2>
+          <div className={Style["auctionBox"]}>
+            <div className={Style["img2"]}></div>
+            <div className={Style["auction-content-text"]}>
+              <h3
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-04"],
+                }}
+              ></h3>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-05"],
+                }}
+              ></p>
             </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide className={Style["swiper-slide"]}>
-          <h2 className={Style["auction-title"]} dangerouslySetInnerHTML={{__html: language["auction-mean-01"],}}></h2>
-            <div className={Style["auctionBox"]}>
-              <div className={Style["img3"]}></div>
-              <div className={Style["auction-content-text"]}>
-                <h3>{language["auction-mean-06"]}</h3>
-                  <p dangerouslySetInnerHTML={{__html: language["auction-mean-07"],}}></p>
-              </div>
+          <h2
+            className={Style["auction-title"]}
+            dangerouslySetInnerHTML={{ __html: language["auction-mean-01"] }}
+          ></h2>
+          <div className={Style["auctionBox"]}>
+            <div className={Style["img3"]}></div>
+            <div className={Style["auction-content-text"]}>
+              <h3>{language["auction-mean-06"]}</h3>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: language["auction-mean-07"],
+                }}
+              ></p>
             </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide className={Style["swiper-slide"]}>
           <h2 className={Style["auction-title"]}>
@@ -88,25 +123,25 @@ const Auction = ({ language }) => {
               </div>
             </div>
             <div className={Style["auction-img"]}>
-              <div className={Style["img7"]}></div>
-              <div className={Style["auction-img-text"]}>
-                {language["auction-mean-10"]}
-              </div>
-            </div>
-            <div className={Style["auction-img"]}>
               <div className={Style["img8"]}></div>
               <div className={Style["auction-img-text"]}>
                 {language["auction-mean-11"]}
               </div>
             </div>
             <div className={Style["auction-img"]}>
-              <div className={Style["img9"]}></div>
+              <div className={Style["img7"]}></div>
               <div className={Style["auction-img-text"]}>
-                {language["auction-mean-12"]}
+                {language["auction-mean-10"]}
               </div>
             </div>
             <div className={Style["auction-img"]}>
               <div className={Style["img9-2"]}></div>
+              <div className={Style["auction-img-text"]}>
+                {language["auction-mean-12-2"]}
+              </div>
+            </div>
+            <div className={Style["auction-img"]}>
+              <div className={Style["img9"]}></div>
               <div className={Style["auction-img-text"]}>
                 {language["auction-mean-12"]}
               </div>

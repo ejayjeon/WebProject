@@ -408,7 +408,7 @@
 
   @media all and (max-width: 920px) {
     .loginWindow {
-      height: 22vw;
+      max-height: 23vw;
     }
     .loginTitle2,
     .footerMenu,

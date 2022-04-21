@@ -720,6 +720,11 @@ const MainGate = ({
     startPoint: undefined,
   });
 
+  // let vw = window.innerWidth * 0.01;
+  // let screenWidth = window.outerWidth; // 570 - int
+  // document.documentElement.style.setProperty(`${--screenWidth}`, `100%`);
+  // document.documentElement.style.setProperty("--vw", `${vw}px`);
+
   useEffect(() => {
     setTimeout(() => {
       if (currentFrame === "about") {
@@ -864,7 +869,6 @@ const MainGate = ({
 
   return (
     <div className={Style["page-background"]}>
-      {/* 여기922 지우면 나무 없어짐 */}
       <div
         className={`${Style["plant"]} ${Bounce["bounce-plant"]}`}
         style={{ backgroundImage: "url(/images/frame/plant.png)" }}

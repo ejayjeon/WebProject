@@ -290,10 +290,11 @@ const SignUp = ({
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [gender, setGender] = useState("");
-  const [nationinfo, setNationinfo] = useState("");
-  const [mobileco, setMobileco] = useState("");
+  const [birthday, setBirthday] = useState('')
+  const [gender, setGender] = useState('')
+  const [nationinfo, setNationinfo] = useState('')
+  const [mobileco, setMobileco] = useState('')
+
 
   const [countryCode, setCountryCode] = useState(1);
   const [country, setCountry] = useState("kr");
@@ -344,18 +345,24 @@ const SignUp = ({
           .then((data) => {
             setTerms02(data);
 
-            fetch(`${window.hostAPI}/terms/download-03`, {
-              method: "get",
-            })
+            fetch(
+              `${window.hostAPI}/terms/download-03`,
+              {
+                method: "get",
+              }
+            )
               .then((res) => {
                 return res.text();
               })
               .then((data) => {
                 setTerms03(data);
 
-                fetch(`${window.hostAPI}/terms/download-04`, {
-                  method: "get",
-                })
+                fetch(
+                  `${window.hostAPI}/terms/download-04`,
+                  {
+                    method: "get",
+                  }
+                )
                   .then((res) => {
                     return res.text();
                   })
@@ -395,36 +402,28 @@ const SignUp = ({
     return function removeListener() {
       window.removeEventListener('message', messageReceiver)
     }*/
-    if (checkMobile() === "ios") {
+    if (checkMobile() === 'ios') {
       window.cpComplete = (data) => {
-        if (
-          data.phone === undefined ||
-          data.phone === "" ||
-          data.phone === "undefined"
-        ) {
-          return;
+        if(data.phone === undefined || data.phone === '' || data.phone === 'undefined'){
+          return
         }
-        if (
-          data.name === undefined ||
-          data.name === "" ||
-          data.name === "undefined"
-        ) {
-          return;
+        if(data.name === undefined || data.name === '' || data.name === 'undefined'){
+          return
         }
-        //window.alert(`phone : ${data.phone}, name : ${data.name}`)
-        console.log("success");
-        console.log(data);
-        setPhone(data.phone);
-        setName(data.name);
-        setGender(data.gender);
-        setBirthday(data.birthday);
-        setNationinfo(data.nationinfo);
-        setMobileco(data.mobileco);
-        setCpComplete(true);
-        if (checkMobile() === "ios") {
-          return;
+        //window.alert(`phone : ${data.phone}, name : ${data.name}`)    
+        console.log('success')
+        console.log(data)
+        setPhone(data.phone)
+        setName(data.name)
+        setGender(data.gender)
+        setBirthday(data.birthday)
+        setNationinfo(data.nationinfo)
+        setMobileco(data.mobileco)
+        setCpComplete(true)
+        if (checkMobile() === 'ios') {
+          return
         }
-      };
+      }
       /*
       window.addEventListener('message', (e) => {
         e.preventDefault()
@@ -435,41 +434,33 @@ const SignUp = ({
 
       }, false)*/
     } else {
+
       window.cpComplete = (data) => {
-        if (
-          data.phone === undefined ||
-          data.phone === "" ||
-          data.phone === "undefined"
-        ) {
-          return;
+        if(data.phone === undefined || data.phone === '' || data.phone === 'undefined'){
+          return
         }
-        if (
-          data.name === undefined ||
-          data.name === "" ||
-          data.name === "undefined"
-        ) {
-          return;
+        if(data.name === undefined || data.name === '' || data.name === 'undefined'){
+          return
         }
         //window.alert(`phone : ${data.phone}, name : ${data.name}`)
-        console.log("success");
-        console.log(data);
-        setPhone(data.phone);
-        setName(data.name);
-        setGender(data.gender);
-        setBirthday(data.birthday);
-        setNationinfo(data.nationinfo);
-        setMobileco(data.mobileco);
-        setCpComplete(true);
-        if (checkMobile() === "ios") {
-          return;
+        console.log('success')
+        console.log(data)
+        setPhone(data.phone)
+        setName(data.name)
+        setGender(data.gender)
+        setBirthday(data.birthday)
+        setNationinfo(data.nationinfo)
+        setMobileco(data.mobileco)
+        setCpComplete(true)
+        if (checkMobile() === 'ios') {
+          return
         }
         setTimeout(() => {
-          window.alert(
-            "인증이 완료 되었습니다. 회원가입을 위한 남은 과정을 진행해 주세요."
-          );
-        }, 200);
-      };
+          window.alert('인증이 완료 되었습니다. 회원가입을 위한 남은 과정을 진행해 주세요.')
+        }, 200)
+      }
     }
+    // console.log(language);
   }, []);
 
   return (
@@ -507,8 +498,8 @@ const SignUp = ({
               tag={language["login-08"]}
               value={email}
               onChange={(email) => {
-                if (email.includes(" ")) {
-                  return;
+                if (email.includes(' ')) {
+                  return
                 }
                 setEmail(email);
               }}
@@ -800,8 +791,8 @@ const SignUp = ({
                   style={{
                     backgroundColor:
                       recomCode === "" ||
-                      authKey === "" ||
-                      recomCode === authKey
+                        authKey === "" ||
+                        recomCode === authKey
                         ? "white"
                         : "rgba(250,200,200, 0.4)",
                   }}
@@ -814,8 +805,8 @@ const SignUp = ({
                       fontSize={"22px"}
                       color={
                         recomCode !== "" &&
-                        authKey !== "" &&
-                        recomCode === authKey
+                          authKey !== "" &&
+                          recomCode === authKey
                           ? "rgba(0,150,0,1)"
                           : "rgba(250,0,0, 1)"
                       }
@@ -953,11 +944,8 @@ const SignUp = ({
                           console.log(err);
                           //socketHandler.sendMsg({command:'log', log : err.toString()})
                         } else {
-                          console.log(response);
-                          if (
-                            response.result === "success" &&
-                            response.message.result === true
-                          ) {
+                          console.log(response)
+                          if (response.result === "success" && response.message.result === true) {
                             setLoading(false);
                             console.log(response);
                             //setCurrentFrame("login");
@@ -972,8 +960,8 @@ const SignUp = ({
                         }
                       },
                     });
-                  };
-                  doJoin();
+                  }
+                  doJoin()
                   /*
                   checkPhoneNumberDuplicate({
                     phone: phone,

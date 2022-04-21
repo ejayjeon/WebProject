@@ -73,7 +73,7 @@ const LoginPage = ({
   language,
   setConfirm,
   alert,
-  setAlert,
+  setAlert
 }) => {
   const history = useHistory();
   const [tempEmail, setTempEmail] = useState("");
@@ -104,33 +104,26 @@ const LoginPage = ({
     function messageReceiver(data) {
       //if(e.origin !== 'https://erugoworld.com' && e.origin !== 'https://erugoworld.appzero.services') return
 
-      console.log(
-        `phone : ${cpCheck_global.phone}, name : ${cpCheck_global.name}`
-      );
+      console.log(`phone : ${cpCheck_global.phone}, name : ${cpCheck_global.name}`);
 
       setTimeout(() => {
-        if (
-          cpCheck_global.name !== data.name &&
-          cpCheck_global.phone !== data.name
-        ) {
+        if (cpCheck_global.name !== data.name && cpCheck_global.phone !== data.name) {
           setAlert({
             show: true,
             text: `본인인증 정보가 일치하지 않습니다. \n다시 회원가입을 해주세요.`,
             callback: () => {
-              setAlert({ show: false, text: "", callback: () => {} });
+              setAlert({ show: false, text: '', callback: () => { } })
               setTimeout(() => {
-                setLoading(true);
-                setLoadingMsg(
-                  "인증 정보 불일 치. 회원가입 페이지로 이동중입니다."
-                );
+                setLoading(true)
+                setLoadingMsg("인증 정보 불일 치. 회원가입 페이지로 이동중입니다.");
                 setTimeout(() => {
                   setLoadingMsg("");
                   setLoading(false);
                   history.push("/sign-up");
                 }, 500);
-              }, 1000);
-            },
-          });
+              }, 1000)
+            }
+          })
         } else {
           requestLogin({
             email: cpCheck_global.email,
@@ -146,15 +139,15 @@ const LoginPage = ({
                   setLoading(false);
                   setAlert({
                     show: true,
-                    text: "로그인에 실패하였습니다.",
+                    text: '로그인에 실패하였습니다.',
                     callback: () => {
                       setAlert({
                         show: false,
-                        text: "",
-                        callback: () => {},
-                      });
-                    },
-                  });
+                        text: '',
+                        callback: () => { }
+                      })
+                    }
+                  })
                 } else {
                   let d = response.userInfo;
                   setUserUUID(d.uuid);
@@ -164,7 +157,7 @@ const LoginPage = ({
                   sessionStorage.setItem("key", d.key);
                   setAlert({
                     show: true,
-                    text: "로그인에 성공하였습니다.",
+                    text: '로그인에 성공하였습니다.',
                     callback: () => {
                       readInfo({
                         uuid: d.uuid,
@@ -192,9 +185,7 @@ const LoginPage = ({
                                 mobileco: data.mobileco,
                                 name: data.name,
                                 callback: (err, addUserResult) => {
-                                  console.log(
-                                    "Add UserResult Success!!!!!!!!!!!"
-                                  );
+                                  console.log('Add UserResult Success!!!!!!!!!!!')
                                   setCoin(coin);
                                   setEther(ether);
                                   setEWC(ewc);
@@ -216,14 +207,15 @@ const LoginPage = ({
 
                       setAlert({
                         show: false,
-                        text: "",
-                        callback: () => {},
-                      });
-                      setTimeout(() => {
-                        history.push("/main-entrance");
-                      }, 200);
-                    },
-                  });
+                        text: '',
+                        callback: () => { }
+                      })
+                      setTimeout(() => { history.push("/main-entrance"); }, 200)
+                    }
+                  })
+
+
+
                 }
               }
             },
@@ -301,6 +293,10 @@ const LoginPage = ({
                     e.preventDefault();
                     e.stopPropagation();
 
+
+
+
+
                     if (tempEmail === undefined || tempEmail === "") {
                       window.alert("이메일을 입력해 주세요");
                       return;
@@ -310,47 +306,35 @@ const LoginPage = ({
                       return;
                     }
 
-                    setLoading(true);
+                    setLoading(true)
                     checkMember({
                       email: tempEmail,
                       password: password,
                       callback: (err, checkMemberResponse) => {
                         if (err) {
-                          console.log(err);
-                          setLoading(false);
-                          window.alert(
-                            "서버오류가 발생했습니다. 잠시 후 다시 실행해 주세요."
-                          );
+                          console.log(err)
+                          setLoading(false)
+                          window.alert('서버오류가 발생했습니다. 잠시 후 다시 실행해 주세요.')
                         } else {
-                          console.log(checkMemberResponse);
+                          console.log(checkMemberResponse)
                           if (checkMemberResponse.result === false) {
-                            setLoading(false);
-                            window.alert(
-                              "로그인에 실패하였습니다. 아이디 또는 비밀번호가 일치하지 않습니다."
-                            );
+                            setLoading(false)
+                            window.alert('로그인에 실패하였습니다. 아이디 또는 비밀번호가 일치하지 않습니다.')
                           } else {
                             checkCPComplete({
                               email: tempEmail,
                               callback: (err, checkCPCompleteResponse) => {
                                 if (err) {
-                                  console.log(err);
+                                  console.log(err)
                                 } else {
-                                  console.log(checkCPCompleteResponse);
-                                  setCpCheck({
-                                    name: checkCPCompleteResponse.name,
-                                    phone: checkCPCompleteResponse.phone,
-                                  });
-                                  if (
-                                    checkCPCompleteResponse.result !== "success"
-                                  ) {
-                                    window.alert(
-                                      "서버오류가 발생했습니다. 잠시 후 다시 실행해 주세요."
-                                    );
-                                    return;
+                                  console.log(checkCPCompleteResponse)
+                                  setCpCheck({name:checkCPCompleteResponse.name, phone:checkCPCompleteResponse.phone})
+                                  if (checkCPCompleteResponse.result !== 'success') {
+                                    window.alert('서버오류가 발생했습니다. 잠시 후 다시 실행해 주세요.')
+                                    return
                                   }
-                                  if (
-                                    checkCPCompleteResponse.cpComplete === true
-                                  ) {
+                                  if (checkCPCompleteResponse.cpComplete === true) {
+
                                     requestLogin({
                                       email: tempEmail,
                                       password: password,
@@ -359,33 +343,19 @@ const LoginPage = ({
                                         setPassword("");
                                         if (err) {
                                           setLoading(false);
-                                          window.alert(
-                                            "로그인 중에 알수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."
-                                          );
+                                          window.alert('로그인 중에 알수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.')
                                           console.log(err);
                                         } else {
                                           if (response.result !== "success") {
                                             setLoading(false);
-                                            window.alert(
-                                              "로그인에 실패하였습니다."
-                                            );
+                                            window.alert("로그인에 실패하였습니다.");
                                           } else {
-                                            // 옥션이나 마켓에서 로그인 시 분기 필요 ??
                                             let d = response.userInfo;
                                             setUserUUID(d.uuid);
                                             setWallet(d.wallet);
-                                            sessionStorage.setItem(
-                                              "userUUID",
-                                              d.uuid
-                                            );
-                                            sessionStorage.setItem(
-                                              "wallet",
-                                              d.wallet
-                                            );
-                                            sessionStorage.setItem(
-                                              "key",
-                                              d.key
-                                            );
+                                            sessionStorage.setItem("userUUID", d.uuid);
+                                            sessionStorage.setItem("wallet", d.wallet);
+                                            sessionStorage.setItem("key", d.key);
                                             console.log(`key : ${d.key}`);
                                             history.push("/main-entrance");
 
@@ -396,16 +366,16 @@ const LoginPage = ({
                                       },
                                     });
                                   } else {
-                                    setLoading(false);
-                                    setConfirm(true);
+                                    setLoading(false)
+                                    setConfirm(true)
                                   }
                                 }
-                              },
-                            });
+                              }
+                            })
                           }
                         }
-                      },
-                    });
+                      }
+                    })
                   }}
                 >
                   SIGN IN
@@ -440,6 +410,8 @@ const LoginPage = ({
             </div>
           )}
         </div>
+
+        
       </div>
     </React.Fragment>
   );

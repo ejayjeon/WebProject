@@ -16,7 +16,7 @@ import {
   getAuctionClose,
   getMapBlockData,
   getMyBidListOnMapPage,
-  // readGridColorList,
+  //readGridColorList,
 } from "../../api";
 import {
   getPointAmount,
@@ -80,6 +80,31 @@ let userUUID_g = undefined;
 let unfoldInfo = undefined;
 let clickIsBlocked = false;
 let minBid = 0;
+var mobileWidth = window.screen.availWidth;
+var mobileHeight = window.screen.availHeight;
+var mobileTotal = mobileWidth - mobileHeight;
+
+function checkMobile() {
+  var varUA = navigator.userAgent.toLowerCase();
+
+  if (varUA.indexOf("android") > -1) {
+    if (parseInt(mobileTotal) > 0) {
+      return "vertical";
+    } else {
+      return "portrait";
+    }
+  } else if (
+    varUA.indexOf("iphone") > -1 ||
+    varUA.indexOf("ipad") > -1 ||
+    varUA.indexOf("ipod") > -1
+  ) {
+    return "ios";
+  } else {
+    return "other";
+  }
+}
+const os = checkMobile();
+const isMobile = os === "ios" || os === "android";
 
 const initMapId = () => {
   MapId.mapId = 0;
@@ -112,7 +137,7 @@ const changeBackgroundGrids = ({
   doCount,
   maxBidList,
 }) => {
-  // console.log(maxBidList);
+  //console.log(maxBidList);
   let count = 0;
   const selectedGrids = [];
   if (startPoint.gridX >= endPoint.gridX) {
@@ -435,7 +460,7 @@ const InforRow = ({
   bidPrice,
   language,
 }) => {
-  // console.log(bidPrice);
+  //console.log(bidPrice);
   return (
     <div
       style={{
@@ -458,24 +483,8 @@ const InforRow = ({
       {/* 수정한 부분 */}
       <div className={Style["gridxTxt"]}>{gridX}</div>
       <div className={Style["gridyTxt"]}>{gridY}</div>
-      <div
-        style={{
-          width: "calc(33.333% - 50px)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {maxBid}
-      </div>
-      <div
-        style={{
-          width: "90px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className={Style["gridTxtWidth1"]}>{maxBid}</div>
+      <div className={Style["gridTxtWidth2"]}>
         <input
           type="text"
           style={{ width: "100%", height: "100%", textAlign: "right" }}
@@ -500,14 +509,7 @@ const InforRow = ({
           }}
         />
       </div>
-      <div
-        style={{
-          width: "60px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className={Style["gridTxtWidth3"]}>
         <TiDelete
           fontSize={"20px"}
           onClick={() => {
@@ -826,6 +828,7 @@ const BlockInfoBar = ({
   const [showDetail, setShowDetail] = useState(true);
   const [selectedGridsList, setSelectedGridList] = useState([]);
   const screenWidth = window.screen.availWidth;
+
   let inforRows = [];
   unfoldInfo = setShowDetail;
   let totalBidPrice = 0;
@@ -911,7 +914,13 @@ const BlockInfoBar = ({
           />
         ) : undefined}
       </div>
-      <div className={Style["mapMenu"]}>
+      <div
+        className={Style["mapMenu"]}
+        style={{
+          gap: isMobile ? "10px" : "30px",
+          paddingRight: isMobile ? "5px" : "40px",
+        }}
+      >
         {!showSPMap ? undefined : selectedArea.exist ? (
           <>
             <div
@@ -973,16 +982,16 @@ const BlockInfoBar = ({
                       top: "calc(5vw + 60px)",
                       zIndex: "100000",
                       display: "flex",
-                      justifyContent: "center",
+                      justifyContent: "flex-end",
                       alignItems: "flex-start",
-                      padding: "10px",
+                      padding: isMobile ? "0.5%" : "20px",
                     }}
                   >
                     <div className={classNames(Style["info-box"])}>
                       <div
                         style={{
                           width: "100%",
-                          height: "40px",
+                          height: isMobile ? "30px" : "40px",
                           display: "flex",
                           justifyContent: "flex-end",
                           alignItems: "center",
@@ -1004,9 +1013,10 @@ const BlockInfoBar = ({
                         <BsTrash
                           className="pointer"
                           color={"#172a4d"}
+                          fontSize={"22px"}
                           style={{
                             backgroundColor: "white",
-                            // padding: "6px",
+                            padding: "4px",
                             borderRadius: "15px",
                           }}
                           onClick={() => {
@@ -1016,23 +1026,7 @@ const BlockInfoBar = ({
                           }}
                         />
                       </div>
-                      <div
-                        style={{
-                          width: "90%",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          backgroundColor: "white",
-                          fontSize: "12px",
-                          borderTopLeftRadius: "4px",
-                          borderTopRightRadius: "4px",
-                          fontWeight: "bold",
-                          height: "40px",
-                          border: "1px solid #e17a18",
-                          color: "#e17a18",
-                          margin: "0 auto",
-                        }}
-                      >
+                      <div className={Style["gridTitle-container"]}>
                         {/* 수정한 부분 */}
                         <div
                           className={Style["gridxTitle"]}
@@ -1047,37 +1041,19 @@ const BlockInfoBar = ({
                           }}
                         ></div>
                         <div
-                          style={{
-                            width: "calc(33.333% - 50px)",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            color: "#e17a18",
-                          }}
+                          className={Style["gridWidth1"]}
                           dangerouslySetInnerHTML={{
                             __html: language["auction-map-11"],
                           }} // Max Bid
                         ></div>
                         <div
-                          style={{
-                            width: "100px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            color: "#e17a18",
-                          }}
+                          className={Style["gridWidth2"]}
                           dangerouslySetInnerHTML={{
                             __html: language["auction-map-12"],
                           }} //Bid Price
                         ></div>
                         <div
-                          style={{
-                            width: "50px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            color: "#e17a18",
-                          }}
+                          className={Style["gridWidth3"]}
                           dangerouslySetInnerHTML={{
                             __html: language["auction-map-13"],
                           }} //Del
@@ -1085,13 +1061,12 @@ const BlockInfoBar = ({
                       </div>
                       <div
                         style={{
-                          width: "90%",
-                          maxHeight: "400px",
+                          width: "100%",
+                          maxHeight: isMobile ? "100px" : "400px",
                           overflowY: "auto",
                           borderLeft: "1px solid #e17a18",
                           borderRight: "1px solid #e17a18",
                           borderBottom: "1px solid #e17a18",
-                          margin: "0 auto",
                         }}
                       >
                         {inforRows}
@@ -1099,7 +1074,7 @@ const BlockInfoBar = ({
                       <div
                         style={{
                           width: "100%",
-                          height: "40px",
+                          height: isMobile ? "40px" : "60px",
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
@@ -1543,13 +1518,13 @@ const dataDownload = ({
       if (err) {
         console.log(err);
       } else {
-        // console.log("map data download success");
+        //console.log("map data download success");
         getMinBid({
           callback: (err, minBidRes) => {
             if (err) {
               console.log(err);
             } else {
-              // console.log("min bid download success");
+              //console.log("min bid download success");
               if (minBidRes.result === "success") {
                 // console.log(grids["0-0"]);
                 if (
@@ -1562,7 +1537,7 @@ const dataDownload = ({
                 setLoadingMsg("다운로드 받은 데이터를 처리중입니다.");
                 response.result.forEach((grid, idx) => {
                   if (idx === 0) {
-                    // console.log(grid);
+                    //console.log(grid);
                   }
                   grid.maxBid = minBid;
                   gridInit(grid, userUUID);
@@ -1860,7 +1835,7 @@ const AuctionPage = ({
   setLanguage,
   setLanguageCode,
 }) => {
-  // const history = useHistory();
+  //const history = useHistory();
   const [showSPMap, setShowSPMap] = useState(false);
   const [size, setSize] = useState({ height: 0, width: 0 });
   userUUID_g = userUUID;
@@ -2025,7 +2000,10 @@ const AuctionPage = ({
         </div>
         {/*footer*/}
       </div>
+
+      {/* 인증확인 팝업창 */}
       <div
+        className={Style["checkPop"]}
         style={{
           width: "100vw",
           height: "100vh",
@@ -2033,7 +2011,6 @@ const AuctionPage = ({
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          top: "0",
           left: "0",
         }}
         onClick={(e) => {
@@ -2043,149 +2020,104 @@ const AuctionPage = ({
         }}
       >
         <div
-          style={{
-            width: "700px",
-            height: "500px",
-            backgroundImage: "url(/images/auction-confirm/background.png)",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "25px",
-          }}
+          className={Style["checkPopup"]}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
           }}
         >
-          <div
-            style={{
-              width: "60%",
-              height: "100%",
-              backgroundImage: "url(/images/auction-confirm/character.png)",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></div>
-          <div
-            style={{
-              width: "90%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "5px",
-            }}
-          >
-            <h6
-              style={{
-                color: "#e17a18",
-                textShadow: "1px 1px 0px white",
-                fontSize: "25px",
-                fontWeight: "bold",
-                marginBottom: "10px",
-              }}
-            >
-              CONGRATULATIONS!
-            </h6>
-
-            <div
-              style={{
-                fontSize: "15px",
-                color: "rgb(52, 52, 52)",
-                fontWeight: "bold",
-                marginBottom: "10px",
-              }}
-            >
-              고객님은{" "}
-              <span
+          <div className={Style["monglong"]}></div>
+          <div className={Style["checkTxt"]}>
+            <div className={Style["checkCenter"]}>
+              <h6
+                className={Style["checkHead"]}
                 style={{
                   color: "#e17a18",
                   textShadow: "1px 1px 0px white",
-                  fontSize: "18px",
+                  fontWeight: "bold",
+                  marginBottom: "5%",
                 }}
               >
-                [{showAlertConfirm.block}]
-              </span>
-              개 블록을{" "}
-              <span
+                CONGRATULATIONS!
+              </h6>
+              <div
+                className={Style["checkFont"]}
                 style={{
-                  color: "#e17a18",
-                  textShadow: "1px 1px 0px white",
-                  fontSize: "18px",
+                  color: "rgb(52, 52, 52)",
+                  fontWeight: "bold",
+                  marginBottom: "10px",
                 }}
               >
-                [{showAlertConfirm.rugo}]
-              </span>{" "}
-              RUGO로 입찰하셨습니다.
-            </div>
-            <div
-              style={{
-                fontSize: "14px",
-                color: "rgb(52, 52, 52)",
-                gap: "5px",
-                marginRight: "10px",
-              }}
-            >
-              최종적으로 결정하시려면 본인 인증을 하시고 <br />
-              최종 결정버튼을 눌러 주세요
-              <br />
-              {/* <span
+                고객님은{" "}
+                <span
+                  className={Style["checkFont"]}
+                  style={{
+                    color: "#e17a18",
+                    textShadow: "1px 1px 0px white",
+                  }}
+                >
+                  [{showAlertConfirm.block}]
+                </span>
+                개 블록을{" "}
+                <span
+                  className={Style["checkFont"]}
+                  style={{
+                    color: "#e17a18",
+                    textShadow: "1px 1px 0px white",
+                  }}
+                >
+                  [{showAlertConfirm.rugo}]
+                </span>{" "}
+                RUGO로 입찰하셨습니다.
+              </div>
+              <div
+                className={Style["checkFont"]}
+                style={{
+                  color: "rgb(52, 52, 52)",
+                  gap: "5px",
+                  marginRight: "10px",
+                }}
+              >
+                최종적으로 결정하시려면 본인 휴대폰 인증을 하시고 <br />
+                "입찰 확인" 버튼을 눌러 주세요
+                <br />
+                {/* <span
                 dangerouslySetInnerHTML={{ __html: language["auction-map-19"] }}
               ></span> */}
-              <input
-                type="text"
-                value=""
-                style={{
-                  border: "none",
-                  width: "200px",
-                  margin: "20px",
-                  padding: "5px",
-                }}
-                placeholder="인증번호를 입력해주세요"
-              />
-              <button
-                style={{
-                  backgroundColor: "#e17a18",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "10px",
-                  width: "100px",
-                  padding: "5px",
-                }}
+                <input
+                  type="text"
+                  value=""
+                  className={Style["checkInput"]}
+                  placeholder="인증번호를 입력해주세요"
+                />
+                <button
+                  className={Style["checkBtn"]}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // SEND AUTH CODE
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: language["auction-map-16"],
+                  }}
+                ></button>
+                <div
+                  style={{ marginTop: "5px", color: "rgb(52, 52, 52)" }}
+                  dangerouslySetInnerHTML={{
+                    __html: language["auction-map-17"],
+                  }}
+                />
+              </div>
+              <div
+                className={Style["pointer"]}
+                style={{}}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  // SEND AUTH CODE
+                  showAlertConfirm.callback(true);
                 }}
-                dangerouslySetInnerHTML={{ __html: language["auction-map-16"] }}
-              ></button>
-              <div
-                style={{ marginTop: "5px", color: "rgb(52, 52, 52)" }}
-                dangerouslySetInnerHTML={{ __html: language["auction-map-17"] }}
-              />
+              ></div>
             </div>
-            <div
-              className="pointer"
-              style={{
-                width: "300px",
-                height: "40px",
-                backgroundImage: "url(/images/auction-confirm/button.png)",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                marginTop: "30px",
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                showAlertConfirm.callback(true);
-              }}
-            ></div>
           </div>
         </div>
       </div>

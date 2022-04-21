@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { Route, Switch } from "react-router-dom";
 import Style from "./style.module.css";
+
 import Loader from "react-spinners/PacmanLoader";
+
 import LoginPage from "./pages/login";
 import HomePage from "./pages/home";
 import HomePage2 from "./pages/home2";
@@ -12,21 +14,22 @@ import AuctionPage from "./pages/auction";
 import MyPage from "./pages/my";
 import ViewDetailPage from "./pages/view-detail";
 import MailBox from "./pages/mail-box";
+
 import { Footer } from "./components";
 import Land from "./pages/land";
 import MainEntrance from "./pages/main-gate";
 import ResetPassword from "./pages/reset-password";
 import SignUp from "./pages/sign-up";
 import {
-  // allowedIp,
-  // checkMyIp,
-  // downloadGridImage,
+  allowedIp,
+  checkMyIp,
+  downloadGridImage,
   getLanguageData,
-  // getMyLandOpen,
-  // getPointAmount,
+  getMyLandOpen,
+  getPointAmount,
   readGridColorList,
   readInfo,
-  // requestLogin,
+  requestLogin,
   readBlockState,
   readPopupData,
   readTemporaryData,
@@ -38,7 +41,7 @@ import Menu from "./components/top-menu";
 import LandStatePage from "./pages/land-state";
 import XTTest from "./pages/xt-test";
 // import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-// import MyDocument from "./pages/main-gate/frame/information";
+import MyDocument from "./pages/main-gate/frame/information";
 
 const RequestSMS = ({ show, setShow }) => {
   const [certNumber, setCertNumber] = useState("");
@@ -455,7 +458,7 @@ const App = () => {
         if (err) {
           console.log(err);
         } else {
-          // console.log(res);
+          console.log(res);
           if (window.location.pathname !== "/") return;
           if (localStorage.getItem("popup-close-time")) {
             let closeTime = Number(localStorage.getItem("popup-close-time"));
@@ -673,7 +676,7 @@ const App = () => {
       },
     });
     if (sessionStorage.getItem("userUUID")) {
-      // console.log("기존 세션 스토리지를 업데이트 합니다.");
+      console.log("기존 세션 스토리지를 업데이트 합니다.");
       let uuid = sessionStorage.getItem("userUUID");
       let wallet = sessionStorage.getItem("wallet");
       setUserUUID(uuid);
@@ -713,7 +716,7 @@ const App = () => {
         },
       });
     } else {
-      // console.log("기존 세션 스토리지가 없습니다.");
+      console.log("기존 세션 스토리지가 없습니다.");
     }
   }, []);
 

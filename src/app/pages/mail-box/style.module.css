@@ -2,7 +2,6 @@
   margin: 10px auto;
   width: 95%;
   height: 500px;
-  overflow-y: auto;
   border-radius: 10px;
 }
 
@@ -73,8 +72,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 15px;
-  background-color: rgb(225, 122, 24);
+  font-size: 10px;
+  background-color: #e17a18;
   color: white;
 }
 
@@ -128,13 +127,13 @@
   .msgTitle,
   .msgDate,
   .msgSender {
-    font-size: 10px;
+    font-size: 0.7vw;
   }
   .tableHeader1,
   .tableHeader2,
   .tableHeader3,
   .tableHeader4 {
-    font-size: 10px;
+    font-size: 0.7vw;
     width: 5%;
   }
 }
