@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('navbar.html') %>
+        <form method="POST" action="/edit/<%= data._id %> ">
+            <div class="row p-md-4">
+                <div class="mb-3 col-3">
+                    <label for="userId" class="form-label">아이디</label>
+                    <input type="text" class="form-control" name="userId" value="<%= data.userId %> " readonly>
+                </div>
+                <div class="mb-3 col-9">
+                    <label for="title" class="form-label">제목</label>
+                    <input type="text" class="form-control" name="title" value="<%= data.title %>" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">내용</label>
+                    <textarea class="form-control" rows="15" name="content" style="resize: none"
+                        readonly><%= data.content %></textarea>
+                </div>
+            </div>
+            <div class="p-md-1 text-center">
+                <input type="submit" class="btn btn-outline-dark" value="수정">
+                <button class="delete btn btn-outline-dark" data-id="<%= data._id %> ">삭제</button>
+                <input type="button" class="btn btn-outline-dark" value="목록으로" onclick="location.replace('/list')">
+            </div>
+        </form>
+
+        <script>
+            $('.delete').click(function (e) {
+
+                $.ajax({
+                    method: 'DELETE',
+                    url: '/delete',
+                    data: { _id: e.target.dataset.id }
+                }).then(() => {
+                    location.replace('/list')
+                })
+            })
+        </script>
+</body>
+
+</html>

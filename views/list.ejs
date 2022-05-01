@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+
+<body>
+    <%- include('navbar.html') %>
+
+        <div class="text-center p-md-3">
+            <h3>Node.js 게시판</h3>
+            <!-- <p>총 <span style="color: red; font-size: large;">{{boardcount}}</span> 개의 글이 있습니다</p> -->
+            <button class="btn btn-outline-dark mt-2" onclick="location='/add'">글쓰기</button>
+
+        </div>
+
+
+        <br>
+        <!-- <form name="boardform" action="pwdck" method="post">
+            <input type="hidden" name="idx" value=""> -->
+        <div class="p-md-3">
+            <table class="table table-dark table-hover table-striped">
+                <thead>
+                    <tr style="cursor: pointer">
+                        <td scope="col"> #</td>
+                        <td scope="col"> 아이디</td>
+                        <td scope="col"> 제목</td>
+                        <td scope="col"> 내용</td>
+                        <td scope="col"> 작성일</td>
+                        <td scope="col"> 수정 / 삭제</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0; i<posts.length; i++) {%>
+                        <tr style="cursor: pointer" onclick="location.replace('/detail/<%= posts[i]._id%>')">
+                            <td scope="col">
+                                <%= posts[i]._id %>
+                            </td>
+                            <td scope="col">
+                                <%= posts[i].userId %>
+                            </td>
+                            <td scope="col">
+                                <%= posts[i].title %>
+                            </td>
+                            <td scope="col">
+                                <input type="text" value="<%= posts[i].content%>" readonly class="form-control">
+                            </td>
+                            <td scope="col">
+                                <%= posts[i].createdate%>
+                            </td>
+                            <td scope="col">
+                                <input type="button" class="btn btn-outline-light" value="수정">
+                                <!-- <input type="button" class="btn btn-outline-light delete" value="삭제"
+                                    data-id="<%= posts[i]._id %>"> -->
+                                <button class="delete btn btn-outline-light" data-id="<%= posts[i]._id %> ">삭제</button>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- </form> -->
+
+        <script>
+            $('.delete').click(function (e) {
+
+                $.ajax({
+                    method: 'DELETE',
+                    url: '/delete',
+                    data: { _id: e.target.dataset.id }
+                }).then(() => {
+                    $(this).parents('tr').fadeOut();
+                })
+            })
+
+
+        </script>
+</body>
+
+</html>
