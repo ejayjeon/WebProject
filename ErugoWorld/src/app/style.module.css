@@ -1,0 +1,27 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+}
+
+.company {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    background-image: url(./images/logo.jpg);
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+:root{--swiper-navigation-size:20px}
+
+::-webkit-scrollbar {
+    width: 3px;
+    background-color: rgba(200, 200, 200, 0.3);
+    overflow: auto;
+    border-radius: 10px;
+
+}

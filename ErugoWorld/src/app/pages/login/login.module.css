@@ -1,0 +1,477 @@
+.background {
+  width: 100%;
+  height: 100%;
+}
+.topMenu {
+  background-color: url("./image/top-menu.png");
+}
+.logo {
+  width: 14vw;
+  height: 4vw;
+  background-image: url("./image/logobg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.top-menu-background,
+.top-menu-button,
+.backgroundImg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top-menu-background {
+  width: 100vw;
+  height: 5vw;
+  background-image: url("./image/top-menu.png");
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.top-menu-button-wrapper {
+  width: 86vw;
+  height: 5vw;
+  padding-top: 0.5vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.top-menu-button {
+  width: 8.6vw;
+  height: 2.8vw;
+}
+.back-button {
+  background-image: url("./image/back.png");
+  justify-items: baseline;
+}
+.backgroundImg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  background-image: url(./image/login-bg1.png);
+}
+.loginBg {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  width: 300px;
+  height: 200px;
+  margin-bottom: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.loginWindow {
+  width: 30vw;
+  height: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+/* 위아래 메뉴바 */
+.loginTitle2,
+.footerMenu {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: white;
+  height: 4vh;
+  line-height: 4vh;
+}
+.loginTitle2 {
+  padding-left: 3%;
+}
+.footerMenu {
+  display: flex;
+}
+
+.sign-in,
+.reset-password {
+  color: #e27a17;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  height: 100%;
+  border-radius: 10px;
+}
+.sign-in:hover,
+.reset-password:hover {
+  cursor: pointer;
+  background-color: #e27a17;
+  color: white;
+}
+
+.emailTitle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 1vh;
+}
+.emailTitle2,
+.pwdTitle {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  height: 3vh;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* 이메일, 패스워드 fontsize */
+.emailTitle3,
+.pwdTitle2,
+.emailInput,
+.pwdInput {
+  text-align: center;
+  font-size: 20px;
+  height: 100%;
+}
+.emailTitle3,
+.pwdTitle2,
+.signinBtn {
+  width: 40%;
+  line-height: 3vh;
+  color: white;
+  background-color: #e27a17;
+}
+.emailInput,
+.pwdInput {
+  width: 100%;
+  border: none;
+  color: #e27a17;
+  border-radius: 10px;
+}
+.signinBtn {
+  text-align: center;
+  width: 30%;
+  border-radius: 10px;
+}
+.loginInfo > small {
+  padding: 10;
+  width: 100%;
+  display: grid;
+  color: white;
+  font-size: 15px;
+  text-shadow: 0px -1px 3px #000;
+}
+
+/* 세로  */
+@media only screen and (orientation: portrait) {
+  @media all and (max-width: 1200px) {
+    .loginWindow {
+      width: 45vw;
+      height: 300px;
+    }
+    .emailTitle {
+      grid-gap: 10px;
+      gap: 10px;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 3vh;
+      line-height: 3vh;
+    }
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 15px;
+    }
+  }
+  @media all and (max-width: 1024px) {
+    .loginWindow {
+      height: 270px;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 2.5vh;
+      line-height: 2.5vh;
+    }
+    .loginInfo > small {
+      font-size: 12px;
+    }
+  }
+  @media all and (max-width: 965px) {
+    .loginWindow {
+      height: 230px;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 2.5vh;
+      line-height: 2.5vh;
+    }
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 12px;
+    }
+    .emailTitle2,
+    .pwdTitle {
+      height: 3vw;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 3vw;
+    }
+    .loginInfo > small {
+      font-size: 11px;
+    }
+  }
+  @media all and (max-width: 820px) {
+    .loginWindow {
+      height: 220px;
+    }
+    .emailTitle2,
+    .pwdTitle {
+      width: 70%;
+    }
+    .emailTitle {
+      gap: 10px;
+    }
+    .loginInfo > small {
+      font-size: 10px;
+    }
+  }
+  @media all and (max-width: 720px) {
+    .loginWindow {
+      height: 180px;
+    }
+    .loginInfo > small {
+      display: none;
+    }
+  }
+  @media all and (max-width: 540px) {
+    .loginWindow {
+      height: 160px;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 2vh;
+      line-height: 2vh;
+    }
+    .emailTitle2,
+    .pwdTitle,
+    .signinBtn {
+      min-height: 25px;
+      max-height: 35px;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 5vw;
+    }
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 10px;
+    }
+  }
+  @media all and (max-width: 420px) {
+    .loginWindow {
+      height: 100px;
+    }
+    .emailTitle2,
+    .pwdTitle {
+      width: 90%;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 6vw;
+    }
+  }
+  @media all and (max-width: 380px) {
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 7vw;
+    }
+  }
+}
+
+/* 가로 */
+@media only screen and (orientation: landscape) {
+  @media all and (max-width: 1380px) {
+    .loginWindow {
+      width: 550px;
+      height: 320px;
+    }
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 15px;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 2.5vw;
+    }
+    .emailTitle {
+      gap: 18px;
+    }
+    .emailTitle2,
+    .pwdTitle,
+    .signinBtn {
+      min-height: 35px;
+      max-height: 45px;
+    }
+  }
+  @media all and (max-width: 1280px) {
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 17px;
+    }
+    .emailTitle2,
+    .pwdTitle,
+    .signinBtn {
+      min-height: 30px;
+      max-height: 40px;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 2vw;
+    }
+    .loginInfo > small {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  @media all and (max-width: 1024px) {
+    .loginWindow {
+      width: 50vw;
+      height: 30vw;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 3vw;
+    }
+  }
+
+  @media all and (max-width: 920px) {
+    .loginWindow {
+      max-height: 23vw;
+    }
+    .loginTitle2,
+    .footerMenu,
+    .sign-in,
+    .reset-password,
+    .emailTitle3,
+    .pwdTitle2,
+    .emailInput,
+    .pwdInput,
+    .signinBtn {
+      font-size: 14px;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 6vh;
+      line-height: 6vh;
+    }
+    .loginInfo > small {
+      display: none;
+    }
+  }
+  @media all and (max-width: 820px) {
+    .loginWindow {
+      height: 30vw;
+    }
+    .emailTitle {
+      gap: 13px;
+    }
+  }
+  @media all and (max-width: 740px) {
+    .loginWindow {
+      height: 32vw;
+    }
+    .loginInfo > small {
+      display: none;
+    }
+    .emailTitle2,
+    .pwdTitle {
+      width: 75%;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 4vw;
+    }
+  }
+  @media all and (max-width: 680px) {
+    .loginWindow {
+      width: 60vw;
+      height: 40vw;
+    }
+    .emailTitle {
+      gap: 18px;
+    }
+    .emailTitle3,
+    .pwdTitle2,
+    .signinBtn {
+      line-height: 4vw;
+    }
+    .loginTitle2,
+    .footerMenu {
+      height: 7vh;
+      line-height: 7vh;
+    }
+  }
+}

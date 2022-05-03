@@ -1,0 +1,470 @@
+.buyland-box {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  margin-right: 10px;
+  display: table;
+  position: relative;
+  border-radius: 3vmin;
+  border-top: 0.5vh solid white;
+  border-bottom: 0.5vh solid white;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.buyland-content-text {
+  top: 10%;
+  right: 2vw;
+  width: 95%;
+  height: 95%;
+  font-size: 0.95rem;
+  display: table;
+  text-align: justify;
+  position: absolute;
+}
+.buyland-content-text p {
+  margin: 0;
+}
+
+.buyland-content-text > div {
+  top: 10%;
+  left: 52%;
+  right: 0;
+  width: 50%;
+  padding: 1vw;
+  position: absolute;
+  white-space: normal;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.buyland-swiper-text,
+.buylandSwiperText {
+  top: 10%;
+  height: 100%;
+  padding: 3vmin;
+  margin-right: 1vw;
+  font-size: 0.95rem;
+  position: absolute;
+  text-align: justify;
+}
+.buylandSwiperText p {
+  font-size: 0.85vw;
+  text-align: justify;
+}
+
+.buyland-swiper-text p {
+  margin: 0;
+  padding: 0;
+}
+
+.buyland-btn {
+  position: absolute;
+  top: 7%;
+  right: 5%;
+  width: 7vw;
+  height: 5vh;
+  background-image: url(./images/buyland-btn.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  line-height: 3vh;
+  text-align: center;
+  color: white;
+  font-size: 1vw;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.img1,
+.img2,
+.img3,
+.img4,
+.img5,
+.img6,
+.img7,
+.img8 {
+  top: 50%;
+  left: 0.5vw;
+  width: 50%;
+  height: 85%;
+  border-radius: 15px;
+  position: absolute;
+  transform: translateY(-50%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grap1,
+.grap2 {
+  left: 1vw;
+  width: 95%;
+  height: 80%;
+  margin-top: -15%;
+  position: absolute;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.img1 {
+  background-image: url(./images/1.png);
+}
+.img2 {
+  background-image: url(./images/2.png);
+}
+.img3 {
+  background-image: url(./images/3.png);
+}
+.img4 {
+  background-image: url(./images/4.jpg);
+}
+.img5 {
+  background-image: url(./images/5.jpg);
+}
+.img6 {
+  background-image: url(./images/6.jpg);
+}
+.img7 {
+  background-image: url(./images/7.jpg);
+}
+.grap1 {
+  background-image: url(./images/grap1.png);
+}
+.grap2 {
+  background-image: url(./images/grap2.png);
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+.swiperBuyland {
+  right: 0;
+  width: 50%;
+  position: absolute;
+}
+
+.swiperland {
+  width: 10vmin;
+}
+
+.buyland-swiper-text-font {
+  text-align: center;
+  color: rgb(117, 184, 95);
+}
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+/* buyland 반응형*/
+/* 1920 1080 */
+@media (max-width: 1920px) {
+  :root {
+    --swiper-navigation-size: 20px;
+  }
+
+  .buyland-content-text {
+    top: 50%;
+    right: 3vw;
+    width: 90%;
+    height: 95%;
+    font-size: 0.95rem;
+    text-align: justify;
+    overflow-y: auto;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+  .buyland-content-text p {
+    margin: 0;
+  }
+  .buyland-swiper-text {
+    top: 15%;
+    left: 5%;
+    width: 85%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .grap1,
+  .grap2 {
+    left: 0.1vw;
+    width: 100%;
+    height: 85%;
+    margin-top: -13%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+/* 1280  720*/
+@media (max-width: 1280px) {
+  :root {
+    --swiper-navigation-size: 20px;
+  }
+
+  .grap1,
+  .grap2 {
+    left: 0.1vw;
+    width: 100%;
+    height: 75%;
+    margin-top: -13%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+/* 900px 400px */
+@media (max-width: 940px) {
+  :root {
+    --swiper-navigation-size: 25px;
+  }
+
+  .buyland-content-text {
+    top: 12vw;
+    overflow: hidden;
+  }
+  .buyland-content-text p {
+    font-size: 10px;
+  }
+
+  .buyland-swiper-text {
+    top: 20%;
+  }
+  .swiperBuyland {
+    /*스와이퍼넘긴화면 */
+    top: -13%;
+    left: 26vw;
+    padding: 12px;
+    width: 30vw;
+    height: 110%;
+  }
+  .swiperBuyland p {
+    /*스와이퍼넘긴화면 */
+    width: 100%;
+    font-size: 10px;
+  }
+  .buyland-box .swiper-slide:nth-child(2) > .buylandSwiperText {
+    padding: 1vmin 0;
+    padding-left: 2vmin;
+    padding-right: 1vmin;
+    margin-right: 2.5vw;
+    top: 65%;
+    transform: translateY(-50%);
+  }
+  .grap1,
+  .grap2 {
+    left: 3vw;
+    width: 95%;
+    height: 50%;
+    margin-top: 1%;
+    margin-left: -10%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+/* 900px 400px */
+@media (max-width: 740px) {
+  :root {
+    --swiper-navigation-size: 15px;
+  }
+
+  .swiper-slide:nth-child(5) .buyland-content-text {
+    top: 40%;
+  }
+  .buyland-content-text > div {
+    top: 15%;
+    left: 35%;
+    right: 0;
+    width: 65%;
+    height: 110%;
+    padding: 1vw;
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: normal;
+  }
+  .buyland-content-text {
+    width: 95%;
+    height: 110%;
+    overflow: hidden;
+  }
+
+  .buyland-content-text p {
+    font-size: 10px;
+  }
+
+  .swiperBuyland {
+    /*스와이퍼넘긴화면 */
+    top: -30px;
+    left: 15vw;
+    width: 70%;
+    height: 120%;
+    margin: 0 auto;
+    position: absolute;
+  }
+
+  .swiperBuyland p {
+    /*스와이퍼넘긴화면 */
+    width: 110%;
+    font-size: 10px;
+  }
+
+  .buyland-swiper-text {
+    left: 1vw;
+    width: 85%;
+    margin: 0 auto;
+  }
+  .buyland-swiper-text > div {
+    top: 2%;
+    left: 1%;
+    right: 0;
+    padding: 1vw;
+    width: 98%;
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  .img1,
+  .img2,
+  .img3,
+  .img4,
+  .img5,
+  .img6,
+  .img7,
+  .img8 {
+    top: 50%;
+    left: 1vw;
+    width: 30%;
+    height: 80%;
+    border-radius: 15px;
+    transform: translateY(-50%);
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .grap1 {
+    top: 5vw;
+    left: 3vw;
+    height: 200%;
+    margin: auto;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .grap2 {
+    top: 6vw;
+    left: 10vw;
+    height: 110%;
+    margin: auto;
+    padding: auto;
+  }
+}
+
+/* 900px 400px */
+@media (max-width: 420px) {
+  :root {
+    --swiper-navigation-size: 15px;
+  }
+
+  .swiper-slide:nth-child(5) .buyland-content-text {
+    top: 40%;
+  }
+  .buyland-content-text > div {
+    top: 5%;
+    left: 35%;
+    right: 0;
+    width: 65%;
+    height: 110%;
+    padding: 1vw;
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: normal;
+  }
+  .buyland-content-text {
+    width: 95%;
+    height: 110%;
+    overflow: hidden;
+  }
+
+  .buyland-content-text p {
+    font-size: 0.7vw;
+  }
+
+  .swiperBuyland {
+    /*스와이퍼넘긴화면 */
+    top: -30px;
+    left: 42px;
+    width: 70%;
+    height: 150%;
+    margin: 0 auto;
+    position: absolute;
+  }
+
+  .swiperBuyland p {
+    /*스와이퍼넘긴화면 */
+    width: 120%;
+    font-size: 1.5vw;
+  }
+
+  .buyland-swiper-text > div {
+    top: 2%;
+    left: 2%;
+    right: 0;
+    padding: 1vw;
+    width: 98%;
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  .img1,
+  .img2,
+  .img3,
+  .img4,
+  .img5,
+  .img6,
+  .img7,
+  .img8 {
+    top: 50%;
+    left: 1vw;
+    width: 30%;
+    height: 80%;
+    border-radius: 10px;
+    transform: translateY(-50%);
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .grap1 {
+    top: 5vw;
+    height: 200%;
+    margin: auto;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .grap2 {
+    top: 20vw;
+    height: 100%;
+    margin: auto;
+    margin-top: 5px;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

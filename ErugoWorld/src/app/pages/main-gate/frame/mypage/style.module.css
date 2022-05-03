@@ -1,0 +1,882 @@
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(156, 156, 156, 0.3);
+  overflow: auto;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #64c9dc;
+  border-radius: 10px;
+}
+
+/* 제일 바깥 */
+.mypage-bg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 캐릭터 */
+.character {
+  position: fixed;
+  width: 20%;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-attachment: scroll;
+  display: flex;
+  align-items: center; /*센터 정렬 */
+}
+.characterName {
+  color: #fff;
+  position: absolute;
+  text-align: center;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* mypage 내용 바탕색 */
+.container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 80%;
+  height: 90%;
+  background-color: rgba(235, 235, 235, 0.5);
+}
+.container::before {
+  content: "";
+  display: block;
+  width: 98%;
+  height: 97%;
+  position: absolute;
+  top: 1.5%;
+  left: 50%;
+  z-index: -5;
+  transform: translateX(-50%);
+  background-color: rgb(233, 233, 233);
+}
+.character-img {
+  width: 100%;
+}
+
+/* --------------------container 안에있는 요소-------------------- */
+/* container 공통 */
+.mypageBox1,
+.mypageBox2 {
+  position: absolute;
+  height: 100%;
+}
+/* container 왼쪽 */
+.mypageBox1 {
+  left: 3%;
+  width: 40%;
+}
+/* container 오른쪽 */
+.mypageBox2 {
+  right: -1%;
+  width: 60%;
+}
+
+/* ----------------라인---------------- */
+.line {
+  border-bottom: 0.5px solid #64c9dc;
+  margin: 1.5vh;
+}
+
+/* ----------container 왼쪽 top---------- */
+.address {
+  width: 100%;
+  margin-top: 2vw;
+  margin-bottom: 3px;
+  font-size: 0.8vw;
+  vertical-align: middle;
+  overflow-x: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  height: 4px;
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 10px;
+}
+.address th {
+  color: #64c9dc;
+  font-weight: 500;
+  text-align: left;
+  padding-right: 0.5vw;
+}
+.wallet-width {
+  font-size: 0.5vw;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* -----------container 왼쪽 bottom----------- */
+/* container 왼쪽 bottom title font */
+.info-title-l-1,
+.info-title {
+  font-size: 0.7vw;
+}
+.info-title {
+  font-size: 0.7vw;
+  padding: 0.1vw 0;
+}
+
+/* sw, ew정보, rugo변환 밑에 박스 */
+.boxs {
+  margin-left: 0;
+}
+.text-box,
+.num-box {
+  text-align: center;
+  display: inline-block;
+  background-color: #64c9dc;
+  font-size: 0.7vw;
+  height: 2.3vw;
+  line-height: 2.3vw;
+  border: none;
+  color: #fff;
+}
+.text-box {
+  width: 40%;
+  margin-right: 1px;
+}
+.num-box {
+  width: 55%;
+  margin-bottom: 0.1vw;
+}
+
+/* -------------container 오른쪽 top------------- */
+/* container 오른쪽 공통요소 */
+.exRugoInput,
+.exErugoInput {
+  display: inline-block;
+  background-color: #fff;
+  text-align: center;
+  font-size: 0.55vw;
+  height: 3vh;
+  line-height: 3vh;
+  width: 35%;
+  border: none;
+  color: black;
+}
+/* exchange 버튼 */
+.exchange,
+.swExchange {
+  /* position: absolute; */
+  width: 5vw;
+  height: 2vw;
+  line-height: 2vw;
+  background-color: #64c9dc;
+  border: none;
+  border-radius: 0.1vw;
+  color: white;
+  font-size: 0.7vw;
+}
+
+/* 상단 */
+.exchange-xt {
+  color: white;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 40%;
+  width: 90%;
+  margin: 0 auto;
+}
+.exchangeTop,
+.exchangeBottom {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.exchangeTop {
+  top: 5%;
+  height: 40%;
+}
+.exchangeBottom {
+  bottom: -5%;
+  height: 60%;
+}
+
+/* 거래소에서 가져오기 font */
+.info-title-r {
+  font-size: 0.7vw;
+}
+
+.exErugoInput {
+  width: 50%;
+}
+
+.help-btn {
+  top: 5%;
+  left: 26%;
+  cursor: pointer;
+}
+/* .help-btn {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    display: inline-block;
+    width: 1vw;
+    height: 1.5vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  } */
+
+/* lbank, swEWC 박스 */
+.input-content > span {
+  display: inline-block;
+  text-align: center;
+  background-color: #64c9dc;
+  font-size: 0.7vw;
+  height: 2vw;
+  line-height: 2vw;
+  width: 20%;
+  margin-right: 1px;
+  margin-bottom: 0.5vw;
+  color: #fff;
+}
+/* lbank, swEWC input박스 */
+.input-box {
+  font-size: 0.55vw;
+  height: 2vw;
+  line-height: 2vw;
+  width: 50%;
+  border: none;
+}
+/* sw가져오기 밑에 글자 */
+.swChange {
+  position: absolute;
+  bottom: 10%;
+  color: rgb(70, 70, 70);
+  font-size: 0.7vw;
+}
+
+/* -----------container 오른쪽 bottom----------- */
+/* rugo로 변환 font */
+.info-title2 {
+  font-size: 0.7vw;
+  line-height: 0.7vw;
+}
+
+.bg-down {
+  position: absolute;
+  left: 5%;
+  top: 43%;
+  width: 90%;
+  height: 50%;
+  border-top: 1px solid #64c9dc;
+}
+.box-bottom {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  color: white;
+  height: 60%;
+}
+
+/* rugo로 변환 박스 */
+.ex-rugo-content {
+  display: flex;
+  width: 75%;
+  line-height: 3vw;
+}
+.input-num-box {
+  width: 67%;
+  background-color: white;
+  color: black;
+}
+.input-text-box {
+  border: none;
+  width: 30%;
+}
+
+/* 체인지 아이콘 */
+.change-icon {
+  width: 20%;
+  margin-left: -5px;
+  text-align: center;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.change-icon > img {
+  width: 35px;
+}
+
+/* rugo 변환 밑에 글자 */
+.rugo-change-info {
+  position: absolute;
+  text-align: center;
+  color: #64c9dc;
+  font-weight: bold;
+  top: 60%;
+}
+
+.logout-btn {
+  position: absolute;
+  background-color: #64c9dc;
+  top: 100%;
+  width: 15vw;
+  height: 4vh;
+  bottom: 0.3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.7vw;
+  border: none;
+  text-align: center;
+  line-height: 1.2vh;
+}
+
+/* 1920 x 1080 */
+@media all and (max-width: 1920px) {
+  .change-icon > img {
+    width: 30px;
+  }
+  .boxs {
+    margin-top: 2vw;
+  }
+
+  .rugo-change-info {
+    font-size: 0.8vw;
+  }
+  .info-title-l-1 {
+    font-size: 0.7vw;
+    margin-top: -1vw;
+    margin-bottom: 0.6vw;
+  }
+  .logout-btn {
+    width: 50%;
+  }
+}
+/* 1280 x 720*/
+@media all and (max-width: 1280px) {
+  .characterName {
+    font-size: 2vmin;
+  }
+  .address {
+    font-size: 1vw;
+    margin-top: 1vw;
+  }
+
+  .line {
+    display: none;
+  }
+  .bg-down {
+    border-top: none;
+  }
+
+  .info-title-l-1 {
+    font-size: 0.7vw;
+    margin-top: 2.3vmin;
+    margin-bottom: 0;
+  }
+
+  .boxs {
+    margin-top: -1.5vw;
+  }
+  .box1 {
+    line-height: 2vw;
+  }
+
+  /* container 오른쪽 top */
+  .input-content {
+    height: 2.4vmin;
+  }
+  .input-content > span,
+  .input-box,
+  .swExchange {
+    height: 2vw;
+    line-height: 2vw;
+  }
+
+  .rugo-change-info {
+    font-size: 10px;
+  }
+
+  .change-icon > img {
+    width: 70%;
+  }
+
+  .logout-btn {
+    width: 40%;
+    height: 30px;
+  }
+
+  .swExchange2 {
+    width: 50px;
+    height: 2vh;
+    line-height: 2vh;
+    right: 10%;
+    top: 0.2vh;
+    background-color: rebeccapurple;
+    border: none;
+    border-radius: 0.1vw;
+    color: white;
+    font-size: 0.7vw;
+  }
+}
+/* 1280 x 720*/
+@media all and (max-width: 1024px) {
+  .characterName {
+    font-size: 2vmin;
+  }
+  .info-title2 {
+    margin-top: 1vmin;
+  }
+  .info-title {
+    padding: 0.15vh 0;
+  }
+  .num-box {
+    margin-bottom: 0;
+  }
+  .input-content > span,
+  .input-box,
+  .swExchange {
+    height: 2vw;
+    line-height: 2vw;
+  }
+  .swExchange {
+    top: 1.7vmin;
+    right: 5%;
+    margin: 1% auto;
+  }
+  .swExchange2 {
+    width: 50px;
+    right: 6%;
+    top: 0.3vh;
+    font-size: 0.7vw;
+  }
+
+  .exchangeTop,
+  .exchangeBottom {
+    line-height: 1vh;
+  }
+
+  .change-icon > img {
+    width: 15px;
+  }
+  .rugo-change-info {
+    margin-top: 0.5vh;
+    left: 0;
+    font-size: 10px;
+  }
+  .swChange {
+    margin-top: 10px;
+    font-size: 0.2vmin;
+  }
+
+  .input-content {
+    height: 2vmin;
+  }
+  .logout-btn {
+    top: 130%;
+    width: 50%;
+    height: 20px;
+  }
+}
+
+/* 세로모드 */
+@media only screen and (orientation: portrait) {
+  /* ipad Air */
+  @media all and (max-width: 920px) {
+    .container {
+      height: 100%;
+      background-color: transparent;
+    }
+    .container::before {
+      display: none;
+    }
+
+    /* container mypageBox1, mypageBox2 */
+    .mypageBox1 {
+      padding-left: 4%;
+      left: 1%;
+      width: 100%;
+      height: 270%;
+      background-color: rgba(235, 235, 235, 1);
+    }
+    .mypageBox2 {
+      top: 155%;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ----------mypageBox1 상단---------- */
+    .address {
+      /* 회원정보 실제 내용 */
+      font-size: 1.5vw;
+    }
+    .address tr:last-child > td {
+      font-size: 1vw;
+    }
+
+    /* 상단 title */
+    .info-title {
+      /* EW정보, sw에서 가져오기 */
+      width: 100%;
+      font-size: 1.5vw;
+      margin-top: 1vw;
+      margin-bottom: 0.3vw;
+    }
+    .info-title-l-1 {
+      /*SW 정보 텍스트 */
+      font-size: 1.5vw;
+      margin-top: 0;
+    }
+
+    /* ----------mypageBox1 하단---------- */
+
+    .boxs {
+      /* sw 정보, ew정보 컨테이너 */
+      margin-top: 3%;
+      width: 100%;
+    }
+    .box1 {
+      line-height: 3.7vw;
+    }
+    .text-box,
+    .num-box {
+      height: 4vw;
+      line-height: 4vw;
+      font-size: 1.2vw;
+    }
+
+    /* -----------mypageBox2 상단----------- */
+    .info-title-r {
+      /*거래소에서 가져오기*/
+      font-size: 1.5vw;
+      margin-bottom: 0.3vw;
+    }
+
+    /* 상단 박스 */
+    .input-box,
+    .exErugoInput,
+    .input-content span,
+    .swExchange {
+      font-size: 1.3vw;
+      line-height: 3vw;
+      height: 3vw;
+    }
+    .swExchange {
+      width: 20%;
+    }
+
+    /* sw가져오기 글자 */
+    .swChange {
+      bottom: -30%;
+      font-size: 1vw;
+    }
+
+    /* ------------mypageBox2 하단------------ */
+    .bg-down {
+      top: 55%;
+    }
+    .box-bottom {
+      width: 100%;
+    }
+
+    .info-title2 {
+      font-size: 1.5vw;
+      margin-bottom: 0.5vw;
+    }
+
+    .input-text-box {
+      width: 15%;
+      height: 3vw;
+      line-height: 3vw;
+    }
+    .input-num-box {
+      width: 23%;
+      height: 3vw;
+    }
+
+    .swExchange2 {
+      top: 2px;
+      right: 1%;
+      height: 6vh;
+      line-height: 6vh;
+      width: 60px;
+    }
+
+    .input-text-box {
+      width: 40%;
+    }
+    .input-num-box {
+      width: 55%;
+    }
+
+    .rugo-change-info {
+      left: 10%;
+      margin-top: 1.5vw;
+      font-size: 1.2vw;
+    }
+
+    .logout-btn {
+      /*로그아웃 버튼 */
+      top: 110%;
+      width: 40%;
+      height: 30px;
+      font-size: 1.3vw;
+    }
+  }
+  @media all and (max-width: 720px) {
+    /* sw가져오기 글자 */
+    .swChange {
+      bottom: -40%;
+    }
+  }
+  @media all and (max-width: 600px) {
+    /* container mypageBox1, mypageBox2 */
+    .mypageBox1 {
+      height: 300%;
+    }
+    .mypageBox2 {
+      top: 165%;
+    }
+
+    /* sw가져오기 글자 */
+    .swChange {
+      bottom: -60%;
+    }
+
+    .bg-down {
+      top: 65%;
+    }
+
+    .rugo-change-info {
+      left: -2.5%;
+    }
+    .logout-btn {
+      top: 160%;
+      height: 20px;
+    }
+  }
+  /* 920 x 420(Galaxy S20 Ultra) */
+  @media all and (max-width: 420px) {
+    .container {
+      font-size: 10px;
+    }
+    .mypageBox1 {
+      height: 370%;
+    }
+    .mypageBox2 {
+      top: 180%;
+    }
+
+    /* ----------mypageBox1 하단---------- */
+    .box1 {
+      line-height: 4.2vw;
+    }
+
+    /* -----------mypageBox2 상단----------- */
+    .input-content > span {
+      width: 30%;
+    }
+    .input-box {
+      width: 60%;
+    }
+    .exchangeBottom {
+      bottom: -24%;
+    }
+    .swExchange {
+      width: 90%;
+    }
+    .swChange {
+      bottom: -170%;
+    }
+    /* ------------mypageBox2 하단------------ */
+    .bg-down {
+      top: 100%;
+    }
+    .info-title2 {
+      margin-bottom: 1vw;
+    }
+    .ex-rugo-content {
+      width: 100%;
+    }
+    .logout-btn {
+      top: 200%;
+    }
+  }
+  /* 750 x 360(Galaxy S8) */
+  @media all and (max-width: 360px) {
+    .mypageBox1 {
+      height: 460%;
+    }
+    .mypageBox2 {
+      top: 200%;
+      height: 140%;
+    }
+  }
+  @media all and (max-width: 320px) {
+    .mypageBox1 {
+      height: 480%;
+    }
+    .mypageBox2 {
+      top: 210%;
+    }
+
+    .logout-btn {
+      top: 220%;
+      height: 15px;
+    }
+  }
+}
+
+/* 가로모드 */
+@media only screen and (orientation: landscape) {
+  @media all and (max-width: 920px) {
+    .container {
+      height: 100%;
+      background-color: transparent;
+    }
+    .container::before {
+      display: none;
+    }
+
+    /* container mypageBox1, mypageBox2 */
+    .mypageBox1 {
+      padding-left: 4%;
+      left: 1%;
+      width: 100%;
+      height: 270%;
+      background-color: rgba(235, 235, 235, 1);
+    }
+    .mypageBox2 {
+      top: 155%;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ----------mypageBox1 상단---------- */
+    .address {
+      /* 회원정보 실제 내용 */
+      font-size: 1.5vw;
+    }
+    .address tr:last-child > td {
+      font-size: 1vw;
+    }
+
+    /* 상단 title */
+    .info-title {
+      /* EW정보, sw에서 가져오기 */
+      width: 100%;
+      font-size: 1.5vw;
+      margin-top: 1vw;
+      margin-bottom: 0.3vw;
+    }
+    .info-title-l-1 {
+      /*SW 정보 텍스트 */
+      font-size: 1.5vw;
+      margin-top: 0;
+    }
+
+    /* ----------mypageBox1 하단---------- */
+
+    .boxs {
+      /* sw 정보, ew정보 컨테이너 */
+      margin-top: 3%;
+      width: 100%;
+    }
+    .box1 {
+      line-height: 3.7vw;
+    }
+    .text-box,
+    .num-box {
+      height: 4vw;
+      line-height: 4vw;
+      font-size: 1.2vw;
+    }
+
+    /* -----------mypageBox2 상단----------- */
+    .info-title-r {
+      /*거래소에서 가져오기*/
+      font-size: 1.5vw;
+      margin-bottom: 0.3vw;
+    }
+
+    /* 상단 박스 */
+    .input-box,
+    .exErugoInput,
+    .input-content span,
+    .swExchange {
+      font-size: 1.3vw;
+      line-height: 3vw;
+      height: 3vw;
+    }
+    .swExchange {
+      width: 20%;
+    }
+
+    /* sw가져오기 글자 */
+    .swChange {
+      bottom: -30%;
+      font-size: 1vw;
+    }
+
+    /* ------------mypageBox2 하단------------ */
+    .bg-down {
+      top: 55%;
+    }
+    .box-bottom {
+      width: 100%;
+    }
+
+    .info-title2 {
+      font-size: 1.5vw;
+      margin-bottom: 0.5vw;
+    }
+
+    .input-text-box {
+      width: 15%;
+      height: 3vw;
+      line-height: 3vw;
+    }
+    .input-num-box {
+      width: 23%;
+      height: 3vw;
+    }
+
+    .swExchange2 {
+      top: 2px;
+      right: 1%;
+      height: 6vh;
+      line-height: 6vh;
+      width: 60px;
+    }
+
+    .input-text-box {
+      width: 40%;
+    }
+    .input-num-box {
+      width: 55%;
+    }
+
+    .rugo-change-info {
+      left: 10%;
+      margin-top: 1.5vw;
+      font-size: 1.2vw;
+    }
+
+    .logout-btn {
+      /*로그아웃 버튼 */
+      top: 110%;
+      width: 40%;
+      height: 30px;
+      font-size: 1.3vw;
+    }
+  }
+}

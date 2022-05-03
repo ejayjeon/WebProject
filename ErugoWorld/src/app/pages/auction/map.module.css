@@ -1,0 +1,563 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+}
+
+.background::-webkit-scrollbar {
+  width: 8px;
+}
+
+.background::-webkit-scrollbar-thumb {
+  background-color: rgba(80, 80, 80, 1);
+}
+
+.background::-webkit-scrollbar-track {
+  background-color: rgba(180, 180, 180, 1);
+}
+
+.map-wrapper {
+  width: 100%;
+  height: calc(100% - 60px - 5vw);
+}
+
+.map-magnification-button-wrapper {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  border: 1px solid rgba(180, 180, 180, 1);
+  width: 40px;
+  height: 80px;
+}
+
+.map-magnification-plus-button-wrapper {
+  width: 100%;
+  height: 50%;
+  border-bottom: 1px solid rgba(180, 180, 180, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-magnification-minus-button-wrapper {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.body-inner-wrapper {
+  width: calc(100% - 40px);
+  padding: 10px 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-wrapper {
+  padding: 20px 0;
+  width: 300px;
+  height: 200px;
+}
+
+.card-inner-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 2px solid white;
+}
+
+.card-row {
+  width: 100%;
+  height: 33.333%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-row-name {
+  width: 130px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+}
+
+.card-row-value {
+  width: calc(100% - 130px);
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 12px;
+  color: white;
+}
+
+.button-wrapper {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button-text {
+  font-size: 12px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid rgba(180, 180, 180, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 2px solid white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.map-block {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.map-block:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.info-box {
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.prefetch {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.prefetch-about {
+  background-image: url(./main-gate/images/detail-frame/about.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-home {
+  background-image: url(./main-gate/images/detail-frame/home.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-auction {
+  background-image: url(./main-gate/images/detail-frame/auction.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-buyland {
+  background-image: url(./main-gate/images/detail-frame/buyland.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-login {
+  background-image: url(./main-gate/images/detail-frame/login.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-mypage {
+  background-image: url(./main-gate/images/detail-frame/mypage.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-signup {
+  background-image: url(./main-gate/images/detail-frame/signup.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.prefetch-market {
+  background-image: url(./main-gate/images/detail-frame/market.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.mapMenuWrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mapMenu {
+  width: calc(100% - 60px);
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding-right: 40px;
+  gap: 30px;
+}
+.popup_width {
+  width: 500px;
+}
+/* 표상단 부분 */
+.gridTitle-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-size: 12px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-weight: bold;
+  height: 40px;
+  border: 1px solid #e17a18;
+  color: #e17a18;
+  padding-right: 10px;
+}
+.gridxTxt,
+.gridyTxt,
+.gridxTitle,
+.gridyTitle {
+  width: calc(33.333% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gridxTitle,
+.gridyTitle,
+.gridWidth1,
+.gridWidth2,
+.gridWidth3 {
+  color: #e17a18;
+}
+
+.gridWidth1,
+.gridWidth2,
+.gridWidth3,
+.gridTxtWidth1,
+.gridTxtWidth2,
+.gridTxtWidth3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 상단 표 title 너비 */
+.gridWidth1,
+.gridTxtWidth1 {
+  width: calc(33.333% - 50px);
+}
+.gridWidth2 {
+  width: 100px;
+}
+.gridWidth3 {
+  width: 50px;
+}
+
+/* 하단 표 너비 */
+.gridTxtWidth2 {
+  width: 90px;
+}
+.gridTxtWidth3 {
+  width: 60px;
+}
+
+/* checkPopup */
+.checkPop {
+  top: 0;
+}
+.checkPopup {
+  width: 35%;
+  height: 40%;
+  background: url(images/background.png) no-repeat center;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+.monglong {
+  width: 30%;
+  height: 100%;
+  background: url(images/character.png) no-repeat center;
+  background-size: 100%;
+}
+.checkTxt {
+  width: 60%;
+  position: relative;
+  top: 0;
+  text-align: center;
+  align-items: center;
+  gap: 5px;
+}
+.checkCenter {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+}
+.checkHead {
+  font-size: 1.5vmax;
+}
+.checkFont {
+  font-size: 0.8vw;
+}
+
+/* input */
+.checkInput,
+.checkBtn {
+  border: none;
+  padding: 5px;
+  font-size: 0.6vw;
+}
+.checkInput {
+  width: 50%;
+  margin: 1vmin;
+}
+.checkBtn {
+  background-color: #e17a18;
+  color: white;
+  border-radius: 10px;
+  width: 20%;
+}
+
+/* 입찰확인 버튼 */
+.pointer {
+  margin: 0 auto;
+  width: 80%;
+  height: 5vmax;
+  background: url(images/button.png) no-repeat center;
+  background-size: contain;
+}
+
+@media screen and (max-width: 1240px) {
+  .checkPopup {
+    width: 50%;
+    min-height: 300px;
+    max-height: 50vmin;
+  }
+  .checkFont {
+    font-size: 1.1vw;
+  }
+  .checkInput,
+  .checkBtn {
+    font-size: 0.8vw;
+  }
+  .checkBtn {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .mapMenuWrapper {
+    height: 80px;
+  }
+  .mapMenu {
+    width: 100%;
+    gap: 3px;
+    font-size: 10px;
+  }
+  .gridWidth1,
+  .gridTxtWidth1,
+  .gridWidth3,
+  .gridTxtWidth3 {
+    width: 20%;
+  }
+  .gridWidth2,
+  .gridTxtWidth2 {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 10px) and (max-width: 450px) {
+  .gridTitle-container {
+    padding-right: 0;
+  }
+  .info-box {
+    width: 90%;
+    padding: 10px;
+  }
+  .popup_width {
+    width: 100vw;
+  }
+  .gridxTxt,
+  .gridyTxt,
+  .gridxTitle,
+  .gridyTitle {
+    display: none;
+  }
+}
+
+/* 세로 모드 */
+@media only screen and (orientation: portrait) {
+  @media screen and (max-width: 630px) {
+    .checkPopup {
+      width: 80%;
+      min-height: 300px;
+      max-height: 50vmin;
+    }
+    .mapMenuWrapper {
+      height: 5%;
+    }
+    .map-wrapper {
+      width: 100%;
+      height: calc(100% - 60px);
+    }
+    .info-box {
+      width: 70%;
+      padding: 10px;
+    }
+    .gridTitle-container {
+      padding-right: 0;
+    }
+    .mapMenu {
+      width: 100%;
+      gap: 3px;
+      font-size: 10px;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+    .gridWidth2,
+    .gridTxtWidth2 {
+      width: 30%;
+    }
+    .gridWidth1,
+    .gridTxtWidth1,
+    .gridWidth3,
+    .gridTxtWidth3 {
+      width: 30%;
+    }
+    .gridxTxt,
+    .gridyTxt,
+    .gridxTitle,
+    .gridyTitle {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .checkPopup {
+      width: 100%;
+      min-height: 300px;
+      max-height: 80vmin;
+    }
+    .monglong {
+      width: 20%;
+    }
+    .checkTxt {
+      width: 70%;
+    }
+    .checkHead {
+      font-size: 2vmax;
+    }
+    .checkFont {
+      font-size: 2.6vw;
+    }
+    .checkInput,
+    .checkBtn {
+      font-size: 0.8vw;
+    }
+    .checkBtn {
+      width: 30%;
+    }
+    .info-box {
+      width: 50%;
+      padding: 5px;
+    }
+    .pointer {
+    }
+  }
+}
+/* 가로모드 */
+@media only screen and (orientation: landscape) {
+  @media all and (max-width: 920px) {
+    .checkPop {
+      top: 12%;
+    }
+    .checkPopup {
+      width: 50%;
+      min-height: 300px;
+      max-height: 50vmin;
+    }
+    .gridTitle-container {
+      padding-right: 0;
+    }
+    .gridWidth2,
+    .gridTxtWidth2 {
+      width: 30%;
+    }
+    .gridWidth1,
+    .gridTxtWidth1,
+    .gridWidth3,
+    .gridTxtWidth3 {
+      width: 30%;
+    }
+    .info-box {
+      width: 40%;
+      padding: 10px;
+    }
+    .gridxTxt,
+    .gridyTxt,
+    .gridxTitle,
+    .gridyTitle {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 740px) {
+    .checkPopup {
+      width: 70%;
+      min-height: 240px;
+      max-height: 45vmin;
+    }
+    .mapMenuWrapper {
+      height: 60px;
+    }
+    .mapMenu {
+      gap: 3px;
+      font-size: 10px;
+    }
+    .info-box {
+      width: 50%;
+      padding: 5px;
+    }
+    .gridWidth1,
+    .gridTxtWidth1,
+    .gridWidth3,
+    .gridTxtWidth3 {
+      width: 30%;
+    }
+    .gridWidth2,
+    .gridTxtWidth2 {
+      width: 30%;
+    }
+  }
+}
