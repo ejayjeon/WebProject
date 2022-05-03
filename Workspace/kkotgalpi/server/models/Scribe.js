@@ -1,2 +1,0 @@
-/* Scribe DB Model */
-
