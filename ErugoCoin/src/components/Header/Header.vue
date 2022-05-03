@@ -182,7 +182,7 @@ export default {
   position: relative;
   display: inline-block;
   width: 8vmax;
-  // background-color: yellowgreen;
+  cursor: pointer;
 }
 .webMenu > div::after {
   content: "";
