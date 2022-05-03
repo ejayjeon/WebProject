@@ -1,0 +1,94 @@
+@charset "UTF-8";
+#enroll_tutor_form{
+	margin-left: 30px;
+	line-height: 30px;
+}
+
+#profile_pic{
+	width: 120px;
+	height: 120px;
+	border-radius: 60px;
+}
+
+#tutor_nickname, #tutor_phone, #tutor_sns, #tutor_balance{
+	width : 700px;
+	height : 30px;
+}
+
+#tutor_introduction{
+	width : 700px;
+	height: 100px;
+	resize: none;
+}
+
+#tutor_enroll_button{
+	width : 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#tutor_enroll_complete{
+	font-weight: bold;
+	width : 150px;
+	height: 40px;
+	background-color : #9ED4C2;
+	border : solid #9ED4C2 1px;
+	resize: none;
+}
+
+#tutor_enroll_cancel{
+	font-weight: bold;
+	width : 150px;
+	height: 40px;
+	background-color : lightgray;
+	border : solid lightgray 1px;
+	resize: none;
+}
+
+#classplace{
+	width : 700px;
+	height: 100px;
+	resize: none;
+}
+#be_a_tutor{
+	font-size: medium;
+	font-weight: bolder;
+	color : white;
+	width : 150px;
+	height : 40px;
+	background-color: gray;
+	border : gray;
+}
+
+#margin_check{
+	width : 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*클래스 신청*/
+#category_class{
+	width : 700px;
+	height : 30px;
+}
+
+select{
+	-webkit-appearance: none;
+	/* 네이티브 외형 감추기*/
+	-moz-appearance: none;
+	appearance: none;
+	z-index: 1;
+	color: rgb(0,0,0,.3);
+}
+select option, select optgroup{
+	color: #000;
+}
+
+/* 달력 */
+.apply-class{
+	width: 300px;
+	height: 500px;
+	border-radius: 30px;
+	border: 1px solid lightgray;
+	padding: 20px;
+	margin-top: 20px;
+}

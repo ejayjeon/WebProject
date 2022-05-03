@@ -1,0 +1,363 @@
+@charset "UTF-8";
+
+ .app-dashboard {
+	height: 100vh;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.app-dashboard-body {
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+} 
+
+ .app-dashboard-top-nav-bar {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	background: #9ED4C2;
+	height: 73px;
+	width: 100%;
+	-webkit-flex: 0 0 73px;
+	-ms-flex: 0 0 73px;
+	flex: 0 0 73px;
+} 
+
+ .app-dashboard-top-nav-bar .menu-icon {
+	vertical-align: text-bottom;
+	position: relative; 버튼 왼쪽에 붙이기 위해 추가
+	text-align: right; 상단바의 메뉴 아이콘 오른쪽으로 정렬
+} 
+
+ .app-dashboard-logo {
+	color: #fefefe;
+	text-transform: uppercase;
+	font-weight: bold;
+	position: absolute;
+	right: 50%;
+	top: 1%;
+}
+
+ .app-dashboard-top-bar-actions {
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+} 
+
+ .app-dashboard-top-bar-actions button {
+	margin-bottom: 0;
+	margin-right: 2rem;
+}
+
+.app-dashboard-top-bar-actions button.hollow {
+	border-color: #fefefe;
+	color: #fefefe;
+	position: absolute; 추가
+	right: 0%; 왼쪽에 붙이기
+}
+/* 추가한 css */
+.review-section {
+	width: 300px;
+	border: 1px solid lightgray;
+	text-align: center;
+	display: inline-block;
+	box-shadow: 3px 2px 5px lightgray;
+}
+
+.tutor-profile {
+	width: 300px;
+	height: 500px;
+	border-radius: 30px;
+	background: #9ED4C2;
+	box-shadow: 3px 2px 5px lightgray;
+	padding: 20px;
+	font-weight: bold;
+	display: inline-block;
+	overflow: hidden; /* 튜터 프로필 영역 벗어나면 안 보이게 처리 */
+}
+
+#class-info{
+	height: 200px;
+	
+}
+
+.apply-class{
+	width: 300px;
+	height: 500px;
+	border-radius: 30px;
+	border: 1px solid lightgray;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+#price{
+	font-weight: bold;
+	text-align: center;
+}
+
+#btnSub {
+	background: #9ED4C2;
+	font-weight: bold;
+	cursor: pointer;
+	color: white;
+	box-shadow: 2px 2px 2px lightgray;
+	font-size: large;
+}
+
+#profile-img{
+	width: 80px; 
+	height: 80px;
+	border-radius: 40px;
+}
+
+
+/* button-like */
+.button-like {
+	border: 2px solid #8a8a8a;
+	background-color: transparent;
+	text-decoration: none;
+	padding: 7px; /* like버튼 크기 조정 */
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
+	border-radius: 3rem;
+	color: #8a8a8a;
+	transition: all ease 0.4s;
+}
+
+.button-like span {
+	margin-left: 0.2rem;
+}
+
+.button-like .fa, .button-like span {
+	transition: all ease 0.4s;
+}
+
+.button-like:focus {
+	background-color: transparent;
+}
+
+.button-like:focus .fa, .button-like:focus span {
+	color: #8a8a8a;
+}
+
+.button-like:hover {
+	border-color: #cc4b37;
+	background-color: transparent;
+}
+
+.button-like:hover .fa, .button-like:hover span {
+	color: #cc4b37;
+}
+
+.liked {
+	background-color: #cc4b37;
+	border-color: #cc4b37;
+}
+
+.liked .fa, .liked span {
+	color: #fefefe;
+}
+
+.liked:focus {
+	background-color: #cc4b37;
+}
+
+.liked:focus .fa, .liked:focus span {
+	color: #fefefe;
+}
+
+.liked:hover {
+	background-color: #cc4b37;
+	border-color: #cc4b37;
+}
+
+.liked:hover .fa, .liked:hover span {
+	color: #fefefe;
+}
+
+i{
+	font-style: normal; /* win . 으로 추가한 window기본 이모티콘의 하트가 기울여지게 보여서 설정  */
+}
+
+
+/* image slide */
+/*GLOBALS*/
+/* *{margin:0; padding:0; list-style:none;}
+a{text-decoration:none; color:#666;}
+a:hover{color:#1bc1a3;} */
+/* body, hmtl{font-family: 'Anton', sans-serif;} */
+
+
+#wrapper{
+  width:750px;
+  margin:20px auto;
+  height:450px;
+  position:relative;
+  color:#fff;
+  text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;  
+}
+
+#slider-wrap{
+  width:750px;
+  height:450px;
+  position:relative;
+  overflow:hidden;
+}
+
+#slider-wrap ul#slider{
+  width:100%;
+  height:100%;
+  
+  position:absolute;
+  top:0;
+  left:0;   
+}
+
+#slider-wrap ul#slider li{
+  float:left;
+  position:relative;
+  width:750px;
+  height:450px; 
+}
+
+#slider-wrap ul#slider li > div{
+  position:absolute;
+  top:20px;
+  left:35px;  
+}
+
+#slider-wrap ul#slider li > div h3{
+  font-size:36px;
+  text-transform:uppercase; 
+}
+
+#slider-wrap ul#slider li > div span{
+  font-family: Neucha, Arial, sans serif;
+  font-size:21px;
+}
+
+#slider-wrap ul#slider li img{
+  display:block;
+  width:100%;
+  height: 100%;
+}
+
+
+/*btns*/
+.btns{
+  position:absolute;
+  width:50px;
+  height:60px;
+  top:50%;
+  margin-top:-25px;
+  line-height:57px;
+  text-align:center;
+  cursor:pointer; 
+  background:rgba(0,0,0,0.1);
+  z-index:100;
+  
+  
+  -webkit-user-select: none;  
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -ms-user-select: none;
+  
+   -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+ 
+}
+
+.btns:hover{
+  background:rgba(0,0,0,0.3); 
+}
+
+#next{right:-50px; border-radius:7px 0px 0px 7px;}
+#previous{left:-50px; border-radius:0px 7px 7px 7px;}
+#counter{
+  top: 30px; 
+  right:35px; 
+  width:auto;
+  position:absolute;
+}
+
+#slider-wrap.active #next{right:0px;}
+#slider-wrap.active #previous{left:0px;}
+
+
+/*bar*/
+#pagination-wrap{
+  min-width:20px;
+  margin-top:350px;
+  margin-left: auto; 
+  margin-right: auto;
+  height:15px;
+  position:relative;
+  text-align:center;
+}
+
+#pagination-wrap ul {
+  width:100%;
+}
+
+#pagination-wrap ul li{
+  margin: 0 4px;
+  display: inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.5;
+  position:relative;
+  top:0;
+  
+  
+}
+
+#pagination-wrap ul li.active{
+  width:12px;
+  height:12px;
+  top:3px;
+  opacity:1;
+  box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
+}
+
+
+
+
+/*Header*/
+h1, h2{text-shadow:none; text-align:center;}
+h1{ color: #666; text-transform:uppercase;  font-size:36px;}
+h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+
+
+
+
+/*ANIMATION*/
+#slider-wrap ul, #pagination-wrap ul li{
+  -webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  transition: all 0.3s cubic-bezier(1,.01,.32,1); 
+}

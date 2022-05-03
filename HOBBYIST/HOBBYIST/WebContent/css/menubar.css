@@ -1,0 +1,396 @@
+@charset "UTF-8";
+
+	body{  /* 화면 여백 없애기, 상단바 위로 흰색 여백 보여서 추가함 */ 
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	} 
+
+	.app-dashboard {
+		height: 100vh;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	
+	.app-dashboard-body {
+		-webkit-flex: 1 1 auto;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+	 	display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	
+	.app-dashboard-top-nav-bar {
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		background: #9ED4C2;
+		height: 73px; /* 메인페이지의 상단바 높이와 맞춤 */
+		width: 100%;
+		-webkit-flex: 0 0 73px;
+		-ms-flex: 0 0 73px;
+		flex: 0 0 73px;
+	
+	}
+	
+	.app-dashboard-top-nav-bar .menu-icon {
+		vertical-align: text-bottom;
+		/* position: relative; /* 버튼 왼쪽에 붙이기 위해 추가 */ */
+		text-align: right; /* 상단바의 메뉴 아이콘 오른쪽으로 정렬 */
+	}
+	
+	.app-dashboard-logo {
+		color: #fefefe;
+		text-transform: uppercase;
+		font-weight: bold;
+		/* margin-left: 1%; */ /* 메인페이지의 상단바의 로고 위치와 맞춤 */
+		/* margin-top: 30px; */ /* 메인페이지의 상단바의 로고 위치와 맞춤 */
+	}
+	
+	.app-dashboard-top-bar-actions {
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	
+	.app-dashboard-top-bar-actions button {
+		margin-bottom: 0;
+		margin-right: 2rem;
+	}
+	
+	.app-dashboard-top-bar-actions button.hollow {
+		border-color: #fefefe;
+		color: #fefefe;
+	}
+	
+	.app-dashboard-top-bar-actions button.hollow:hover {
+		background: #fefefe;
+		color: #1779ba;
+	}
+	
+	.app-dashboard-top-bar-actions .fa-info-circle {
+		color: #fefefe;
+		font-size: 1.5rem;
+	}
+	
+	.app-dashboard-sidebar {
+		background-color: #fefefe;
+		height: 100%;
+		overflow-x: visible;
+		/* overflow-y: auto; */
+		z-index: 1;
+		transition: all 0.5s ease;
+		width: 200px; /* 추가 */
+		border: 1px solid lightgray; /* 추가 */
+		position: relative;
+	}
+	
+	.app-dashboard-sidebar .app-dashboard-open-sidebar,
+		.app-dashboard-sidebar .app-dashboard-close-sidebar {
+		-webkit-align-items: baseline;
+		-ms-flex-align: baseline;
+		align-items: baseline;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		padding: 2rem 1rem;
+		/* float : right; /* 사이드바 open close버튼 옆으로 붙임 */ */
+		/* position: absolute;
+		left : 50%; */
+	}
+	
+	.app-dashboard-sidebar .app-dashboard-sidebar-close-button {
+		font-size: 14px;
+	}
+	
+	#close-sidebar {
+		background: none;
+		border: none;
+	}
+	
+	#open-sidebar {
+		background: none;
+		border: none;
+	}
+	
+	.app-dashboard-sidebar .app-dashboard-sidebar-inner {
+		height: 100%;
+		overflow-x: hidden;
+		/* overflow-y: auto; */ /* 사이드바는 스크롤바 안 보이게 */
+	}
+	
+	.app-dashboard-sidebar .app-dashboard-sidebar-inner .menu>li>a {
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	
+	.app-dashboard-sidebar .fa.large {
+		font-size: 1.5rem;
+		width: 40px;
+	}
+	
+	.reveal-for-medium .app-dashboard-open-sidebar {
+		display: none;
+	}
+	
+	.app-dashboard-sidebar-footer {
+		background: rgba(42, 57, 79, 0.8);
+		bottom: 0;
+		left: 0;
+		padding: 1rem;
+		position: absolute;
+		width: 100%;
+	}
+	
+	.app-dashboard-open-sidebar {
+		text-align: center;
+	}
+	
+	.app-dashboard-body-content {
+		transition: all 0.5s ease;
+		/* overflow-y: auto;  */
+		-webkit-flex: 1 1 0;
+		-ms-flex: 1 1 0px;
+		flex: 1 1 0;
+		padding: 20px;
+		background-color: #fefefe;
+	}
+	
+	@media screen and (min-width: 50em) and (max-width: 75em) { /* (min-width: 40em) and (max-width: 63.9375em) */
+		.app-dashboard.shrink-medium .app-dashboard-close-sidebar,
+			.app-dashboard.shrink-medium .app-dashboard-sidebar-text {
+			display: none;
+		}
+		.app-dashboard .app-dashboard-open-sidebar {
+			display: block;
+		}
+		.app-dashboard .app-dashboard-sidebar {
+			width: 80px;
+		}
+		.app-dashboard .app-dashboard-sidebar .fa.large {
+			width: auto;
+		}
+		.app-dashboard .off-canvas-content {
+			margin-left: 80px;
+			width: calc(100% - 80px);
+		}
+		.app-dashboard.shrink-medium .navigation {
+			margin-top: 2rem;
+			text-align: center;
+		}
+		.app-dashboard.shrink-medium .menu.vertical>li>a {
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.app-dashboard.shrink-medium .menu li::after {
+			display: none;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+		.app-dashboard.shrink-medium .menu li a {
+			padding: 0.75rem;
+		}
+		.app-dashboard.shrink-medium .menu li a svg {
+			margin: 0;
+		}
+		.app-dashboard.shrink-medium .menu li a span {
+			display: none;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+	}
+	
+	
+	@media print , screen and (min-width: 64em) {
+		.app-dashboard.shrink-large .app-dashboard-close-sidebar, .app-dashboard.shrink-large .app-dashboard-sidebar-text
+			{
+			display: none;
+		}
+		.app-dashboard.shrink-large .app-dashboard-open-sidebar {
+			display: block;
+		}
+		.app-dashboard.shrink-large .app-dashboard-sidebar {
+			width: 80px;
+		}
+		.app-dashboard.shrink-large .app-dashboard-sidebar .fa.large {
+			width: auto;
+		}
+		.app-dashboard.shrink-large .off-canvas-content {
+			margin-left: 80px;
+			width: calc(100% - 80px);
+		}
+		.app-dashboard.shrink-large .navigation {
+			margin-top: 2rem;
+			text-align: center;
+		}
+		.app-dashboard.shrink-large .menu.vertical>li>a {
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.app-dashboard.shrink-large .menu li::after {
+			display: none;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+		.app-dashboard.shrink-large .menu li a {
+			padding: 0.75rem;
+		}
+		.app-dashboard.shrink-large .menu li a svg {
+			margin: 0;
+		}
+		.app-dashboard.shrink-large .menu li a span {
+			display: none;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+	}
+	
+	/* 추가한 css */
+	
+ /*  	#top {
+		background: #9ED4C2;
+		display: inline-block;
+		text-align: right;
+		
+	} */
+	
+/*  	#logo img {
+		position: absolute;
+		right: 50%;
+		top: 10%;
+	}  */
+	
+	.nav-link img { /* 상단바 메뉴 이미지 사이즈 조정 & 메인페이지와 위치 맞춤*/
+		heigh: 25px;
+		width: 25px;
+ 		margin-left: 13px;
+		margin-right: 13px;
+		margin-top: 6px;
+		/* margin-right: 10px;
+		margin-top: 25%; */
+	} 
+	
+	.nav-link button{
+		margin-left: 13px;
+		margin-right: 20px;
+	} 
+	
+	.app-dashboard-top-bar-actions{
+		position: absolute; /* 상단바 메뉴버튼 위치 조정 위해 추가 */
+		right: 0%; /* 왼쪽에 붙이기 */
+	}
+	
+	#logBtn {
+		background: none;
+		border: 1px solid white;
+		color: white;
+		width: 80px;
+		height: 40px;
+		font-size: large;
+	}
+	
+	#logBtn:hover {
+		background: white;
+		color: #5F9EA0; /* CadetBlue */
+		border: 1px solid #5F9EA0;
+		cursor: pointer;
+	}
+	
+	.app-dashboard {
+		height: 100vh;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	
+	/* 사이드바 관련 css */
+	.menu li {
+		list-style: none;
+		color: black;
+		margin-bottom: 10px;
+	}
+	
+	a{
+		text-decoration: none; /* 하이퍼링크 밑줄 안뜨게 */
+		cursor: pointer; /* a태그 밑줄 없애기, 손가락 커서 */
+	}
+	
+	/* 가상 클래스 : 사용자 동작에 반응하게 만들기, 다 적용하려면 순서대로 해야 함*/
+	.menu a:link { /* 아직 방문하지 않은 링크의 스타일 정의 */
+		color: black;
+	}
+	
+	.menu a:visited { /* 방문한 적이 있는 링크의 스타일 정의 */
+		color: black;
+	}
+	
+	.menu a:hover { /* 마우스를 링크에 올려두었을 때 스타일 정의 */
+		color: #9ED4C2;
+		font-weight: bolder;
+	}
+	
+	/* footer 관련 css 추가 */
+	.container a:link{
+		color: black;
+	}
+	
+	.container a:visited{
+		color: black;
+	}
+	
+	
+	/* 튜터 신청 버튼관련 css */
+	#apply-tutor-btn{
+		background: #A9A9A9;
+		border: 0px;
+		color:white;
+		font-weight: bold;
+		width: 110px;
+		height: 40px;
+		cursor: pointer;
+		font-size: 15px;
+	}
+	
+	#apply-tutor-btn:hover{
+		background: #9ED4C2;
+	}
+	
+
+	/* 스크롤바 스타일 설정  */
+	::-webkit-scrollbar {
+	  width: 10px;
+	}
+	 
+	::-webkit-scrollbar-track {
+	  background: white;
+	  opacity: 50%;
+	  border-radius: 5px;
+	}
+	 
+	::-webkit-scrollbar-thumb {
+		background: linear-gradient(#9ED4C2, WHITE); 
+	  border-radius: 5px;
+	}
+	

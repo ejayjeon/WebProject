@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/* /* 테이블 부분*/ */
+
+
+.table-expand {
+  margin-top: 5rem;
+  
+}
+
+.table-expand td {
+  color: #8a8a8a;
+}
+
+.table-expand tr {
+  border: 1px solid #e6e6e6;
+}
+
+.table-expand .text-right {
+  padding-right: 3rem;
+}
+
+.table-expand-row.is-active .expand-icon::after {
+  content: '-';
+}
+
+.table-expand-row .expand-icon::after {
+  float: right;
+}
+
+.table-expand-row-content {
+  display: none;
+}
+
+.table-expand-row-content.is-active {
+  display: table-row;
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
+.table-expand-row-nested {
+  background-color: #e6e6e6;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* /* 공지 사항*/ */
+
+.notice_a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_list_wrap1 {
+    padding: 50px;
+}
+
+.board_list1 {
+    width: 100%;
+    border-top: 2px solid #9ED4C2;
+}
+
+.board_list1 tr {
+    border-bottom: 1px solid #9ED4C2;
+}
+
+.board_list1 th,
+.board_list1 td {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.board_list1 td {
+    text-align: center;
+}
+
+.board_list1 .tit {
+    text-align: left;
+}
+
+.board_list1 .tit:hover {
+    text-decoration: underline;
+}
+
+.board_list_wrap1 .paging {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0;
+}
+.board_list_wrap1 .paging a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+}
+.board_list_wrap1 .paging a:first-child {
+    margin-left: 0;
+}
+
+.board_list_wrap1 .paging a.bt {
+    border: 1px solid #eee;
+    background: #eee;
+    text-decoration: none;
+}
+
+.board_list_wrap1 .paging a.num {
+    border: 1px solid #9ED4C2;
+    font-weight: 600;
+    color: #9ED4C2;
+    text-decoration: none;
+}
+
+.board_list_wrap1 .paging a.num.on {
+    background: #9ED4C2;
+    color: #fff;
+    text-decoration: none;
+}
+
+.writeNoBtn{
+	backgorund: #9ED4C2;
+	color: #fff;
+}
+
+#listArea{
+	text-align: center;
+}
+
+#logBtn {
+	/* 임시로 상단바의 로그인버튼 폰트 적용 */
+	font-family: monospace;
+	font-weight: bold;
+}
