@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md row readmore">
-    <q-card class="my-card" flat bordered>
+    <q-card class="about-card">
       <q-img src="assets/images/readmore.png" class="readmore-img">
         <div>
           <slot name="numbering"></slot>
@@ -20,11 +20,9 @@
           <q-separator />
         </q-card-section>
       </div>
-
       <q-slide-transition>
         <q-card-actions>
           <q-space />
-
           <q-img
             :src="
               expanded
@@ -57,19 +55,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.my-card {
+<style lang="scss" scope>
+.about-card {
   width: 100%;
-  max-width: 400px;
-  box-shadow: 10px 10px 10px black;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16) !important;
 }
 .q-img__content > div {
   font-family: "S-CoreDream7";
   font-weight: 700;
   background: transparent;
 }
+
 .readmore-title {
   font-family: "S-CoreDream7";
+  font-size: 0.9vmax;
 }
 .readmore-content {
   font-family: "S-CoreDream4";
@@ -90,6 +91,11 @@ export default {
   }
   .readmore-padding {
     margin-top: 5%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .q-card__section {
+    padding: 10px;
   }
 }
 </style>

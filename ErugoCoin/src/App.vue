@@ -140,4 +140,7 @@ input,
 button {
   vertical-align: bottom;
 }
+.q-img {
+  overflow: none !important;
+}
 </style>

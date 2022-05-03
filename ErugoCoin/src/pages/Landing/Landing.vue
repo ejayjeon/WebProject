@@ -53,13 +53,35 @@ video {
   top: 25%;
   width: 100%;
   text-align: center;
-  font-size: 1.8vw;
+  font-size: 1.8vmax;
   p {
     padding: 20px 0;
   }
 }
 .landingFoot {
   bottom: 5%;
+  text-align: center;
+  width: 100%;
   font-size: 0.8vw;
+}
+@media screen and (max-width: 770px) {
+  .landingTxt {
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    font-size: 2vmax;
+    p {
+      padding: 1vmin 0;
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .landingTxt {
+    width: 80%;
+    font-size: 2.5vmax;
+    p {
+      padding: 0.5vmin 0;
+    }
+  }
 }
 </style>

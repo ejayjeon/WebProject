@@ -128,4 +128,9 @@ html {
     }
   }
 }
+@media screen and (max-width: 780px) {
+  .g-cursor {
+    display: none;
+  }
+}
 </style>

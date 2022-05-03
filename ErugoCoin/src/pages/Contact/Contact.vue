@@ -344,21 +344,41 @@ table td > address {
 }
 
 @media all and (max-width: 420px) {
+  .contact {
+    width: 90%;
+    height: 100%;
+    margin: 5% auto;
+  }
   .contact-title {
     font-size: 6vmax;
+    margin-top: 15%;
     margin-bottom: 7%;
   }
   .contact-txt {
-    font-size: 1.7vmax;
+    font-size: 2vmax;
     line-height: 4vmax;
     margin: 0;
   }
   .link > p {
-    font-size: 1.3vmax;
+    font-size: 1.5vmax;
+  }
+  .info-box {
+    height: 35vmax;
+  }
+  table {
+    width: 90%;
+    font-size: 2vmax;
+  }
+  table th {
+    width: 20%;
+    font-size: 1.8vmax;
+  }
+  table tr {
+    height: 5vmax;
   }
   .foot-title {
     margin-bottom: 5%;
-    font-size: 4.5vmin;
+    font-size: 2.5vmax;
   }
 }
 </style>

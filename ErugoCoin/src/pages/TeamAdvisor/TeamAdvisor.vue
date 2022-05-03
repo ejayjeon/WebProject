@@ -15,107 +15,193 @@
         next-icon="img:assets/images/team_btn_01.png"
         class="team-carousel"
       >
-        <q-carousel-slide
-          :name="1"
-          class="teamadvisor-carousel teamadvisor-card"
-        >
-          <div class="row fit no-wrap">
-            <q-img
-              v-for="(q, i) in 3"
-              :key="i"
-              :class="`rounded-borders full-height front${i + 1}`"
-              :src="`assets/images/team0${i + 1}.png`"
-              @mouseover="flipCardFun(i + 1)"
-              @mouseleave="flipCardBack(i + 1)"
-            >
+        <q-carousel-slide :name="1" class="teamadvisor-carousel">
+          <div
+            class="team-card"
+            v-for="(t, i) in 3"
+            :key="i"
+            :id="`team-card${i + 1}`"
+          >
+            <div class="front">
               <img
-                src="assets/images/team-arrow-01.png"
-                class="teamadvisor-arrow"
-                :id="`arrowBtn${i + 1}`"
+                :src="`assets/images/team0${i + 1}.png`"
+                alt="team name"
+                style="width: 90%"
               />
               <h4 class="title">{{ card[i].title }}</h4>
-              <h6 class="content">{{ card[i].name }}</h6>
-              <!-- v-show -->
-              <div :class="`row fit no-wrap toggleBack${i + 1}`">
-                <q-img
-                  :class="`rounded-borders full-height back${i + 1}`"
-                  src="assets/images/team07.png"
-                  v-show="flipCard"
-                >
-                  <h6 class="content2">
-                    <h6 class="cardtitle">
-                      {{ card[i].title }} <br />
-                      <h6 class="cardtitle2">{{ card[i].name }} <br /></h6>
-                    </h6>
-                    {{ card[i].content }}
-                  </h6>
-                  <img
-                    src="assets/images/teamadvisor-back.png"
-                    class="teamadvisor-arrow hide"
-                    :id="`arrowBtn${i + 1}`"
-                    @click="flipCardFun(i + 1)"
-                  />
-                </q-img>
+              <p class="content">{{ card[i].name }}</p>
+              <button class="teamadvisor-arrow" @click="flipCardFun(i + 1)">
+                <img
+                  src="assets/images/team-arrow-01.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
+            <div class="back">
+              <img
+                src="assets/images/team07.png"
+                alt="team content"
+                style="width: 90%"
+              />
+              <div class="content-text">
+                <div class="cardtitle">
+                  {{ card[i].title }} <br />
+                  <p class="cardtitle2">{{ card[i].name }} <br /></p>
+                </div>
+                {{ card[i].content }}
               </div>
-              <!-- v-show -->
-            </q-img>
+              <button class="teamadvisor-arrow" @click="flipCardBack(i + 1)">
+                <img
+                  src="assets/images/teamadvisor-back.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
           </div>
         </q-carousel-slide>
 
         <!-- 두번쨰 -->
         <q-carousel-slide :name="2" class="teamadvisor-carousel">
-          <div class="row fit no-wrap">
-            <q-img
-              v-for="(q, i) in 3"
-              :key="i"
-              :class="`rounded-borders full-height front${i + 4}`"
-              :src="`assets/images/team0${i + 4}.png`"
-              @mouseover="flipCardFun(i + 4)"
-              @mouseleave="flipCardBack(i + 4)"
-            >
+          <div
+            class="team-card"
+            v-for="(t, i) in 3"
+            :key="i"
+            :id="`team-card${i + 4}`"
+          >
+            <div class="front">
               <img
-                src="assets/images/team-arrow-01.png"
-                class="teamadvisor-arrow"
+                :src="`assets/images/team0${i + 4}.png`"
+                alt="team name"
+                style="width: 90%"
               />
               <h4 class="title">{{ card[i + 3].title }}</h4>
-              <h6 class="content">{{ card[i + 3].name }}</h6>
-              <!-- v-show -->
-              <div :class="`row fit no-wrap toggleBack${i + 4}`">
-                <q-img
-                  :class="`rounded-borders full-height  back${i + 4}`"
-                  src="assets/images/team07.png"
-                  v-show="flipCard"
-                >
-                  <h6 class="content2">
-                    <h6 class="cardtitle">
-                      {{ card[i + 3].title }} <br />
-                      <h6 class="cardtitle2">{{ card[i + 3].name }} <br /></h6>
-                    </h6>
-                    {{ card[i + 3].content }}
-                  </h6>
-                  <img
-                    src="assets/images/teamadvisor-back.png"
-                    class="teamadvisor-arrow hide"
-                    @click="flipCardFun(i + 4)"
-                  />
-                </q-img>
+              <p class="content">{{ card[i + 3].name }}</p>
+              <button class="teamadvisor-arrow" @click="flipCardFun(i + 4)">
+                <img
+                  src="assets/images/team-arrow-01.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
+            <div class="back">
+              <img
+                src="assets/images/team07.png"
+                alt="team content"
+                style="width: 90%"
+              />
+              <div class="content-text">
+                <div class="cardtitle">
+                  {{ card[i + 3].title }} <br />
+                  <p class="cardtitle2">{{ card[i + 3].name }} <br /></p>
+                </div>
+                {{ card[i + 3].content }}
               </div>
-              <!-- v-show -->
-            </q-img>
+              <button class="teamadvisor-arrow" @click="flipCardBack(i + 4)">
+                <img
+                  src="assets/images/teamadvisor-back.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
           </div>
         </q-carousel-slide>
       </q-carousel>
+      <!-- 웹 사이즈 -->
+
+      <!-- 모바일 -->
+      <q-carousel
+        v-model="slide2"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        swipeable
+        animated
+        arrows
+        infinite
+        prev-icon="img:assets/images/team_btn_02.png"
+        next-icon="img:assets/images/team_btn_01.png"
+        class="team-carousel2"
+      >
+        <q-carousel-slide
+          v-for="(t, i) in card"
+          :key="i"
+          :name="i"
+          class="teamadvisor-carousel-mobile"
+        >
+          <div class="team-card" :id="`teamcard${i + 1}`">
+            <div class="front">
+              <img
+                :src="`assets/images/team0${i + 1}.png`"
+                alt="team name"
+                style="width: 100%"
+              />
+              <h4 class="title">{{ t.title }}</h4>
+              <p class="content">{{ t.name }}</p>
+              <button class="teamadvisor-arrow" @click="flipCardFun2(i + 1)">
+                <img
+                  src="assets/images/team-arrow-01.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
+            <div class="back">
+              <img
+                src="assets/images/team07.png"
+                alt="team content"
+                style="width: 100%"
+              />
+              <div class="content-text">
+                <div class="cardtitle">
+                  {{ t.title }} <br />
+                  <p class="cardtitle2">{{ t.name }} <br /></p>
+                </div>
+                {{ t.content }}
+              </div>
+              <button class="teamadvisor-arrow" @click="flipCardBack2(i + 1)">
+                <img
+                  src="assets/images/teamadvisor-back.png"
+                  style="width: 100%"
+                />
+              </button>
+            </div>
+          </div>
+        </q-carousel-slide>
+      </q-carousel>
+
       <div class="teamadvisor-title">ADVISOR</div>
       <div class="advisor">
-        <img src="assets/images/advisor_01.png" />
-        <img src="assets/images/advisor_02.png" />
-        <img src="assets/images/advisor_03.png" />
+        <img
+          class="advisor1"
+          src="assets/images/advisor_01.png"
+          alt="Law firm ‘Jaewon’"
+        />
+        <img
+          class="advisor2"
+          src="assets/images/advisor_02.png"
+          alt="Law firm ‘Wins’"
+        />
+        <img
+          class="advisor3"
+          src="assets/images/advisor_03.png"
+          alt="Tax corporation ‘Dasol’"
+        />
       </div>
       <div class="teamadvisor-title">PARTNER</div>
       <div class="partner">
-        <img src="assets/images/partner_01.png" />
-        <img src="assets/images/partner_02.png" />
-        <img src="assets/images/partner_03.png" />
+        <img
+          class="partner1"
+          src="assets/images/partner_01.png"
+          alt="erugo asset management"
+        />
+        <img
+          class="partner2"
+          src="assets/images/partner_02.png"
+          alt="haechi labs"
+        />
+        <img
+          class="partner3"
+          src="assets/images/partner_03.png"
+          alt="infillinge"
+        />
       </div>
       <PageController />
     </q-layout>
@@ -124,10 +210,9 @@
 <script>
 import Header from "../../components/Header/Header.vue";
 import PageController from "../../components/PageController/PageController.vue";
-import TACard from "../../components/TACard/TACard.vue";
 import { ref } from "vue";
 export default {
-  components: { Header, PageController, TACard },
+  components: { Header, PageController },
   data() {
     return {
       card: [
@@ -135,8 +220,8 @@ export default {
           key: "ceo",
           title: "CEO",
           name: "Jung su Kim",
-          content:
-            "I started my career at a law firm and grew my career at an asset management firm. When I worked for a law firm, I was interested in IT business while developing web software to optimize my work. I learned how money moves while working for an asset management company. These two thing naturally served as an opportunity for me to participate in the cryptocurrency business. I am currently leading the development of metaverse 'ErugoWorld' suitable for Web 3.0. I believe I am the most reasonable in this job.",
+          content: `I started my career at a law firm and grew my career at an 
+          asset management firm. When I worked for a law firm, I was interested in IT business while developing web software to optimize my work. I learned how money moves while working for an asset management company. These two thing naturally served as an opportunity for me to participate in the cryptocurrency business. I am currently leading the development of metaverse 'ErugoWorld' suitable for Web 3.0. I believe I am the most reasonable in this job.`,
         },
         {
           key: "techadvisor",
@@ -177,24 +262,30 @@ export default {
   },
   methods: {
     flipCardFun(e) {
-      var front = document.querySelector(`.front${e}`);
-      //var back = document.querySelector(`.back${e}`);
-      var toggleBack = document.querySelector(`.toggleBack${e}`);
-      front.classList.toggle("toggleCard");
-      console.log(front);
-      toggleBack.classList.toggle("toggleCard");
+      var card = document.querySelector(`#team-card${e}`);
+      console.log(card);
+      card.classList.add("cardRotate");
+      card.classList.remove("backRotate");
     },
     flipCardBack(e) {
-      var front = document.querySelector(`.front${e}`);
-      var back = document.querySelector(`.back${e}`);
+      var card = document.querySelector(`#team-card${e}`);
 
-      console.log(back);
-      var toggleBack = document.querySelector(`.toggleBack${e}`);
+      card.classList.add("backRotate");
+      card.classList.remove("cardRotate");
+      console.log(card.id);
+    },
+    flipCardFun2(e) {
+      var card = document.querySelector(`#teamcard${e}`);
+      console.log(card);
+      card.classList.add("cardRotate");
+      card.classList.remove("backRotate");
+    },
+    flipCardBack2(e) {
+      var card = document.querySelector(`#teamcard${e}`);
 
-      front.classList.remove("toggleBack");
-      toggleBack.classList.add("toggleBack");
-      back.removeAttribute("style");
-      back.classList.toggle("toggleCard");
+      card.classList.add("backRotate");
+      card.classList.remove("cardRotate");
+      console.log(card.id);
     },
   },
   setup() {
@@ -202,30 +293,33 @@ export default {
     return {
       flipCard,
       slide: ref(1),
+      slide2: ref(0),
     };
   },
   mounted() {},
 };
 </script>
 <style lang="scss" scope>
+h1,
+h2,
+h3,
+h4,
+* {
+  line-height: 1;
+}
 .teamadvisor {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
-.team-carousel {
+.team-carousel,
+.team-carousel2 {
   width: 90%;
   margin: 0 auto;
-  height: 33vw;
-  img {
-    padding: 7%;
-  }
+  height: 30vmax;
 }
-.q-carousel__arrow .q-icon img {
-  width: 4vw;
-  height: 4vw;
-}
+
 .teamadvisor-title {
   font-family: "S-CoreDream9";
   font-size: 6vmax;
@@ -235,17 +329,83 @@ export default {
 }
 .teamadvisor-carousel {
   overflow: hidden;
-  div {
+  display: flex;
+}
+.teamadvisor-carousel-mobile,
+.team-carousel2 {
+  display: none;
+}
+.team-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  .teamadvisor-arrow {
+    width: 15%;
+    z-index: 10;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+  .front {
+    position: absolute;
     text-align: center;
+  }
+  .back {
+    position: absolute;
+    transform: rotateY(90deg);
+    .teamadvisor-arrow {
+      right: 15%;
+    }
+  }
+}
+.cardRotate .front {
+  opacity: 1;
+  animation: rotateAni 0.5s 1;
+  transform: rotateY(90deg);
+}
+
+.cardRotate .back {
+  opacity: 1;
+  animation: rotateAni2 0.5s 0.5s backwards;
+  transform: rotateY(0);
+}
+
+.backRotate .front {
+  opacity: 1;
+  animation: rotateAni2 0.5s 0.5s backwards;
+  transform: rotateY(0);
+}
+
+.backRotate .back {
+  opacity: 1;
+  animation: rotateAni 0.5s 1;
+  transform: rotateY(90deg);
+}
+
+@keyframes rotateAni {
+  0% {
+    transform: rotateY(0);
+  }
+
+  100% {
+    transform: rotateY(90deg);
   }
 }
 
-.teamadvisor-arrow {
-  width: 28%;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  cursor: pointer;
+@keyframes rotateAni2 {
+  0% {
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    transform: rotateY(0);
+  }
 }
 .q-panel > div {
   width: 85%;
@@ -256,39 +416,47 @@ export default {
   object-fit: contain;
 }
 .title,
-.content,
-.content2 {
+.content {
   position: absolute;
-  font-family: "S-coreDream7";
-  font-size: 2vw;
   width: 80%;
   left: 50%;
   top: 65%;
   transform: translate(-50%, -40%);
-  line-height: 2vw;
+}
+.title {
+  font-family: "S-coreDream7";
+  font-size: 2vmax;
 }
 .content {
-  font-size: 1.5vw;
-  top: 72%;
+  font-size: 1vmax;
+  top: 75%;
+  font-family: "S-coreDream4";
 }
-.content2 {
+.content-text {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 45%;
+  transform: translateX(-50%);
+  top: 10%;
+  font-size: 0.7vmax;
   font-family: "S-coreDream4";
   color: #707070;
-  text-align: left;
-  align-items: flex-start;
-  font-size: 0.8vw;
-  top: 40%;
-  line-height: 1.89;
-
+  text-align: start !important;
+  line-height: 2;
   .cardtitle {
-    font-family: "S-coreDream7";
     color: #000;
-    padding-bottom: 10%;
+    font-family: "S-coreDream7";
+    font-size: 1vmax;
+    line-height: 1.5;
     .cardtitle2 {
       font-family: "S-coreDream4";
-      font-size: 1vw;
+      font-size: 0.8vmax;
     }
   }
+}
+.q-carousel__arrow .q-icon {
+  font-size: 4vmax;
 }
 .q-carousel__slide {
   padding: 0;
@@ -311,29 +479,17 @@ export default {
     width: 25vw;
   }
 }
-.toggleCard {
-  visibility: collapse;
+.partner {
+  padding-bottom: 10%;
 }
-.toggleBack {
-  visibility: visible;
-}
-.hide {
-  visibility: visible;
-}
-@for $i from 1 to 7 {
-  // .front#{$i}:hover {
-  //   visibility: collapse;
-  // }
-  // .toggleBack {
-  //   background: #000;
-  // }
-
-  // #teamadvisor-img#{$i}:after {
-  //   content: "";
-  //   // background: url("./images/team07.png") no-repeat center;
-  //   background-size: contain;
-  //   background: #000;
-  // }
+.advisor1:hover,
+.advisor2:hover,
+.advisor3:hover,
+.partner1:hover,
+.partner2:hover,
+.partner3:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
 }
 
 @media all and (max-width: 1024px) {
@@ -346,25 +502,91 @@ export default {
       width: 30vw;
     }
   }
+  .title {
+    font-size: 1.5vmax;
+  }
+  .content-text {
+    line-height: 1;
+    .cardtitle {
+      font-size: 1vmax;
+      line-height: 1.5;
+      .cardtitle2 {
+        font-family: "S-coreDream4";
+      }
+    }
+  }
+}
+@media all and (max-width: 780px) {
+  .content-text {
+    width: 75%;
+    height: 85%;
+    left: 42%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 1.2vmax;
+    line-height: 1.2;
+    .cardtitle {
+      line-height: 1;
+    }
+  }
 }
 @media all and (max-width: 420px) {
+  .teamadvisor-carousel,
+  .team-carousel {
+    display: none;
+  }
+  .teamadvisor-carousel-mobile,
+  .team-carousel2 {
+    display: block;
+    height: 45vmax;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .q-carousel__prev-arrow--horizontal {
+    left: 0;
+  }
+  .q-carousel__next-arrow--horizontal {
+    right: 0;
+  }
   .teamadvisor-title {
     font-size: 4vmax;
     margin-top: 15%;
   }
+  .teamadvisor-title:first-child {
+    margin-top: 25%;
+  }
   .title {
-    width: 80%;
-    font-size: 1.7vw;
-    line-height: 3vw;
-    font-family: "S-coreDream6";
+    font-size: 3vmax;
   }
   .content {
-    font-size: 1.2vw;
-    font-family: "S-coreDream4";
+    font-size: 1.7vmax;
+  }
+  .content-text {
+    width: 90%;
+    height: 85%;
+    left: 50%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 1.8vmax;
+    line-height: 1.2;
+    .cardtitle {
+      line-height: 1.5;
+      font-size: 2vmax;
+      .cardtitle2 {
+        font-size: 1.8vmax;
+      }
+    }
+  }
+  .team-card .back .teamadvisor-arrow {
+    right: 10%;
+  }
+  .q-carousel__arrow .q-icon {
+    font-size: 1vmin;
   }
   .q-carousel__arrow .q-icon img {
-    width: 5vw;
-    height: 5vw;
+    width: 5vmax;
+    height: 5vmax;
   }
 }
 </style>

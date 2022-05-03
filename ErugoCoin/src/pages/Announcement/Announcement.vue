@@ -1,84 +1,38 @@
 <template>
-  <div>
+  <div id="app">
     <Header />
-    <q-layout class="announcement">
-      <div class="announcement-title">ANNOUNCEMENT</div>
-      <div class="q-pa-md announcement-table">
-        <!-- 테이블 -->
-        <table class="table" style="border-collapse: collapse">
-          <thead>
-            <tr style="width: 10%; height: 5vmax; font-size: 1.2vmax">
-              <th>NO</th>
-
-              <th>Notice</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody v-for="(a, i) in 3" :key="i">
-            <tr
-              data-toggle="collapse"
-              :data-target="`#tr${i + 1}`"
-              class="accordion-toggle"
-            >
-              <td>{{ i }}</td>
-
-              <td>{{ announcement[0].notice }}</td>
-              <td>{{ announcement[0].date }}</td>
-            </tr>
-            <tr>
-              <td colspan="6" class="hiddenRow">
-                <div class="accordian-body collapse" :id="`tr${i + 1}`">
-                  {{ announcement[0].content }}
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- <q-table
-          :rows="rows"
-          :columns="columns"
-          row-key="name"
-          card-class="bg-transparent"
-          v-model:pagination="pagination"
-          hide-pagination
-          binary-state-sort
-          flat
-          @click="modal = !modal"
-        >
-        </q-table>
-
-
-        <q-card class="modal-card" v-show="modal">
-          <q-card-section style="display: flex">
-            <q-card-actions class="modal-card-header">
-              <q-btn
-                flat
-                label="뒤로가기"
-                color="secondary"
-                v-close-popup
-                @click="modal = !modal"
-              />
-            </q-card-actions>
-            <div class="text-h6" style="width: 90%; text-align: center">
-              {{ rows[0].notice }}
+    <q-layout class="container announcement">
+      <div id="media-list">
+        <div class="announcement-title">Announcement</div>
+        <ul>
+          <li>
+            <div class="announcement-list title row text-right">
+              <span class="col-1" style="text-align: left">NO</span>
+              <span class="col-9" style="text-align: center">Notice</span>
+              <span class="col-2">Date</span>
             </div>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-section style="max-height: 30vh" class="scroll">
-            <p v-for="n in 15" :key="n">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis
-              perferendis totam, ea at omnis vel numquam exercitationem aut,
-              natus minima, porro labore.
-            </p>
-          </q-card-section>
-
-          <q-separator />
-        </q-card> -->
-
+          </li>
+          <li
+            v-show="type === '' || type === a.type"
+            v-for="(a, i) in announcement"
+            :key="i"
+            v-on:click="toggleDetail(a)"
+          >
+            <div class="announcement-list row text-right">
+              <span class="col-1 font-bold" style="text-align: left">{{
+                i + 1
+              }}</span>
+              <span class="col-9" style="text-align: center">{{
+                a.title
+              }}</span>
+              <span class="col-2 font-bold">{{ a.date }}</span>
+            </div>
+            <div v-show="a.showDetail" class="announcement-detail">
+              <!-- <p v-html="summaryFun(i)"></p> -->
+              <p style="white-space: pre-line">{{ announcement[i].summary }}</p>
+            </div>
+          </li>
+        </ul>
         <div class="row q-pa-md flex flex-center">
           <q-pagination
             class="announcement_page"
@@ -86,7 +40,7 @@
             color="grey-6"
             active-color="black"
             :max="pagesNumber"
-            size="1.5vmax"
+            size="2vmin"
             direction-links
             flat
             padding="1vmax"
@@ -99,6 +53,7 @@
     </q-layout>
   </div>
 </template>
+
 <script>
 import Header from "../../components/Header/Header.vue";
 import PageController from "../../components/PageController/PageController.vue";
@@ -125,7 +80,6 @@ const columns = [
     required: true,
     style: "font-size: 1.2vmax",
   },
-
   {
     name: "Date",
     label: "Date",
@@ -136,7 +90,6 @@ const columns = [
     style: "width: 10%; font-size: 1.2vmax;",
   },
 ];
-
 const rows = [
   {
     no: 1,
@@ -153,69 +106,106 @@ const rows = [
     notice: "I'm a really great person.3",
     date: date,
   },
-  {
-    no: 4,
-    notice: "I'm a really great person.4",
-    date: date,
-  },
-  {
-    no: 5,
-    notice: "I'm a really great person.5",
-    date: date,
-  },
-  {
-    no: 6,
-    notice: "I'm a really great person.6",
-    date: date,
-  },
-  {
-    no: 7,
-    notice: "I'm a really great person.7",
-    date: date,
-  },
-  {
-    no: 8,
-    notice: "I'm a really great person.",
-    date: date,
-  },
-  {
-    no: 9,
-    notice: "I'm a really great person.",
-    date: date,
-  },
-  {
-    no: 10,
-    notice: "I'm a really great person.",
-    date: date,
-  },
-  {
-    no: 11,
-    notice: "I'm a really great person.",
-    date: date,
-  },
 ];
+console.log(now);
 export default {
+  components: { Header, PageController },
   data() {
     return {
+      type: "",
       announcement: [
         {
-          notice: "I'm a really greate person",
-          date: date,
-          content:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, corporis veritatis. Minus sed iste ipsam vel eius placeat fugiat perferendis ullam sapiente. Aliquam optio qui quia ut nesciunt perspiciatis sint tenetur minus accusamus consequatur. Placeat vitae, et iusto animi debitis maxime dolore deleniti beatae laboriosam, dicta harum voluptate ullam quibusdam perspiciatis corrupti autem minus! Est itaque reprehenderit, voluptas odit magnam suscipit cumque? Excepturi consequuntur quia inventore voluptas aliquam deleniti? Error, provident. Placeat harum saepe quis pariatur! Aliquid repudiandae autem libero quaerat, harum, vel ex omnis unde nisi ad assumenda deleniti placeat consequatur recusandae impedit quis ratione distinctio ipsa. Excepturi, autem.",
+          title:
+            "[Notice] Erugo World Coin (EWC) listed in Coin Market Cap (CMC), Cryptocurrency site",
+          date: "2022.01.27",
+          summary:
+            "Erugo World Coin (EWC) was listed on Coin Market Cap (CMC), the world's largest cryptocurrency information site, on January 27, 2022. \n Coin Market Cap (CMC) is a website that provides trading volume, white papers, and rankings of the world's largest cryptocurrency and cryptocurrency exchanges established in 2013. It is currently the most reliable cryptocurrency site. \n ERUGO INC CEO Kim Jung-soo said “I am happy to be able to give more trust and faith to everyone who accompanies the EWC by registering it on a trusted cryptocurrency site.” Also, he said “I will continue to deliver better news through continuous updates and project announcements” too.",
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on Bittrex Global",
+          date: "2022.01.19",
+          summary: `Erugo World Coin will be listed on Bittrex Global at 07:00 on January 20, 2022(KST). As a result, you will be able to create a wallet for transactions from 07:00 on January 19th(KST). \n Bittrex is an American cryptocurrency exchange that opened on February 28, 2014, and has considerable public confidence. \n Bittrex is one of Forbes' top 10 cryptocurrency exchanges in the world. In 2019, they entered the European cryptocurrency market by establishing Bittrex Global in Lichtenstein. \n Kim Jung-soo, CEO of Erugo INC, said Erugo World Coin chose Bittrex as its first listed exchange in 2022. As stated in the roadmap, we will continue to be listed so that the base of Erugo World Coin can be expanded. \n In the future, we, Erugo World Coin, will continue to create a reasonable value for Erugo World Coin through a continuous base expansion strategy.`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] Erugo World Coin staking policy change.",
+          date: "2022.01.18",
+          summary: `Hello, this is the official blog of Erugo World Coin. \n The EWC Staking Option will change from 00:00 on January 20, 2022(KST) \n The 'three-month option' disappears from the existing EWC Staking Option, and the overall interest rate is lowered. The minimum quantity of the EWC Staking Option also changes. \n Existing users and those who applied by 24:00 on January 19, 2022 will be subject to the existing EWC Staking Option. \n ■ Existing \n 12 months = 12% / year \n 9 months = 9% / year \n 6 months = 6% / year \n 3 months = 3% / year \n ■ New 12 months = 6% / year (0.5% / month) \n 9 months = 4.5% / year (0.325% / month) \n 6 months = 3% / year (0.25% / month) \n 3 months = Cancelled \n The minimum deposit start at 5,000`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on LBank.",
+          date: "2022.03.25",
+          summary: `Hello, this is "Erugo World Coin". \n 
+          Erugo World Coin (EWC) will be listed on L Bank on March 29, 2022 at 5:00 PM. \n Deposit time: 28th Mar 5pm (KST) \n Trading start: 29th Mar 5pm (KST) \n 
+          Withdrawal time: 30th Mar 5pm (KST) \n L Bank is a global exchange in Singapore established in October 2017. As of May 2019, it is a large global exchange that ranks 16th in the ‘Adjusted Volume’ chart and 20th in the ‘Reported Volume’ chart. \n
+          In the future, we, Erugo World Coin, will continue to create a reasonable value for Erugo World Coin through a continuous base expansion strategy. \n thank you.\n`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on Coinsbit",
+          date: "2022.03.25",
+          summary: `Hello, this is "Erugo World Coin". \n
+          Erugo World Coin (EWC) will be listed on Coinsbit on March 29, 2022 at 5:00 PM. \n
+          Deposit time: 29th Mar 6pm (KST) \nTrading start: 29th Mar 6pm (KST) \nWithdrawal time: 29th Mar 6pm (KST) \n
+          Coinsbit is a global exchange established in 2018 and provides 24/7 multilingual services. Coinsbit currently supports services in over 38 countries. \n We would like to thank those who have been waiting for the news of EWC for a long time, and we will continue to develop and ourselves to it. \n
+          thank you. \n`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on Azbit",
+          date: "2022.03.25",
+          summary: `Hello, this is "Erugo World Coin". \n
+          Erugo World Coin (EWC) will be listed on Azbit on March 31, 2022 at 3:00 AM(KST). \n
+          Deposit time: 31th Mar 3am (KST) \nTrading start: 31th Mar 3am (KST) \nWithdrawal time: 31th Mar 3am (KST) \n
+          Azbit is an exchange that opened in December 2019 and has grown to be one of the top 50 exchanges in the world. It provides a variety of services such as spot trading, staking, and OTC. \nGoing forward, we will continue to expand our Erugo World Coin according to the public roadmap.\n
+          thank you.\n`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on Okx.",
+          date: "2022.04.08",
+          summary: `Hello, this is "Erugo World Coin". \n
+          Erugo World Coin (EWC) will be listed on Okx on April 11, 2022 at 19:00 PM(KST). \n
+          Okx is a cryptocurrency exchange founded in June 2014 in Beijing, China, and is currently based in Hong Kong. \n
+          It is ranked 5th in the exchange ranking based on ‘Daily trading volume (24h)’ as of April 2022, and is a large global exchange that can respond to ‘travel rules’, which are currently an issue in Korea. \n
+          In the future, we will continue to work hard to provide improved convenience to our holders.\n
+          thank you.`,
+          type: "nonfiction",
+        },
+        {
+          title: "[Notice] ErugoWorldCoin will be list on Mexc.",
+          date: "2022.04.25",
+          summary: `Hello, this is "Erugo World Coin". \n
+          Erugo World Coin (EWC) will be listed on Mexc on April 26, 2022 at 12:00 PM(KST). \n
+          EWC Listing Schedule \n
+          Deposit: 18:00, April 25 (KST) \nAnnouncement: 18:00, April 25 (KST) \nListing: 12:00, April 26 (KST) \n 
+          Launched in April 2018, MEXC is a centralized cryptocurrency exchange registered in Seychelles. The exchange supports USD, GBP, EUR, AUD and VND deposit and withdrawal. \nIn the future, we will continue to work hard to deliver good news to everyone who is interested in our company. \n
+          thank you.​`,
+          type: "nonfiction",
         },
       ],
     };
   },
-  components: { Header, PageController },
-  mounted() {
-    $(".accordian-body").on("show.bs.collapse", function () {
-      $(this)
-        .closest("table")
-        .find(".collapse.in")
-        .not(this)
-        .collapse("toggle");
-    });
+  methods: {
+    toggleDetail(a) {
+      a.showDetail = !a.showDetail;
+    },
+    filterList() {
+      this.type = event.target.value;
+    },
+  },
+  computed: {
+    uniqueItemsList: function () {
+      var types = [];
+      this.announcement.forEach((item) => {
+        if (!types.includes(item.type)) {
+          types.push(item.type);
+        }
+      });
+      return types;
+    },
   },
   setup() {
     const pagination = ref({
@@ -226,7 +216,6 @@ export default {
     });
     const isTogglePage = ref(false);
     const modal = ref(false);
-
     return {
       pagination,
       columns,
@@ -241,70 +230,82 @@ export default {
 };
 </script>
 <style lang="scss" scope>
-.table tr {
-  cursor: pointer;
+* {
+  padding: 0;
+  margin: 0;
+}
+.q-layout {
+  min-height: 100% !important;
+  padding: 0;
+  margin: 0;
+}
+#app {
+  font-family: "S-CoreDream4";
+  text-align: center;
+  margin: 3vmax auto;
 }
 .announcement {
   width: 100%;
-  height: 100%;
   position: absolute;
-  background: url("images/announcement_bg.png") 100% 100% no-repeat;
-  animation: gradient 4s ease-in-out infinite;
+  top: 0;
+  background: url("images/announcement_bg.png") no-repeat;
+  background-size: 200% 200%;
+  animation: gradient 5s ease-in-out infinite;
 }
 .announcement-title {
   font-family: "S-CoreDream9";
-  font-size: 6vmax;
+  font-size: 5vmax;
   margin: 10% auto;
   margin-bottom: 3%;
   text-align: center;
 }
-.q-table th {
-  font-size: 1.4vw;
-  border-bottom: 5px solid grey;
-  padding-bottom: 0.5%;
+.title > span {
+  font-family: "S-CoreDream5";
+  font-size: 1vmax;
+}
+.announcement-list,
+.announcement-detail {
+  position: relative;
+  font-size: 1vmax;
+  border-bottom: 1px solid grey;
+  width: 70%;
+  margin: 0 auto;
+  font-family: "S-CoreDream5";
+}
+.announcement-list {
+  padding: 1.5% 0;
+}
+.announcement-detail {
+  font-size: 1.5vmin;
+  font-family: "S-CoreDream4";
+  line-height: 1.5;
+  padding: 2% 0;
+  p {
+    margin: 0;
+  }
+}
+.font-bold {
+  font-family: "S-CoreDream7";
+}
+ul > li:first-child {
   position: relative;
 }
-.q-table th.sortable {
-  padding: 2vw;
-}
-.q-table th::after {
+ul > li:first-child::before {
   content: "";
   display: block;
   position: absolute;
-  left: 0;
-  bottom: -8%;
-  width: 100%;
+  width: 70%;
   border-bottom: 3px solid #6b6b6b;
-  margin-bottom: 1vw;
-}
-.q-icon > img {
-  position: absolute;
-  width: 5vmin;
-  height: 5vmin;
-}
-.announcement-table {
-  position: relative;
-  margin: 1% 10%;
-}
-.announcement_page {
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 5%;
 }
-.modal-card {
-  width: 100%;
-  max-width: 80vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  align-items: center;
-  background-color: rgba(255, 255, 255);
-  .modal-card-header {
-    width: 10%;
-    text-align: center;
-    padding: 0;
-  }
+li {
+  border: none;
+  text-align: left;
+}
+.announcement_page {
+  margin-right: 5%;
 }
 @keyframes gradient {
   0% {
@@ -322,39 +323,45 @@ export default {
     font-size: 5vmax;
     margin-top: 10%;
   }
-  .q-table {
-    tbody tr {
-      height: 10vmax;
-    }
-    th {
-      font-size: 3vmin;
-    }
-    td::after {
-      font-size: 5vmin;
-    }
+  .announcement-list,
+  .announcement-detail {
+    font-size: 1vmax;
+    width: 85%;
   }
-  .announcement-table {
-    margin: 1% 5%;
+  ul > li:first-child::before {
+    width: 85%;
   }
-  .announcement_page {
-    bottom: -10%;
+  .announcement-list {
+    padding: 2% 0;
   }
   @media screen and (max-width: 768px) {
     .announcement-title {
       font-size: 4vmax;
       margin-top: 20%;
     }
-    .announcement-table {
-      margin: 10% 2%;
-    }
-    .announcement_page {
-      bottom: 0;
+    .announcement-list {
+      padding: 3% 0;
     }
   }
   @media screen and (max-width: 440px) {
     .announcement-title {
-      font-size: 3vmax;
+      font-size: 4vmax;
       margin-top: 20%;
+    }
+    .title > span {
+      font-size: 1.7vmax;
+    }
+    .announcement-list,
+    .announcement-detail {
+      font-size: 1vmax;
+      width: 90%;
+    }
+    #media-list > ul {
+      margin-top: 10%;
+      margin-bottom: 5%;
+    }
+    ul > li:first-child::before {
+      width: 90%;
     }
   }
 }

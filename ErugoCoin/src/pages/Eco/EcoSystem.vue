@@ -97,10 +97,11 @@ export default {
 }
 @media screen and (max-width: 500px) {
   .eco-content {
-    width: 75%;
+    width: 90%;
   }
   .eco-content {
     line-height: 2.3rem;
+    font-size: 2.2vmax;
   }
   .eco-title {
     font-size: 5.5vmax;

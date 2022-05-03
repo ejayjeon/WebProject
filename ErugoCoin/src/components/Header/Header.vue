@@ -6,8 +6,8 @@
         <div class="btnWrapper">
           <!-- back 버튼 -->
           <div class="webMenu">
-            <div @click="$router.back()">BACK</div>
-            <div @click="dialog = true">MENU</div>
+            <div class="menu-btn" @click="$router.back()">BACK</div>
+            <div class="menu-btn" @click="dialog = true">MENU</div>
           </div>
         </div>
         <!-- 화면 전체 메뉴 dialog -->
@@ -123,10 +123,8 @@ export default {
 .headBar {
   background-color: rgba($color: #fff, $alpha: 0.6);
   width: 100%;
+  height: 5vmax;
   position: fixed;
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
   padding: 0.5% 0;
   z-index: 100;
   top: 0;
@@ -134,16 +132,21 @@ export default {
 }
 .logo,
 .btnWrapper {
-  line-height: 3vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .logo {
+  left: 5%;
   background: url("mainLogo.png") no-repeat center;
   background-position: left;
   background-size: contain;
-  width: 70%;
+  width: 100%;
+  height: 50%;
   text-indent: -99999999999999px;
 }
 .btnWrapper {
+  right: 5%;
   font-size: 1vw;
 }
 .menuLink {
@@ -175,7 +178,7 @@ export default {
   text-align: center;
   font-family: "S-CoreDream8";
 }
-.webMenu > div {
+.menu-btn {
   position: relative;
   display: inline-block;
   width: 8vmax;
@@ -199,9 +202,6 @@ export default {
   .logo,
   .btnWrapper {
     line-height: 4vmax;
-  }
-  .headBar {
-    padding: 1% 0;
   }
 }
 @media screen and (max-width: 760px) {

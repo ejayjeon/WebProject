@@ -8,11 +8,13 @@ export default {
   methods: {
     chart() {
       const ctx = document.querySelector("#staking-chart").getContext("2d");
+      const labels = ["6Months", "9Months", "12Months"];
+      const percent = ["0%", "1%", "2%", "3%", "4%", "5%", "6%", "7%"];
       let delayed;
       const stakingChart = new Chart(ctx, {
         type: "line",
         data: {
-          labels: ["6Months", "9Months", "12Months"],
+          labels: labels,
           datasets: [
             {
               label: "Line Chart",
@@ -50,9 +52,6 @@ export default {
         }, // data
         options: {
           responsive: true,
-          // animation: {
-          //   duration: 3000,
-          // },
           animation: {
             onComplete: () => {
               delayed = true;
@@ -70,10 +69,10 @@ export default {
             },
           },
           scales: {
-            x: { display: false, title: { display: false } },
+            x: { display: true },
             y: {
               beginAtZero: true,
-              stacked: true,
+              display: true,
               min: 0,
               max: 7,
             },
