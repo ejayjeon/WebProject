@@ -1,9 +1,11 @@
 <template>
   <div>
     <Header />
-
+    <div v-if="isChecked()" id="popupBg">
+      <Popup imgPath="assets/images/popup-05.jpg" :display="{ display }" />
+    </div>
     <div class="mainBg">
-      <div class="container">
+      <div class="main-container">
         <div class="cardBoxs">
           <div
             class="my-card justify-center menu-card"
@@ -36,7 +38,7 @@
               @mouseleave="leave(mainBox[slide].key)"
               @change="slideNum(slide)"
               :min="0"
-              :max="7"
+              :max="6"
               :step="1"
               thumb-size="2.5vmax"
               track-size="5px"
@@ -46,6 +48,18 @@
               class="slide"
             />
           </div>
+          <!-- <div class="inputLine">
+            <input
+              @mouseover="hover(mainBox[slide].key)"
+              @mouseleave="leave(mainBox[slide].key)"
+              @change="slideNum(slide)"
+              type="range"
+              min="0"
+              max="6"
+              class="slider"
+              v-model="slide"
+            />
+          </div> -->
           <!-- <div class="arrowRight" @click="toRight()">
             <img src="assets/images/rightBtn.png" />
           </div> -->
@@ -58,13 +72,19 @@
 <script>
 import TotalCursor from "@/components/Cursor/TotalCursor.vue";
 import Header from "../../components/Header/Header.vue";
+import Popup from "../../components/Popup/Popup.vue";
 import { ref } from "vue";
 const screenWidth = screen.availWidth;
-const screenHeight = screen.availHeight;
+let cnum = parseInt(localStorage.getItem("popup-close-time"));
+var expiredays = 1;
+var todayDate = new Date();
+var display = todayDate.setDate(todayDate.getDate() + expiredays);
+var popup = document.getElementById("popupBg");
 export default {
   data() {
     return {
-      slide: 3.5,
+      slide: 3,
+      isPopupClose: false,
       mainBox: [
         {
           key: "about",
@@ -96,37 +116,28 @@ export default {
           src: "assets/images/menu05.png",
           src2: "assets/images/05.png",
         },
+        // {
+        //   key: "staking",
+        //   name: "STAKING",
+        //   src: "assets/images/menu06.png",
+        //   src2: "assets/images/06.png",
+        // },
         {
-          key: "staking",
-          name: "STAKING",
+          key: "announcement",
+          name: "ANNOUNCEMENT",
           src: "assets/images/menu06.png",
           src2: "assets/images/06.png",
         },
         {
-          key: "announcement",
-          name: "ANNOUNCEMENT",
-          src: "assets/images/menu07.png",
-          src2: "assets/images/07.png",
-        },
-        {
           key: "contact",
           name: "CONTACT",
-          src: "assets/images/menu08.png",
-          src2: "assets/images/08.png",
+          src: "assets/images/menu07.png",
+          src2: "assets/images/07.png",
         },
       ],
     };
   },
-  // setup() {
-  //   const slide = (e) => {
-  //     var x;
-  //     for (var i = 0; i < 7; i++) {
-  //       x += i;
-  //     }
-  //   };
-  //   return { slide };
-  // },
-  components: { Header, TotalCursor },
+  components: { Header, TotalCursor, Popup },
   methods: {
     hover(e) {
       var name = document.querySelector(`#${e}`);
@@ -146,19 +157,42 @@ export default {
     },
     slideNum(e) {
       var cardBoxs = document.querySelector(".cardBoxs");
-      if (e > 3) {
-        if (screenWidth > 1024) {
-          cardBoxs.style.setProperty("transform", `translateX(-50%)`);
-          cardBoxs.style.setProperty("transition", `1.3s`);
-        }
-      } else if (e < 4) {
+      // var line = document.querySelector(".arrowLine");
+      // var slideDot = document.querySelector(".slide");
+      // var cardWidth = cardBoxs.clientWidth;
+      // var dragWidth = line.clientWidth;
+
+      //console.log(cardWidth);
+
+      if (e == 0) {
         cardBoxs.style.setProperty("transform", `translateX(0%)`);
+      } else if (e > 0 && e < 6) {
+        cardBoxs.style.setProperty("transform", `translateX(-${e * 10}%)`);
+        cardBoxs.style.setProperty("transition", `1.3s`);
+      } else {
+        cardBoxs.style.setProperty("transform", `translateX(-50%)`);
+        cardBoxs.style.setProperty("transition", `1.3s`);
+      }
+    },
+    isChecked() {
+      if (isNaN(cnum)) {
+        return true;
+      } else {
+        return false;
       }
     },
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scope>
+#popupBg {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
 .mainBg {
   width: 100%;
   height: 100vh;
@@ -180,7 +214,7 @@ export default {
   opacity: 0.5;
   z-index: 0;
 }
-.container {
+.main-container {
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
@@ -202,12 +236,12 @@ export default {
 }
 
 .my-card:first-child,
-.my-card:nth-child(5) {
-  margin-left: 1.5%;
+.my-card:first-child {
+  margin-left: 3%;
 }
 .my-card:last-child,
-.my-card:nth-child(4) {
-  margin-right: 1.5%;
+.my-card:last-child {
+  margin-right: 3%;
 }
 .mainTitle {
   position: absolute;
@@ -225,20 +259,21 @@ export default {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -65%;
+  bottom: -70%;
   width: 25%;
   transition: 0.4s;
   img {
     width: 100%;
   }
 }
-.container::after {
+.main-container::after {
   content: "";
   display: block;
   position: absolute;
   width: 100%;
-  bottom: -36%;
-  border-bottom: 2px solid #313131;
+  bottom: -39%;
+  border-bottom: 1.5px solid #313131;
+  opacity: 0.3;
 }
 .arrows {
   width: 50%;
@@ -283,7 +318,7 @@ export default {
     background-size: 200% 200%;
     position: fixed;
   }
-  .container {
+  .main-container {
     top: calc(60px + 3vmax);
     transform: translateY(0);
     overflow: hidden;

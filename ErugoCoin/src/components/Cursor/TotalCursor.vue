@@ -50,13 +50,21 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener("mousemove", this.moveCursor);
-    document.addEventListener("mouseleave", (e) => {
-      this.hideCursor = true;
-    });
-    document.addEventListener("mouseenter", (e) => {
-      this.hideCursor = false;
-    });
+    document.addEventListener("mousemove", this.moveCursor, { passive: true });
+    document.addEventListener(
+      "mouseleave",
+      (e) => {
+        this.hideCursor = true;
+      },
+      { passive: true }
+    );
+    document.addEventListener(
+      "mouseenter",
+      (e) => {
+        this.hideCursor = false;
+      },
+      { passive: true }
+    );
   },
 };
 </script>
@@ -76,7 +84,6 @@ html {
     height: 60px;
     transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
   }
-
   &__circle {
     pointer-events: none;
     user-select: none;
@@ -93,7 +100,6 @@ html {
     backface-visibility: hidden;
     transition: opacity 0.6s ease;
   }
-
   &__point {
     top: -1%;
     left: -0.8%;

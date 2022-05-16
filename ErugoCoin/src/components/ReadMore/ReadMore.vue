@@ -30,7 +30,7 @@
                 : 'assets/images/readmore-down.png'
             "
             @click="expanded = !expanded"
-            class="readmore-btn"
+            :class="expanded ? 'readmore-btn-web' : 'readmore-btn-app'"
           />
         </q-card-actions>
       </q-slide-transition>
@@ -67,7 +67,9 @@ export default {
   font-weight: 700;
   background: transparent;
 }
-
+.q-card__actions.row {
+  flex-direction: column;
+}
 .readmore-title {
   font-family: "S-CoreDream7";
   font-size: 0.9vmax;
@@ -76,26 +78,28 @@ export default {
   font-family: "S-CoreDream4";
 }
 
-.readmore-btn {
+.readmore-btn-web,
+.readmore-btn-app {
+  height: 100%;
   width: 50px;
-  text-align: center;
   cursor: pointer;
-}
-.row {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+}
+.readmore-btn-app {
+  height: 15%;
 }
 @media screen and (max-width: 768px) {
   .readmore-btn {
     width: 40px;
   }
-  .readmore-padding {
-    margin-top: 5%;
-  }
 }
 @media screen and (max-width: 420px) {
   .q-card__section {
     padding: 10px;
+  }
+  .readmore-btn-app {
+    width: 15%;
   }
 }
 </style>

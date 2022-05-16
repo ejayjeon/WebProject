@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import MainPage from "../pages/MainPage/MainPage.vue";
 
 const routes = [
   {
@@ -9,11 +10,20 @@ const routes = [
     path: "/landing",
     name: "Landing",
     component: () => import("@/pages/Landing/Landing"),
+    before: (to, from, next) => {
+      var isLanding = true;
+      if (isLanding) {
+        history.go();
+        isLanding = false;
+      }
+      next();
+    },
   },
   {
     path: "/main",
     name: "MainPage",
-    component: () => import("@/pages/MainPage/MainPage"),
+    component: MainPage,
+    // component: () => import("@/pages/MainPage/MainPage"),
   },
   {
     path: "/about",
@@ -35,11 +45,11 @@ const routes = [
     name: "RoadMap",
     component: () => import("@/pages/RoadMap/RoadMap"),
   },
-  {
-    path: "/staking",
-    name: "Staking",
-    component: () => import("@/pages/Staking/Staking"),
-  },
+  // {
+  //   path: "/staking",
+  //   name: "Staking",
+  //   component: () => import("@/pages/Staking/Staking"),
+  // },
   {
     path: "/teamadvisor",
     name: "TeamAdvisor",

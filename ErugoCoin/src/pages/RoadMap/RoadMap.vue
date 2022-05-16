@@ -4,7 +4,7 @@
     <q-layout class="roadmap">
       <div class="roadmap-title">Road Map</div>
       <div class="line" />
-      <div class="roadmap-subtitle text-h2">OF LISTING</div>
+      <div class="roadmap-subtitle">OF LISTING</div>
       <!-- Listing -->
       <div class="roadmaplist" @mousewheel="$refs.carousel.next()">
         <q-carousel
@@ -16,7 +16,7 @@
           v-model="slide"
           ref="carousel"
           infinite
-          transition-duration="1200"
+          transition-duration="9000"
           class="roadmap-container"
         >
           <q-carousel-slide :name="1" class="column no-wrap list-container">
@@ -66,7 +66,7 @@
                 <!-- 좌우 버튼 -->
                 <q-btn flat @click="$refs.carousel.previous()">
                   <img
-                    src="assets/images/roadmap_arrow_01.png"
+                    src="assets/images/roadmap_arrow_left.png"
                     style="width: 4vmax"
                   />
                 </q-btn>
@@ -80,7 +80,7 @@
 
                 <q-btn flat @click="$refs.carousel.next()">
                   <img
-                    src="assets/images/roadmap_arrow_02.png"
+                    src="assets/images/roadmap_arrow_right.png"
                     style="width: 4vmax"
                   />
                 </q-btn>
@@ -90,7 +90,7 @@
         </q-carousel>
       </div>
       <!-- Listing -->
-      <div class="roadmap-subtitle2 text-h2">OF METAVERSE</div>
+      <div class="roadmap-subtitle2">OF METAVERSE</div>
       <q-img src="assets/images/roadmap_map.png">
         <div class="line-vertical" />
         <!-- Metaverse -->
@@ -104,7 +104,7 @@
             v-model="slide2"
             ref="metaverse"
             infinite
-            transition-duration="1200"
+            transition-duration="3500"
             class="roadmapmeta-container"
           >
             <q-carousel-slide :name="1" class="column no-wrap">
@@ -263,7 +263,7 @@
                   <!-- 좌우 버튼 -->
                   <q-btn flat @click="$refs.metaverse.previous()">
                     <img
-                      src="assets/images/roadmap_arrow_01.png"
+                      src="assets/images/roadmap_arrow_left.png"
                       style="width: 75px"
                     />
                   </q-btn>
@@ -277,7 +277,7 @@
 
                   <q-btn flat @click="$refs.metaverse.next()">
                     <img
-                      src="assets/images/roadmap_arrow_02.png"
+                      src="assets/images/roadmap_arrow_right.png"
                       style="width: 75px"
                     />
                   </q-btn>
@@ -301,9 +301,13 @@ export default {
   data() {
     return {
       roadmap: [
-        { title: "XEXC", src: "assets/images/roadmap_01.png", year: "2022" },
+        { title: "MEXC", src: "assets/images/roadmap_01.png", year: "2022" },
         { title: "LBANK", src: "assets/images/roadmap_02.jpg", year: "2022" },
-        { title: "CONSBIT", src: "assets/images/roadmap_03.jpg", year: "2022" },
+        {
+          title: "COINSBIT",
+          src: "assets/images/roadmap_03.jpg",
+          year: "2022",
+        },
         { title: "BITTREX", src: "assets/images/roadmap_04.jpg", year: "2022" },
       ],
       roadmap2: [
@@ -542,7 +546,7 @@ div,
     }
   }
 }
-#CONSBIT {
+#COINSBIT {
   div {
     img {
       box-shadow: 0 0 50px 0 rgba(82, 43, 255, 0.5);
@@ -577,7 +581,7 @@ div,
     }
   }
 }
-#XEXC {
+#MEXC {
   div {
     img {
       box-shadow: 0 0 50px 0 rgba(39, 228, 149, 0.5);
@@ -868,8 +872,30 @@ div,
   }
 }
 @media all and (max-width: 380px) {
+  .roadmap-title {
+    font-size: 5vmax;
+    margin: 15% auto;
+    margin-bottom: 0;
+    padding: 0;
+  }
+  .line {
+    border-right: 1px solid #363636;
+    height: 40px;
+    width: 50%;
+    margin: 1% 0;
+  }
+  .roadmap-subtitle,
+  .roadmap-subtitle2 {
+    font-size: 3vmax;
+    margin: 1% auto;
+  }
+
   .carousel-ctrl {
     margin: 0 auto !important;
+  }
+  .roadmap-title2,
+  .roadmap-title3 {
+    font-size: 1vmin;
   }
 }
 </style>

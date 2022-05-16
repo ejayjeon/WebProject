@@ -34,10 +34,10 @@ export default {
     },
   },
   methods: {
-    async moveCursor(e) {
+    moveCursor(e) {
       this.xChild = e.clientX;
       this.yChild = e.clientY;
-      await setTimeout(
+      setTimeout(
         () => {
           this.xParent = e.clientX - 15;
           this.yParent = e.clientY - 15;
@@ -66,7 +66,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scope>
 body,
 html {
   width: 100%;
@@ -83,7 +83,6 @@ html {
     height: 60px;
     transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
   }
-
   &__circle {
     pointer-events: none;
     user-select: none;
@@ -98,7 +97,6 @@ html {
     backface-visibility: hidden;
     transition: opacity 0.6s ease;
   }
-
   &__point {
     top: -4%;
     left: -2%;
@@ -118,7 +116,6 @@ html {
     font-size: 32px;
     line-height: 95px;
   }
-
   &_hover {
     .g-cursor__circle {
       opacity: 0;

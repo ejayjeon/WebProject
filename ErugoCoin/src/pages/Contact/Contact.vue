@@ -50,7 +50,7 @@
               <th>Address</th>
               <td>
                 <address>
-                  129, Seochojungang-ro 8-gil, Gangnam-gu, Seoul, Republic of
+                  129, Seochojungang-ro 8-gil, Seocho-gu, Seoul, Republic of
                   Korea
                 </address>
               </td>
@@ -160,8 +160,10 @@ h4,
 }
 .contact {
   width: 85%;
-  height: 100%;
-  margin: 10% auto;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 .contact-left {
   display: flex;
@@ -180,6 +182,7 @@ h4,
   margin-top: 3%;
   margin-right: 15%;
   line-height: 2.2vmax;
+  margin-bottom: 5%;
 }
 .sns {
   margin-top: 5%;
@@ -201,15 +204,15 @@ h4,
   height: 100%;
 }
 .info-box {
-  height: 50vmin;
+  height: 65vmin;
   background: url(./images/contact-bg.png) no-repeat center;
-  background-size: 95% 100%;
+  background-size: 105% 100%;
   position: relative;
 }
 table {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
   width: 80%;
   height: 60%;
@@ -264,7 +267,7 @@ table td > address {
 
 .foot-copyright {
   position: absolute;
-  left: 50%;
+  left: 49.5%;
   transform: translateX(-50%);
   bottom: 15%;
   font-size: 1.5vmin;
@@ -340,6 +343,7 @@ table td > address {
     transform: translateX(0);
     text-align: center;
     font-size: 3.5vmin;
+    left: 50%;
   }
 }
 
@@ -363,11 +367,14 @@ table td > address {
     font-size: 1.5vmax;
   }
   .info-box {
-    height: 35vmax;
+    height: 40vmax;
+    background-size: 110% 100%;
+    border-radius: 20px;
   }
   table {
     width: 90%;
     font-size: 2vmax;
+    left: 50%;
   }
   table th {
     width: 20%;

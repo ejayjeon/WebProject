@@ -24,17 +24,17 @@
       </span>
       <div class="about-title">ABOUT</div>
       <div class="line" />
-      <div class="about-subtitle text-h2">ERUGO WORLD</div>
+      <div class="about-subtitle">ERUGOWORLD</div>
       <p class="about-content text-h5">
         To overcome the limitation of previous mass-type Metaverse platforms
         that only focus on the value of digital assets and transaction volumes,
-        ERUGO WORLD aims to be the sustainable Metaverse platform which connects
+        ERUGOWORLD aims to be the sustainable Metaverse platform which connects
         with reality by providing valuable services to our investors.
       </p>
       <div class="line" />
-      <div class="about-subtitle text-h2">Principles</div>
+      <div class="about-subtitle">Principles</div>
       <p class="about-content2 text-h4">
-        The Metaverse that ERUGO WORLD pursue follows principles.
+        The Metaverse that ERUGOWORLD pursue follows principles.
       </p>
       <div class="readmore-bg">
         <ReadMore v-for="(r, i) in readmore" :key="i" style="flex: 1">
@@ -57,19 +57,19 @@
         The ERUGO Team defines the above four as the team's mission and attempts
         to achieve innovation through the linkage between Metaverse and reality
         by implementing them through blockchain technology. So far, the ERUGO
-        Team has listed Erugo World Coin (EWC) on the exchange, and has been
+        Team has listed ERUGOWORLD Coin (EWC) on the exchange, and has been
         preparing for a gas station business, internet shopping mall, new
         concept laundry app business, and construction business to link with
-        Erugo World. The ERUGO Team devised the “ERUGO World Ecosystem Model” to
+        ERUGOWORLD. The ERUGO Team devised the “ERUGOWORLD Ecosystem Model” to
         successfully implement these missions. This model will enable companies
-        and users joining the ERUGO World to enjoy life in the strongly
-        integrated virtual world and real world and will create the ERUGO World
+        and users joining the ERUGOWORLD to enjoy life in the strongly
+        integrated virtual world and real world and will create the ERUGOWORLD
         ecosystem to establish itself as a block chain project that encompasses
         not only Korea but also the world.
       </p>
       <div class="line" />
-      <div class="about-subtitle text-h2">Promotion clip</div>
-      <p class="about-content2 text-h4">ERUGO WORLD and EVC Promotion Clip</p>
+      <div class="about-subtitle">Promotion clip</div>
+      <p class="about-content2 text-h4">ERUGOWORLD and EVC Promotion Clip</p>
       <div class="q-pa-md promotion-video">
         <q-video
           :ratio="16 / 9"
@@ -77,8 +77,8 @@
         />
       </div>
       <div class="line" />
-      <div class="about-subtitle text-h2">Rugo</div>
-      <p class="about-content2 text-h4">ERUGO WORLD and EWC Promotion clip</p>
+      <div class="about-subtitle">Rugo</div>
+      <p class="about-content2 text-h4">ERUGOWORLD and EWC Promotion clip</p>
 
       <div class="img-container">
         <div class="about-img" v-for="(a, i) in aboutImage" :key="i">
@@ -97,13 +97,12 @@
 
       <div class="about-content4 text-h5">
         <p>
-          ERUGO WORLD COIN is the digital asset which can be transacted to
-          invest on real estates, products, services, and items in the
-          Metaverse.
+          ERUGOWORLD COIN is the digital asset which can be transacted to invest
+          on real estates, products, services, and items in the Metaverse.
         </p>
         <p>
-          Rugo, is the token issued and distributed by ERUGO WORLD based on EWC
-          (ERUGO WORLD COIN). Token acquired by various work and effort in
+          Rugo, is the token issued and distributed by ERUGOWORLD based on EWC
+          (ERUGOWORLD COIN). Token acquired by various work and effort in
           Metaverse can be exchanged and deposited into EWC anytime, and finally
           it is possible to cashify by disposing of the EWC.
         </p>
@@ -111,7 +110,7 @@
           Also, the entry cost, advertising cost and sales incentives
           compensated by the businesses in EROGO WORLD are transacted and
           operated in Rugo and will be the source to power the ecosystem of
-          ERUGO WORLD.
+          ERUGOWORLD.
         </p>
       </div>
       <PageController />
@@ -133,14 +132,14 @@ export default {
           title:
             "Create a low barrier to entry in which anyone can easily participate",
           content:
-            "In general, Metaverse and NFT-related platform games adopt a method that enables actual start only when you purchase essential items with virtual assets in the marketplace in the first game. However, ERUGO World makes it possible to secure coins (virtual assets) for living in virtual reality through the quest given within Metaverse.",
+            "In general, Metaverse and NFT-related platform games adopt a method that enables actual start only when you purchase essential items with virtual assets in the marketplace in the first game. However, ERUGOWORLD makes it possible to secure coins (virtual assets) for living in virtual reality through the quest given within Metaverse.",
         },
         {
           number: "02",
           title:
             "Create an economic ecosystem operated and developed on its own",
           content:
-            "In ERUGO World aiming to construct its own economic ecosystem, you can conduct economic activities like the real world. For example, you can hire other users for construction and pay salaries, secure coins by providing labor, and provide intelligent services to design other users' houses and secure coins. Rather than just playing for no purpose, people can “live” with a job just like in reality.",
+            "In ERUGOWORLD aiming to construct its own economic ecosystem, you can conduct economic activities like the real world. For example, you can hire other users for construction and pay salaries, secure coins by providing labor, and provide intelligent services to design other users' houses and secure coins. Rather than just playing for no purpose, people can “live” with a job just like in reality.",
         },
         {
           number: "03",
@@ -153,7 +152,7 @@ export default {
           title:
             "Create a low barrier to entry in which anyone can easily participate",
           content:
-            "Various companies' showrooms, billboards, experience halls, and SHOPs can be entered in the map of ERUGO World, which is made similar to the earth of the real world. At this time, the entering companies pay the entrance fee and advertising cost with coins, and the coins secured in this way are accumulated and paid to users as a reward for quests or used for the development of the ecosystem.",
+            "Various companies' showrooms, billboards, experience halls, and SHOPs can be entered in the map of ERUGOWORLD, which is made similar to the earth of the real world. At this time, the entering companies pay the entrance fee and advertising cost with coins, and the coins secured in this way are accumulated and paid to users as a reward for quests or used for the development of the ecosystem.",
         },
       ],
       aboutImage: [
@@ -178,7 +177,11 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scope>
+.row {
+  display: flex;
+  flex-direction: row;
+}
 .about {
   width: 100%;
   height: 100%;

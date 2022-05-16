@@ -14,6 +14,7 @@
         prev-icon="img:assets/images/team_btn_02.png"
         next-icon="img:assets/images/team_btn_01.png"
         class="team-carousel"
+        transition-duration="3000"
       >
         <q-carousel-slide :name="1" class="teamadvisor-carousel">
           <div
@@ -43,7 +44,7 @@
                 alt="team content"
                 style="width: 90%"
               />
-              <div class="content-text">
+              <div class="content-text" style="white-space: pre-line">
                 <div class="cardtitle">
                   {{ card[i].title }} <br />
                   <p class="cardtitle2">{{ card[i].name }} <br /></p>
@@ -89,7 +90,7 @@
                 alt="team content"
                 style="width: 90%"
               />
-              <div class="content-text">
+              <div class="content-text" style="white-space: pre-line">
                 <div class="cardtitle">
                   {{ card[i + 3].title }} <br />
                   <p class="cardtitle2">{{ card[i + 3].name }} <br /></p>
@@ -149,7 +150,7 @@
                 alt="team content"
                 style="width: 100%"
               />
-              <div class="content-text">
+              <div class="content-text" style="white-space: pre-line">
                 <div class="cardtitle">
                   {{ t.title }} <br />
                   <p class="cardtitle2">{{ t.name }} <br /></p>
@@ -220,36 +221,51 @@ export default {
           key: "ceo",
           title: "CEO",
           name: "Jung su Kim",
-          content: `I started my career at a law firm and grew my career at an 
-          asset management firm. When I worked for a law firm, I was interested in IT business while developing web software to optimize my work. I learned how money moves while working for an asset management company. These two thing naturally served as an opportunity for me to participate in the cryptocurrency business. I am currently leading the development of metaverse 'ErugoWorld' suitable for Web 3.0. I believe I am the most reasonable in this job.`,
+          content: `I started my career at a law firm and grew my career at an asset management firm. 
+          When I worked for a law firm, I was interested in IT business while developing web software to optimize my work. 
+          I learned how money moves while working for an asset management company. 
+          These two thing naturally served as an opportunity for me to participate in the cryptocurrency business. 
+          I am currently leading the development of metaverse 'ErugoWorld' suitable for Web 3.0. I believe I am the most reasonable in this job.`,
         },
         {
           key: "techadvisor",
           title: "TECH ADVISOR",
           name: "Gyeong su Ham",
-          content:
-            "Erugoworld: Apr. 2022 ~ Tech Adviser KoreaHudiLab: Sep. 2021 ~Director or R&D institute DataCommand Inc.: Jun. 2017 ~ Aug. 2021 Director or R&D institute AgileSoDA: Mar. 2016 ~ May. 2017 Director or R&D institute the world's best design team for 'ErugoWorld.' Datastreamst: Jun. 2013 ~ Feb. 2016 Director or R&D institute",
+          content: `Erugoworld: Apr. 2022 ~ Tech Adviser 
+            KoreaHudiLab: Sep. 2021 ~ Director or R&D institute 
+            DataCommand Inc.: Jun. 2017 ~ Aug. 2021 Director or R&D institute 
+            AgileSoDA: Mar. 2016 ~ May. 2017 Director or R&D institute the world's best design team for 'ErugoWorld.' 
+            Datastreamst: Jun. 2013 ~ Feb. 2016 Director or R&D institute`,
         },
         {
           key: "techadvisor",
           title: "TECH ADVISOR",
           name: "Kwang je Cho",
-          content:
-            "Erugoworld: Apr. 2022 ~  Tech Adviser INNORULES CO.,LTD: Apr. 2018 ~  Development Project Leader DataCommand Inc: May. 2017 ~ Mar. 2018 Development of solutions Codelab: Jan. 2015 ~ Jan. 2017 Development Team Leader JDF: Sep. 2009 ~ Dec. 2014 Development Team Leader",
+          content: `Erugoworld: Apr. 2022 ~  Tech Adviser 
+            INNORULES CO.,LTD: Apr. 2018 ~  Development Project Leader 
+            DataCommand Inc: May. 2017 ~ Mar. 2018 Development of solutions 
+            Codelab: Jan. 2015 ~ Jan. 2017 Development Team Leader 
+            JDF: Sep. 2009 ~ Dec. 2014 Development Team Leader`,
         },
         {
           key: "design",
           title: "DESIGN TEAM",
           name: "",
-          content:
-            "Our design team is currently recruiting. The team is working on various and unique designs for 'ErugoWorld.' In addition, the team is participating in EWC and all related design works. We are confident that we are the world's best design team for 'ErugoWorld.' Please cheer for the developing 'ErugoWorld' design team.",
+          content: `Our design team is currently recruiting. 
+            The team is working on various and unique designs for 'ErugoWorld.' 
+            In addition, the team is participating in EWC and all related design works. 
+            We are confident that we are the world's best design team for 'ErugoWorld.' 
+            Please cheer for the developing 'ErugoWorld' design team.`,
         },
         {
           key: "development",
           title: "DEVELOPMENT TEAM",
           name: "",
-          content:
-            "Our design team is currently recruiting. The team is working on various and unique designs for 'ErugoWorld.' In addition, the team is participating in EWC and all related design works. We are confident that we are the world's best design team for 'ErugoWorld.' Please cheer for the developing 'ErugoWorld' design team.",
+          content: `Our design team is currently recruiting. 
+            The team is working on various and unique designs for 'ErugoWorld.' 
+            In addition, the team is participating in EWC and all related design works. 
+            We are confident that we are the world's best design team for 'ErugoWorld.' 
+            Please cheer for the developing 'ErugoWorld' design team.`,
         },
         {
           key: "you",
@@ -435,7 +451,9 @@ h4,
 .content-text {
   position: absolute;
   width: 80%;
-  height: 100%;
+  height: 85%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   left: 45%;
   transform: translateX(-50%);
   top: 10%;
@@ -506,10 +524,10 @@ h4,
     font-size: 1.5vmax;
   }
   .content-text {
-    line-height: 1;
+    line-height: 2;
     .cardtitle {
       font-size: 1vmax;
-      line-height: 1.5;
+      line-height: 2;
       .cardtitle2 {
         font-family: "S-coreDream4";
       }
@@ -517,12 +535,14 @@ h4,
   }
 }
 @media all and (max-width: 780px) {
+  .title {
+    font-size: 1.5vmin;
+  }
   .content-text {
     width: 75%;
     height: 85%;
     left: 42%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+
     font-size: 1.2vmax;
     line-height: 1.2;
     .cardtitle {
@@ -530,7 +550,10 @@ h4,
     }
   }
 }
-@media all and (max-width: 420px) {
+@media all and (max-width: 500px) {
+  .scroll {
+    overflow: hidden;
+  }
   .teamadvisor-carousel,
   .team-carousel {
     display: none;
@@ -563,23 +586,21 @@ h4,
     font-size: 1.7vmax;
   }
   .content-text {
-    width: 90%;
+    width: 85%;
     height: 85%;
     left: 50%;
-    overflow-x: hidden;
-    overflow-y: scroll;
     font-size: 1.8vmax;
     line-height: 1.2;
     .cardtitle {
       line-height: 1.5;
       font-size: 2vmax;
       .cardtitle2 {
-        font-size: 1.8vmax;
+        font-size: 1.7vmax;
       }
     }
   }
   .team-card .back .teamadvisor-arrow {
-    right: 10%;
+    right: 8%;
   }
   .q-carousel__arrow .q-icon {
     font-size: 1vmin;
@@ -587,6 +608,43 @@ h4,
   .q-carousel__arrow .q-icon img {
     width: 5vmax;
     height: 5vmax;
+  }
+}
+@media all and (max-width: 380px) {
+  .teamadvisor-title:first-child {
+    margin: 15% auto;
+  }
+  .team-card {
+    overflow: hidden;
+    .front {
+      .teamadvisor-arrow {
+        right: 5%;
+        bottom: 7%;
+      }
+    }
+    .back {
+      .teamadvisor-arrow {
+        right: 5%;
+        bottom: 7%;
+      }
+    }
+  }
+  .title {
+    font-size: 4vmax;
+  }
+  .content {
+    font-size: 2.5vmax;
+  }
+  .content-text {
+    width: 80%;
+    height: 80%;
+    font-size: 1.8vmax;
+    .cardtitle {
+      font-size: 3vmax;
+      .cardtitle2 {
+        font-size: 1.8vmax;
+      }
+    }
   }
 }
 </style>

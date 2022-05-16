@@ -76,6 +76,7 @@ export default {
           let a = document.createElement("a");
           a.href = window.URL.createObjectURL(blob);
           a.download = url.split("/assets/")[1];
+          console.log(a.href);
           a.click();
           window.URL.revokeObjectURL(a.href);
         });

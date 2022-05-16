@@ -120,6 +120,10 @@ export default {
   text-decoration: none;
   color: inherit;
 }
+body {
+  width: 100%;
+  height: 100%;
+}
 /* li 장식 제거 */
 li,
 ul,
@@ -142,5 +146,24 @@ button {
 }
 .q-img {
   overflow: none !important;
+}
+* ::-webkit-scrollbar {
+  width: 0.5vmax;
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  background: linear-gradient(
+    0deg,
+    rgba(197, 224, 196, 0.7) 0%,
+    rgba(134, 183, 185, 0.7) 35%,
+    rgba(148, 122, 207, 0.7) 100%
+  );
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 </style>

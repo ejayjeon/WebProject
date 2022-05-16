@@ -22,12 +22,11 @@
               <span class="col-1 font-bold" style="text-align: left">{{
                 i + 1
               }}</span>
-              <span class="col-9 notice-text" style="text-align: center">{{
-                a.title
-              }}</span>
+              <span class="col-9" style="text-align: left">{{ a.title }}</span>
               <span class="col-2 font-bold">{{ a.date }}</span>
             </div>
             <div v-show="a.showDetail" class="announcement-detail">
+              <!-- <p v-html="summaryFun(i)"></p> -->
               <p style="white-space: pre-line">{{ announcement[i].summary }}</p>
             </div>
           </li>
@@ -106,7 +105,6 @@ const rows = [
     date: date,
   },
 ];
-console.log(now);
 export default {
   components: { Header, PageController },
   data() {
@@ -348,25 +346,12 @@ li {
       margin-top: 20%;
     }
     .title > span {
-      font-size: 2vmax;
+      font-size: 1.7vmax;
     }
     .announcement-list,
     .announcement-detail {
-      font-size: 1.5vmax;
-
+      font-size: 1vmax;
       width: 90%;
-    }
-    .announcement-detail {
-      font-size: 1.8vmax;
-    }
-    .row > .col-9 {
-      width: 70%;
-    }
-    .notice-text {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      padding-right: 1%;
     }
     #media-list > ul {
       margin-top: 10%;
