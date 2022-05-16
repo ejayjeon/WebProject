@@ -32,6 +32,7 @@
                         <td scope="col"> 내용</td>
                         <td scope="col"> 작성일</td>
                         <td scope="col"> 수정 / 삭제</td>
+                        <td scope="col"> 채팅하기</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,11 @@
                                     data-id="<%= posts[i]._id %>"> -->
                                 <button class="delete btn btn-outline-light" data-id="<%= posts[i]._id %> ">삭제</button>
                             </td>
+                            <td scope="col">
+                                <input type="button" class="chatroom btn btn-outline-light"
+                                    onclick="location.replace('/chatroom')" data-id="<%= posts[i].userId %> "
+                                    value="채팅방 입장">
+                            </td>
                         </tr>
                         <% } %>
                 </tbody>
@@ -75,6 +81,19 @@
                 }).then(() => {
                     $(this).parents('tr').fadeOut();
                 })
+            })
+
+            $('.chatroom').click(function (e) {
+                var id = e.target.dataset.userId;
+                $.ajax({
+                    method: 'POST',
+                    url: '/chatroom',
+                    data: {
+                        당한사람id: id,
+                        date: new Date(),
+                    }
+                }).then(() => { console.log('성공') })
+
             })
 
 

@@ -8,7 +8,7 @@ const { MongoClient } = require("mongodb");
 const uri = process.env.DB_URI;
 const client = new MongoClient(uri);
 app.listen(process.env.PORT, () => {
-  console.log("Listening port on 3000");
+  console.log(`Listening port on ${process.env.PORT}`);
 });
 app.use(compression());
 app.use(methodOverride("_method"));
@@ -31,6 +31,7 @@ app.get("/add", (req, res) => {
 // 변수
 const db = client.db("board");
 const post = db.collection("post");
+const chatroom = db.collection("chatroom");
 async function run() {
   try {
     client.connect();
@@ -39,7 +40,19 @@ async function run() {
         res.render("list.ejs", { posts: result });
       });
     });
-
+    app.get("/chatroom", (req, res) => {
+      res.render("chatroom.ejs");
+    });
+    app.post("/chatroom", (req, res) => {
+      var chatItem = {
+        title: `${req.body._id}의 채팅방`,
+        member: [ObjectId(req.body.당한사람id), req.user._id],
+        data: new Date(),
+      };
+      chatroom.insertOne(chatItem).then((err, result) => {
+        console.log(result);
+      });
+    });
     app.post("/addok", (req, res) => {
       db.collection("counter").findOne({ name: "boardIdx" }, (err, result) => {
         var idx = result.totalPost;
